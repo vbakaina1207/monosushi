@@ -1,0 +1,119 @@
+
+@mixin btn-exit {
+    margin: 20px auto;
+    background-color: $primary-color;
+    color: $text-color;
+    font-weight: bold;
+    border: 2px solid transparent;
+    font-family: 'RotondaCBold' , sans-serif ;
+    font-size: 16px;
+    border-radius: 7px;
+    width: 70px;
+    height: 50px;
+}
+
+@mixin btn-detail {
+    margin-bottom: 50px;
+    color:$text-color;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: $primary-color;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid transparent;
+    font-family: 'RotondaCBold' , sans-serif ;
+    text-transform: uppercase;
+    line-height: 34px;
+
+    &:hover{
+        border: 2px solid $primary-color;
+        background-color: white;
+    }
+}
+
+@mixin btn-save{
+    color: $primary-color;
+    border: none;
+    font-weight: bold;
+    text-decoration: none;
+    background: linear-gradient(to bottom, transparent 0%, transparent 90%, $primary-color 100%);
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    background-repeat: no-repeat;
+    transition: all 0.5s linear;
+
+    &:hover{
+        background-position: 100% 0;
+    }
+}
+
+@mixin margin-header($h){
+    height: $h;
+}
+
+
+@mixin main-header{
+    font-size: 42px;
+    font-family: 'RotondaCBold' , sans-serif ;
+    color: $text-color;
+    font-weight: bold;
+    margin: 0 auto;
+    margin: 30px 0 60px 0;
+    text-align: center;
+    padding-top: 10px;
+    line-height: 1.2 rem;
+}
+
+@mixin hr{
+    border: 5px solid $primary-color;
+    border-radius: 10px;
+    width: 150px;
+    margin: 0 auto;
+    background-color: $primary-color;
+}
+
+@mixin body($color){
+    font-family: 'RotondaC' , sans-serif ;
+    color: $color;
+    font-weight: 400;
+}
+
+@mixin text-bold($color){
+    color: $color;
+    font-weight: 700;
+    font-family: 'RotondaCBold' , sans-serif ;
+}
+
+@mixin ul-style {
+    list-style: none;
+
+    & li {
+        position: relative;
+        line-height: 1.47em;
+        font-size: 18px;
+    }
+    
+    & li::before {
+        width: 11px;
+        height: 11px;
+        position: absolute;
+        left: 0;
+        top: 9px;
+        border-radius: 100%;
+        background: $primary-color;
+        content: "";
+    }
+
+    & li::after {
+        width: 9px;
+        height: 9px;
+        position: absolute;
+        left: 1px;
+        top: 10px;
+        border-radius: 100%;
+        border: 2px solid #fff;
+        background: transparent;
+        content: "";
+    }
+}

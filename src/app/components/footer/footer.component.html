@@ -1,0 +1,123 @@
+<footer>
+<div class="footer-inner">
+  <div class="footer-top">
+    <a class="logo" [routerLink]="[ '/' ]">
+      <img src="/assets/logo.svg" alt="">
+    </a>
+    <ul class="menu-list">
+      <li>
+        <a class="list-group-item" [routerLink]="[ '/discount' ]" routerLinkActive="route-active">
+          Акції
+        </a>
+      </li>
+      <li>
+        <a class="list-group-item" [routerLink]="[ '/about' ]" routerLinkActive="route-active">
+          Про нас
+        </a>
+      </li> 
+      <li>
+        <a class="list-group-item" [routerLink]="[ '/offerta' ]" routerLinkActive="route-active">
+          Оферта
+        </a>
+      </li> 
+    </ul>
+    <div class="footer-info">
+      <div class="delivery">
+        <p>
+          <strong>
+            Точки самовивозу
+          </strong>
+        </p>
+        <ul>
+          <li>вул. Володимира Великого, 10в</li>
+          <li>вул. Чорновола, 95</li>
+        </ul>
+      </div>
+      <div class="order">
+        <p>
+          <strong>Оформити замовлення</strong>
+        </p>
+        <a href="tel:0978780837">
+          <b>(097) 878 08 37</b>
+        </a>
+      </div>
+    </div>
+    <div class="social">
+      <span>Слідкуйте за нами</span>
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/monosushi.com.ua" class="icon-btn" target="_blank">
+            <img src="/assets/facebook-icon.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/monosushi.com.ua" class="icon-btn" target="_blank">
+            <img src="/assets/instagram-icon.svg" alt="">
+          </a>
+        </li>  
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="copyright">
+      <p>© 2022 Monosushi</p>
+    </div>
+    <div class="pay-cards">
+      <div class="pay-card-item">
+        <img src="/assets/pay-card-img1.svg" alt="">
+      </div>
+      <div class="pay-card-item">
+        <img src="/assets/pay-card-img2.svg" alt="">
+      </div>
+      <div class="pay-card-item">
+        <img src="/assets/pay-card-img3.svg" alt="">
+      </div>
+    </div>
+    <div class="social">
+      <span>Слідкуйте за нами</span>
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/monosushi.com.ua" class="icon-btn" target="_blank">
+            <img src="/assets/facebook-icon.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/monosushi.com.ua" class="icon-btn" target="_blank">
+            <img src="/assets/instagram-icon.svg" alt="">
+          </a>
+        </li>  
+      </ul>
+    </div>
+    <div class="develope">
+      <a href="https://redstone.media/" target="_blank" class="footer-dev-logo">
+        <span>Створення сайтів REDSTONE</span>
+      </a>
+    </div>
+  </div>
+</div>
+</footer>
+<div class="bottom-menu">
+    <nav>
+        <ul class="main-nav">
+          <li class="menu-item nav-item border-menu">
+            <a [routerLink]="[ '/discount' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+                <div class="link-menu">
+                    <img src="assets/nav-img-gift.svg" alt="">
+                    <span>Акції</span>
+                </div>                                            
+            </a>
+        </li>   
+        
+        <!-- <ul > -->
+            <li class="nav-item menu-item border-menu" *ngFor="let category of userCategories">
+                <a [routerLink]="[ '/product/{{category.path}}' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+                    <div class="link-menu">
+                        <img [src]="category.imagePath" alt="">
+                        <span>{{category.name}}</span>
+                    </div>
+                </a>
+            </li>                    
+                  
+        </ul>
+    </nav>
+</div>

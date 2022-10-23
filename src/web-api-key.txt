@@ -1,0 +1,24 @@
+apiKey: "AIzaSyDPMdAr5G-cUKcGHx2OYVpK1hQT5W845ew",
+  authDomain: "monosushi-b7c96.firebaseapp.com",
+  projectId: "monosushi-b7c96",
+  storageBucket: "monosushi-b7c96.appspot.com",
+  messagingSenderId: "1009628400704",
+  appId: "1:1009628400704:web:805c3857d11232f504a3a5"
+
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDmgGjVfhIQriMIAgUd_MReigJ5qDABvSU",
+  authDomain: "monosushi-ff46f.firebaseapp.com",
+  projectId: "monosushi-ff46f",
+  storageBucket: "monosushi-ff46f.appspot.com",
+  messagingSenderId: "652618489954",
+  appId: "1:652618489954:web:9cef7bd898210bcebff13b"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);

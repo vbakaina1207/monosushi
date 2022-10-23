@@ -1,0 +1,615 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+
+footer {
+    margin-top: auto;
+    font-size: 18px;
+    line-height: 1.5em;
+    font-family: 'RotondaC' , sans-serif ;
+    color: $text-color;
+}
+
+.footer-inner {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0;
+    border-top: 4px solid $primary-color;
+}
+
+.footer-top {
+    margin: 0 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.footer-bottom {
+    margin: 0 35px;    
+    display: flex;    
+    justify-content: space-between;    
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 136px;
+}
+
+.menu-list {
+    font-size: 16px;
+    display: flex;
+    margin-bottom: 0;
+    padding-left: 0;;
+
+    & a {
+    font-size: 16px;
+    line-height: 1em;
+    color: $text-color;
+    transition: 0.35s;
+    }
+
+    & li+li {
+        margin-left: 55px;
+    }
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    max-width: 43%;
+    width: 100%;
+    line-height: 1.25em;
+    
+    &>*{
+    line-height: 1.5em;
+    font-size: 14px;
+    }
+
+}
+
+.delivery{
+    color: $main-color;
+    text-align: center;
+
+    & p {
+        margin-bottom: 0;
+    }
+
+    & ul{
+        margin-bottom: 0;
+    }
+}
+strong {
+    font-weight: bold;
+    color: $text-color;
+}
+
+.order {
+    font-size: 14px;
+    color: $main-color;
+    text-align: center;
+
+    & p {
+        margin-bottom: 0;
+    }
+}
+.order a {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    transition: .35s;
+    cursor: pointer;
+}
+
+.footer-info b {
+    font-weight: 400;
+    color: $text-color;
+}
+
+.social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 14px;
+    color: $text-color;
+    text-align: center;
+}
+
+.footer-top .social {
+    display: none;
+}
+
+
+.social ul {
+    display: flex;
+
+    & li+li {
+        margin-left: 5px;
+    }
+}
+
+.social span {
+    margin-right: 20px;
+    font-size: 14px;
+    color: $text-color;
+}
+
+ul {
+    list-style: none;
+}
+
+.icon-btn {
+    display: block;
+    width: 49px;
+    height: 49px;
+    background: $primary-color;
+    border: 2px solid $primary-color;
+    border-radius: 10px;
+    position: relative;
+    transition: 0.35s;
+
+    & img {
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+.copyright {
+    font-size: 14px;
+    color: $main-color;
+    white-space: nowrap;
+
+    & p {
+        display: inline-block;
+        margin-right: 40px;
+        margin-bottom: 0;
+    }
+}
+
+.pay-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pay-card-item {
+    position: relative;
+    width: 69px;
+    height: 39px;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    display: inline-block;
+
+
+    & img {
+        max-width: 45px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+.pay-cards .pay-card-item+.pay-card-item {
+    margin-left: 5px;
+}
+
+.develope a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.35s;
+}
+
+a.footer-dev-logo {
+    position: relative;
+}
+
+.develope a span {
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: 0.35s;
+    color: $main-color;
+}
+
+a.footer-dev-logo:before {
+    background: #ffffff url('/assets/restonde.svg');
+    background-repeat: no-repeat;
+    width: 75px;
+    background-position: right center;
+    background-size: 100%;
+    content: '';
+    right: 0px;
+    top: 0px;
+    position: absolute;
+    height: 100%;
+}
+
+.bottom-menu {
+    display: none;    
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    
+    & a {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: relative;
+
+        & div {
+            position: absolute;
+            left: 50%;
+            bottom: 9px;        
+            transform: translate(-50%, 0);           
+            transition: .35s;
+        }
+
+        & img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        & span {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            color: $text-color;
+            margin-top: 4px;
+        }
+    }
+
+    & li {
+        width: 99px;
+        height: 85px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        transition: .35s;
+        text-transform: capitalize;
+        text-align: center;
+        color: $text-color;
+        font-weight: bold;
+        
+    }
+
+    
+}
+
+.menu-list li a:hover,
+.develope a span:hover {
+    color: $primary-color;
+}
+.social a:hover {
+    border: 1px solid $primary-color;
+    background-color: white;
+}
+
+@media (max-width: 1599px){
+    .main-nav {
+        margin-left: 15px;
+
+        & li {
+            width: 75px;
+            height: 70px;
+        }
+
+        & a img {
+            width: 28px;
+            height: 30px;
+        }
+        & a span {
+            font-size: 14px;
+            margin-top: 4px;
+            line-height: 1em;
+        }
+    }
+}
+
+@media (max-width: 1500px){
+    .footer-info {
+        max-width: 100%;
+        width: unset;
+    }
+
+    .footer-info>*+* {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 1400px){
+
+    .footer-top {
+        margin: 0 25px;
+        padding: 15px 0;
+    }
+    .footer-bottom {
+        margin: 0 25px;
+        margin-bottom: 15px;
+    }
+
+    .logo {
+        max-width: 123px;
+    }
+    .logo img {
+        display: block;
+        width: 100%;
+    }
+
+    .menu-list {
+        font-size: 14px;
+        & a {
+        font-size: 14px;
+        }
+    }
+    .pay-card-item {
+        width: 56px;
+        height: 33px;
+    }    
+    
+
+    .icon-btn {
+        width: 40px;
+        height: 40px;
+
+        & img {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    .social span {
+        font-size: 12px;
+    }
+
+    .copyright {
+        font-size: 12px;
+    }
+
+    .pay-card-item img {
+        max-width: 30px;
+    }
+
+    .develope a span {
+        font-size: 12px;
+        margin-right: 10px;
+    }
+
+    a.footer-dev-logo:before {
+        right: -8px;
+    }
+}
+
+@media (max-width: 1299px){
+    .footer-info>* {
+        line-height: 1.5em;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1199px){
+
+    .footer-inner{
+        margin-bottom: 60px;
+    }
+    .footer-top {
+        margin: 0 15px;
+        padding: 15px 0;
+    }
+
+    .footer-bottom {
+        margin: 0 15px;
+        margin-bottom: 15px;
+    }
+
+    .logo {
+        max-width: 110px;
+    }
+
+    .menu-list li+li {
+        margin-left: 25px;
+    }
+
+    
+    .menu-list {
+        display: flex;
+    }
+
+    .icon-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .social span {
+        margin-right: 10px;
+    }
+
+    .footer-bottom {
+        margin: 0 15px;
+        margin-bottom: 15px;
+    }
+
+    .bottom-menu .main-nav {
+        border-top: 1px solid $border-color;
+        background: #fff;
+        flex-direction: row;
+        align-items: center;
+        height: 60px;
+        padding-left: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+
+        & a {
+            text-align: center;
+
+            & div {
+                position: relative;
+                left: 0;
+                bottom: 0;
+                top: 0;                
+                transform: translate(0);
+                height: 100%;
+            }
+
+            & span {
+                margin: 5px 0 0;
+                display: inline-block;
+                // vertical-align: middle;
+                display: block;
+            }
+        }
+
+        .bottom-menu .main-nav li {
+            display: block;
+        }
+    }
+
+    .main-nav {
+        border-top: 1px solid $border-color;
+        background: #fff;        
+        flex-direction: column;        
+        align-items: baseline;
+
+        & li {
+            width: 100%;
+            height: 50px;
+            border: none;
+            text-align: left;
+        }
+
+        & a img, & a span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+
+
+
+
+@media (max-width: 991px){
+    .footer-top {    
+        flex-wrap: wrap;   
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .logo,
+    .menu-list {
+        margin: 0 auto;
+    }
+
+    .footer-info {
+        width: 100%;        
+        order: 2;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+
+    .icon-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .bottom-menu {
+        display: block;        
+        // position: sticky;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        z-index: 100;
+    }   
+}
+
+@media (max-width:767px){
+    .menu-list {
+        order: 1;
+        width: 100%;
+        flex-basis: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .social {
+        justify-content: center;
+        flex-basis: 100%;
+        margin-top: 15px;
+    }
+
+    .footer-top .social {
+        display: flex;
+    }
+
+    .social span {
+        display: none;
+    }
+
+    .footer-info {        
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .copyright {
+        order: 1;
+
+        & p {
+            display: block;
+            line-height: 1em;
+            margin-right: 0;
+        }  
+    }
+
+    .footer-bottom {
+        margin: 0 15px 15px;
+        flex-wrap: wrap;
+    }
+
+    .footer-bottom .pay-cards {
+        margin: 0 auto;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 15px;
+        order: 0;
+    }
+    .pay-card-item {
+        vertical-align: middle;
+    }  
+
+    .footer-bottom .social {
+        display: none;
+    }
+
+    .develope {
+        order: 1;
+    }
+
+    .develope a {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 575px){
+    .menu-list li+li {
+        margin-left: 0;
+    }
+
+    .menu-list {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+}

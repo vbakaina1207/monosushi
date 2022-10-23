@@ -1,0 +1,36 @@
+@import './../shared/styles/variables';
+@import './../shared/styles/mixins';
+
+body{
+    font-family: 'RotondaC' , sans-serif ;
+}
+
+.admin-block{
+    margin-top:130px;
+}
+
+
+.list-group-item{
+    height: 60px;
+    color:$main-color;
+}
+
+.active-route {
+    background-color: white;
+    color: $text-color;
+    font-weight: bold;
+    border-top: 3px solid $primary-color;
+    border-bottom: 2px solid  rgba(0, 0, 0, 0.125);
+    font-family: 'RotondaCBold' , sans-serif ;
+    font-size: 16px;
+    margin-top: 0;   
+}
+
+.btn-exit{   
+    @include btn-exit;
+}
+.btn-exit:hover{
+    border: 2px solid $primary-color;
+    background-color: white;
+}
+

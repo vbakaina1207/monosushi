@@ -1,0 +1,44 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+
+body{
+    @include body($main-color);
+    font-size: 16px;
+}
+
+.table-category {
+    border-bottom: 2px solid $primary-color;  
+    font-size: 16px;
+    @include text-bold($main-color);
+    padding: 0;
+}
+
+
+tbody{
+    @include body($main-color);
+    font-size: 16px;
+}
+
+tr{
+    vertical-align: middle;
+}
+
+td button {
+    @include btn-save;
+}
+
+.btn-add {    
+    @include btn-detail;
+}
+
+.btn-add:hover,
+.btn-exit:hover {
+    border-color: $primary-color; 
+    background-color: white;
+}
+
+.btn-exit{   
+    @include btn-exit;
+}

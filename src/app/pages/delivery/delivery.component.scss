@@ -1,0 +1,270 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+body{
+    @include body($main-color);
+    font-size: 18px;
+}
+
+.main-header{
+    @include main-header;
+}
+
+hr{
+    @include hr;
+}
+
+.delivery-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-info-img {
+    margin-right: 40px;
+    max-width: 276px;
+
+    & img {
+        width: 100%;
+    }
+}
+
+.delivery-info-text {
+    max-width: 270px;
+}
+
+.delivery-info.green .title {
+    color: $green-color;
+}
+
+.delivery-info-text .title {
+    margin-bottom: 10px;
+    letter-spacing: .07em;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.delivery-info.green .text-sm {
+    & span,
+    & b {
+    color: $green-color;
+    }
+}
+
+.text-sm {
+    font-size: 16px;
+    line-height: 1.6em;
+
+    & span {
+        font-weight: bold;
+        color: $main-color;
+    }
+}
+
+.delivery-info.yellow {
+    position: relative;
+
+    & .title {
+        color: $yellow-color;
+    }
+
+    & .text-sm b, & .text-sm span {
+        color: $yellow-color;
+    }
+}
+
+delivery-info-text .text-sm p+p {
+    margin-top: 10px;
+}
+
+.h4 {
+    font-size: 26px;
+    line-height: 1.2em;
+}
+
+center-info {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 550px;
+}
+h2, .h2 {
+    font-size: 42px;
+    line-height: 1.2em;
+}
+
+
+.delivery-map-block {
+    position: relative;
+    margin: 80px 0 60px;
+
+    & .map-block {
+        height: 625px;
+        max-height: calc(56.3vw - 30px);
+        margin-bottom: 0;
+    }
+
+}
+.text-md{
+    @include body($main-color);
+    font-size: 18px;
+}
+
+.spacer-lg {
+    height: 90px;
+}
+
+
+.spacer-sm {
+    height: 40px;
+}
+
+.title{
+    @include text-bold($text-color);
+}
+
+.pai-info {
+    justify-content: center;
+}
+
+.pay-info-item {
+    position: relative;
+    display: flex;
+    max-width: 427px;
+}
+
+.pay-info-img {
+    max-width: 63px;
+    width: 100%;
+    height: 60px;
+    border-radius: 10px;
+    background: $primary-color;
+    position: relative;
+    margin-right: 20px;
+}
+
+.pay-info-text .title {
+    line-height: 1.1em;
+    margin: 15px 0;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+.pay-info-img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;   
+    transform: translate(-50%,-50%);
+}
+
+.text-sm {
+    @include body($main-color);
+}
+
+
+.pay-info-item-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(-9% + 20px);
+    width: 1px;
+    height: 100%;
+    background: #dcdcdc;
+    display: block;
+}
+
+
+@media screen and (max-width: 1599px) {
+    .margin-header{
+        @include margin-header(95px);
+    }
+
+    .delivery-info-img {
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    
+    .main-header{
+        margin: 15px 0 40px 0;
+    }
+
+    .delivery-map-block {
+        margin: 40px 0;
+
+        & .map-block {
+            height: 500px;
+        }
+    }
+
+    .spacer-lg {
+        height: 60px;
+    }
+}    
+
+@media screen and (max-width:1199px){
+
+    .pay-info-text .title {
+        margin: 5px 0;
+    }
+
+    .pay-info-img {
+        max-width: 53px;
+        height: 50px;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .delivery-info.yellow {
+        margin-top: 40px;
+    }
+
+    .pay-info-item {
+        margin-bottom: 20px;
+    }
+
+    .pay-info-img {
+        max-width: 53px;
+        height: 50px;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    
+    .main-header{
+        margin: 20px 0 30px 0;
+    }
+
+    .delivery-map-block {
+        margin-top: 20px;
+
+        & .map-block {
+            max-height: 340px;
+        }
+    }
+
+    .spacer-lg {
+        height: 30px;
+    }
+
+    .spacer-sm {
+        height: 20px;
+    }
+}    
+
+@media (max-width: 575px){
+    .delivery-info {
+        flex-direction: column;
+    }
+
+    .delivery-info-img {
+        max-width: 170px;
+    }
+}

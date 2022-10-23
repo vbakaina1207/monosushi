@@ -1,0 +1,54 @@
+{
+  "discounts": [
+    {
+      "id": 1,
+      "date": "August 19, 1975 23:15:30 UTC",
+      "name": "рол тижня",
+      "title": "50% знижки на 'Рол тижня'",
+      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню. 'Рол тижня' ви можете знайти на головній сторінці нашого сайту. Знижка діє при мінімальній сумі замовлення 300 грн. Ця акція не поєднується з іншими акціями.",
+      "imagePath": "./assets/rol_of_week.jpg"
+    },
+    {
+      "id": 2,
+      "date": "August 19, 1975 23:15:30 UTC",
+      "name": "рол тижня",
+      "title": "50% знижки на 'Рол тижня'",
+      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню. 'Рол тижня' ви можете знайти на головній сторінці нашого сайту. Знижка діє при мінімальній сумі замовлення 300 грн. Ця акція не поєднується з іншими акціями.",
+      "imagePath": "./assets/rol_of_week.jpg"
+    },
+    {
+      "date": "2022-10-14T18:31:50.067Z",
+      "name": "3 + 1 = 5",
+      "title": "3 + 1 = 5",
+      "description": "Замовляйте 5 ролів, а платіть за 4.\nЗамовляйте 10 ролів, а платіть за 8 і так далі.\nБезкоштовним вважається рол з найменшою вартістю.\nЦя акція не поєднується з іншими акціями.",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fpodarunok.jpg?alt=media&token=e01a8544-e366-4d38-9af8-5b346f75e1ee",
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "name": "сети",
+      "path": "sets",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=d0bb529d-d589-4195-a1b8-406f966c504d",
+      "id": 2
+    },
+    {
+      "name": "роли",
+      "path": "rols",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
+      "id": 3
+    },
+    {
+      "name": "напої",
+      "path": "drinks",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=b22ecb8c-5ebb-4041-ab34-715c08d5f1f9",
+      "id": 4
+    },
+    {
+      "name": "Соуси",
+      "path": "souses",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ficon.svg?alt=media&token=7bf5782a-5bb0-46e1-83e4-13ef0a8b6d85",
+      "id": 5
+    }
+  ]
+}

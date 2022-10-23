@@ -1,0 +1,60 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+
+body{
+    font-size: 16px;
+    @include body($main-color);
+}
+
+.table-category {
+    border-bottom: 2px solid $primary-color;  
+    font-size: 16px;
+    @include text-bold($main-color);
+    padding: 0;
+}
+
+tbody{
+    @include body($main-color);
+    font-size: 16px;
+}
+tr{
+    vertical-align: middle;
+}
+
+td button {
+    @include btn-save;
+}
+
+.cool-link {
+    color: #000;
+    text-decoration: none;
+    background: linear-gradient(to bottom, transparent 0%, transparent 90%, $primary-color 100%);
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    background-repeat: no-repeat;
+    transition: all 0.5s linear;
+}
+
+.cool-link:hover {
+    background-position: 100% 0;
+}
+
+.btn-add {
+    @include btn-detail;
+}
+
+.btn-exit:hover,
+.btn-add:hover {
+    border-color: $primary-color; 
+    background-color: white;
+}
+
+.btn-exit{   
+    @include btn-exit;
+}
+
+textarea{
+    height: 150px;
+}

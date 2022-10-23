@@ -1,0 +1,21 @@
+@import './shared/styles/fonts';
+@import './shared/styles/variables';
+@import './shared/styles/mixins';
+
+#content-block {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-main{
+    position: relative;
+    z-index: 0;
+}
+
+body{
+    font-family: 'RotondaC' , sans-serif ;
+    color: $text-color;
+    font-weight: 400;
+}

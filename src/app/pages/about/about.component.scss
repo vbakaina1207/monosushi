@@ -1,0 +1,214 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.main-header{
+    @include main-header;
+}
+
+hr{
+    @include hr;
+}
+
+.simple-page {
+    position: relative;
+
+    & h3{
+        @include text-bold($text-color);
+        font-size: 34px;
+        line-height: 1.4em;
+    }
+
+    &>* {
+        margin-bottom: 25px;
+    }
+
+    & p {
+        position: relative;
+        font-size: 18px;
+        line-height: 1.5em;
+        font-weight: 400;
+        color: $main-color;
+    }
+
+    &>*:last-child {
+        margin-bottom: 0;
+    }
+    
+
+    & ul {
+        @include body($main-color);
+        @include ul-style;
+
+        & li {           
+            padding-left: 24px;
+        }
+    
+    & li:last-child {
+        margin-bottom: 0;
+    }
+    & li+li {
+        margin-top: 8px;
+    }
+        
+}
+
+}
+.spacer-xl{
+    height: 120px
+}
+
+.block-img {
+    border-radius: 10px;
+    overflow: hidden;
+
+    & img {
+        width: 100%;
+        display: block;
+    }
+}
+
+.block-left-info, .block-right-info {
+    margin: 0;
+}
+
+.block-left-info{
+    max-width: 460px;
+    margin-left: 30px;
+    margin-right: auto;
+}
+
+.block-right-info {
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+strong {
+    font-weight: bold;
+    color: $text-color;
+}
+
+.text{
+    font-size: 34px;
+    @include text-bold($text-color);
+}
+.accordion{
+    --bs-accordion-active-bg: white;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.2);
+    --bs-accordion-active-color: $main-color;
+    --bs-accordion-color: $text-color;
+    --bs-accordion-btn-icon-width:15px;
+}
+
+.accordion-header {
+    @include text-bold($main-color);
+    height: 93px;
+}
+
+.accordion-item {
+    @include body($main-color);
+}
+
+.accordion-button {
+    @include text-bold($main-color);
+    font-size: 20px;
+    height: 93px;
+    margin: 0 auto;
+
+    &:not(.collapsed) {
+        @include text-bold($text-color);
+
+        &::after {
+            background-image:  var(--bs-accordion-btn-icon);
+
+        }    
+    }
+
+    &.collapsed:hover{
+        color:$text-color;
+    }
+}
+
+.accordion-body{
+    font-size: 18px;
+    line-height: 1.5em;
+
+    & p {
+        margin-bottom: 20px;
+    }
+    & ol li+li {
+        margin-top: 23px;
+    }
+}
+
+.spacer-sm {
+    height: 40px;
+}
+
+@media screen and (max-width: 1599px) {
+    .margin-header{
+        @include margin-header(95px);
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    
+    .main-header{
+        margin: 15px 0 40px 0;
+    }
+
+    .spacer-xl {
+        height: 90px;
+    }
+}    
+
+@media (max-width: 991px){
+    .block-img {
+        margin-bottom: 20px;
+    }
+
+    .block-left-info, .block-right-info {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    
+    .accordion-header {
+        height: 73px;
+    }
+    .accordion-button {               
+        height: 73px;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    
+    .main-header{
+        margin: 20px 0 30px 0;
+    }
+
+    .simple-page>* {
+        margin-bottom: 15px;
+    }
+
+    .simple-page h3 {
+        font-size: 26px;
+    }
+
+    .simple-page p, .simple-page ul li {
+        font-size: 16px;
+        line-height: 1.5em;
+    }
+
+    .spacer-xl {
+        height: 50px;
+    }
+
+    .spacer-sm {
+        height: 20px;
+    }
+}    
+
+

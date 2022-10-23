@@ -1,0 +1,76 @@
+
+<div class="row ms-3">
+  <ng-container *ngIf="isAdd">    
+        <div class="col-10">
+            <form [formGroup]="discountForm" (ngSubmit)="addDiscount()">
+                <button [disabled]="discountForm.invalid"  type="submit" class="btn-add">
+                    {{ editStatus ? 'Змінити акцію' : 'Додати акцію' }}
+                </button>
+                <div class=" d-flex flex-row justify-content-between">
+                    <div class="col-5 mb-3">
+                        <input formControlName="name" name="name" type="text" class="form-control" id="name" placeholder="*Назва">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <input formControlName="title" name="title" type="text" class="form-control" id="path" placeholder="*Заголовок">
+                        <div class="invalid-feedback">Path is required</div>
+                    </div>                  
+                </div>  
+                <div class="mb-3">
+                    <textarea formControlName="description" name="description" type="text" class="form-control" placeholder="*Опис"></textarea>
+                </div>
+                <ng-container *ngIf="!isUploaded">
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Default file input example</label>
+                        <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" 
+                            [style.width.%]="uploadPercent" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                        </div>
+                </ng-container>
+                <ng-container *ngIf="isUploaded">
+                    <div>
+                        <img [src]="valueByControl('imagePath')" alt="">
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-exit mt-3" (click)="deleteImage()">delete</button>
+                    </div>
+                </ng-container>          
+            </form>
+        </div>
+    </ng-container>
+
+    <button class="btn-add ms-3" (click)="openForm()" *ngIf="!isAdd">Додати акцію</button>
+    <div class="col-12 d-flex justify-center" *ngIf="!isAdd">
+        <table class="table">
+            <thead class="table-category">
+                <tr>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Назва</th>
+                    <th scope="col">Заголовок</th>
+                    <th scope="col">Опис</th>
+                    <th scope="col">Картинка</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let discount of adminDiscounts; let id=index">            
+                    <td>{{ discount.date | date:'MM.YYYY' }}</td>
+                    <td>{{ discount.name }}</td>
+                    <td>{{ discount.title }}</td>
+                    <td>{{ discount.description | slice:0:65 }} <span *ngIf="discount.description.length > 65">...</span></td>
+                    <td>
+                        <img [src]="discount.imagePath" alt="" height="50px">
+                    </td>
+                    <td>
+                        <button (click)="editDiscount(discount)" type="button" class="btn">Редагувати</button>
+                        <p>
+                            <button [disabled]="editStatus" (click)="deleteDiscount(discount)" type="button" class="btn">Видалити</button>
+                        </p>                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
