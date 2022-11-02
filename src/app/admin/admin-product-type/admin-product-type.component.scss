@@ -4,8 +4,8 @@
 
 
 body{
-    font-size: 16px;
     @include body($main-color);
+    font-size: 16px;
 }
 
 .table-category {
@@ -15,10 +15,12 @@ body{
     padding: 0;
 }
 
+
 tbody{
     @include body($main-color);
     font-size: 16px;
 }
+
 tr{
     vertical-align: middle;
 }
@@ -27,26 +29,12 @@ td button {
     @include btn-save;
 }
 
-.cool-link {
-    color: #000;
-    text-decoration: none;
-    background: linear-gradient(to bottom, transparent 0%, transparent 90%, $primary-color 100%);
-    background-size: 200% 100%;
-    background-position: 200% 0;
-    background-repeat: no-repeat;
-    transition: all 0.5s linear;
-}
-
-.cool-link:hover {
-    background-position: 100% 0;
-}
-
-.btn-add {
+.btn-add {    
     @include btn-detail;
 }
 
-.btn-exit:hover,
-.btn-add:hover {
+.btn-add:hover,
+.btn-exit:hover {
     border-color: $primary-color; 
     background-color: white;
 }

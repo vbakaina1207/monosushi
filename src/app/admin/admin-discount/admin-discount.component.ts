@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDiscountResponse } from 'src/app/shared/interfaces/discount/discount.interface';
 import { DiscountService } from 'src/app/shared/services/discount/discount.service';
-import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
+import { ImageService } from 'src/app/shared/services/image/image.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-discount',
@@ -23,7 +24,8 @@ export class AdminDiscountComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private discountService: DiscountService,
-    private storage: Storage
+    private imageService: ImageService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -37,13 +39,12 @@ export class AdminDiscountComponent implements OnInit {
       name: [null, Validators.required],
       title: [null, Validators.required],
       description: [null, Validators.required],
-      imagePath: ['./assets/rol_of_week.jpg', Validators.required]      
+      imagePath: [null, Validators.required]      
     });
   }
 
   loadDiscounts(): void {
     this.discountService.getAll().subscribe(data => {
-      console.log(data);
       this.adminDiscounts = data;
     })
   }
@@ -52,10 +53,12 @@ export class AdminDiscountComponent implements OnInit {
     if(this.editStatus){
       this.discountService.update(this.discountForm.value, this.currentDiscountId).subscribe(() => {
         this.loadDiscounts();
+        this.toastr.success('Discount successfully updated');
       })
     } else {
       this.discountService.create(this.discountForm.value).subscribe(() => {
         this.loadDiscounts();
+        this.toastr.success('Discount successfully created');
       })
     }
     this.editStatus = false;
@@ -82,12 +85,13 @@ export class AdminDiscountComponent implements OnInit {
   deleteDiscount(discount: IDiscountResponse): void {
     this.discountService.delete(discount.id).subscribe(() => {
       this.loadDiscounts();
+      this.toastr.success('Discount successfully deleted');
     })
   }
 
   upload(event: any): void {
     const file = event.target.files[0];
-    this.uploadFile('images', file.name, file)
+    this.imageService.uploadFile('images', file.name, file)
       .then(data => {
         this.discountForm.patchValue({
           imagePath: data
@@ -99,30 +103,9 @@ export class AdminDiscountComponent implements OnInit {
       })
   }
 
-  async uploadFile(folder: string, name: string, file: File | null): Promise<string> {
-    const path = `${folder}/${name}`;
-    let url = '';
-    if(file) {
-      try {
-        const storageRef = ref(this.storage, path);
-        const task = uploadBytesResumable(storageRef, file);
-        percentage(task).subscribe(data => {
-          this.uploadPercent = data.progress
-        });
-        await task;
-        url = await getDownloadURL(storageRef);
-      } catch (e: any) {
-        console.error(e);
-      }
-    } else {
-      console.log('wrong format');
-    }
-    return Promise.resolve(url);
-  }
-
+  
   deleteImage(): void {
-    const task = ref(this.storage, this.valueByControl('imagePath'));
-    deleteObject(task).then(() => {
+    this.imageService.deleteUploadFile(this.valueByControl('imagePath')).then(() => {
       console.log('File deleted');
       this.isUploaded = false;
       this.uploadPercent = 0;

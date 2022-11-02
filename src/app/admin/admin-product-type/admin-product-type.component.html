@@ -1,0 +1,50 @@
+
+<div class="row ms-3">
+  <ng-container *ngIf="isAdd">    
+      <div class="col-10">
+          <form [formGroup]="typeProductForm" (ngSubmit)="addTypeProduct()">
+              <button [disabled]="typeProductForm.invalid"  type="submit" class="btn-add">
+                  {{ editStatus ? 'Змінити тип продукта' : 'Додати тип продукта' }}
+              </button>
+              <div class="row">
+                  <div class="col mb-3">
+                      <label for="name" class="form-label">*Назва</label>
+                      <input formControlName="name" name="name" type="text" class="form-control" id="name">
+                  </div>
+                  <div class="col mb-3">
+                      <label for="path" class="form-label">*Шлях</label>
+                      <input formControlName="path" name="path" type="text" class="form-control" id="path">
+                      <div class="invalid-feedback">Path is required</div>
+                  </div>
+              </div>         
+          </form>
+      </div>
+  </ng-container>
+
+  <button class="btn-add ms-3" (click)="openForm()" *ngIf="!isAdd">Додати тип товару</button>
+  <div class="col-12 d-flex justify-center" *ngIf="!isAdd">
+      <table class="table">
+          <thead class="table-category">
+              <tr>
+                  <th scope="col">№</th>
+                  <th scope="col">Назва</th>
+                  <th scope="col">Шлях</th>                  
+                  <th scope="col">Дії</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let typeProduct of adminTypeProducts; let id=index">
+                  <td>№ {{ id+1 }}</td>
+                  <td>{{ typeProduct.name }}</td>
+                  <td>{{ typeProduct.path }}</td>                  
+                  <td>
+                      <button (click)="editTypeProduct(typeProduct)" type="button" class="btn">Редагувати</button>
+                      <p>
+                          <button [disabled]="editStatus" (click)="deleteTypeProduct(typeProduct)" type="button" class="btn">Видалити</button>
+                      </p>                      
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

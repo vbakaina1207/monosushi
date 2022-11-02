@@ -1,28 +1,28 @@
 {
   "discounts": [
     {
-      "id": 1,
       "date": "August 19, 1975 23:15:30 UTC",
       "name": "рол тижня",
       "title": "50% знижки на 'Рол тижня'",
       "description": "Щотижня діє знижка 50% на один з ролів у нашому меню. 'Рол тижня' ви можете знайти на головній сторінці нашого сайту. Знижка діє при мінімальній сумі замовлення 300 грн. Ця акція не поєднується з іншими акціями.",
-      "imagePath": "./assets/rol_of_week.jpg"
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Frol_of_week.jpg?alt=media&token=1132d964-5579-416b-9674-8025dfd84f2c",
+      "id": 1
     },
     {
-      "id": 2,
-      "date": "August 19, 1975 23:15:30 UTC",
-      "name": "рол тижня",
-      "title": "50% знижки на 'Рол тижня'",
-      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню. 'Рол тижня' ви можете знайти на головній сторінці нашого сайту. Знижка діє при мінімальній сумі замовлення 300 грн. Ця акція не поєднується з іншими акціями.",
-      "imagePath": "./assets/rol_of_week.jpg"
+      "date": "2022-10-26T20:34:17.702Z",
+      "name": "День народження з Моносуші",
+      "title": "Birthday with Monosushi",
+      "description": "При оформленні замовлення вкажіть промокод “День народження” та отримайте “Запечений сет” безкоштовно до Вашого замовлення.\nТермін дії акції – День народження плюс один день до та після свята.\nЦя акція починає діяти при мінімальній сумі замовлення 750 грн.\nДля отримання подарунку іменинник має показати кур’єру оригінал документу, що підтверджує його дату народження.\nЦя акція не поєднується з іншими акціями.",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fden-nar.jpg?alt=media&token=654056d5-c3b9-4e00-a9ef-f36f88e7478b",
+      "id": 4
     },
     {
-      "date": "2022-10-14T18:31:50.067Z",
-      "name": "3 + 1 = 5",
-      "title": "3 + 1 = 5",
+      "date": "2022-10-26T20:54:42.179Z",
+      "name": "\"3+1=5\"",
+      "title": "\"3+1=5\"",
       "description": "Замовляйте 5 ролів, а платіть за 4.\nЗамовляйте 10 ролів, а платіть за 8 і так далі.\nБезкоштовним вважається рол з найменшою вартістю.\nЦя акція не поєднується з іншими акціями.",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fpodarunok.jpg?alt=media&token=e01a8544-e366-4d38-9af8-5b346f75e1ee",
-      "id": 3
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fpodarunok.jpg?alt=media&token=9f5c6b36-8a9e-4fde-9426-795c1f2ddd93",
+      "id": 5
     }
   ],
   "categories": [
@@ -49,6 +49,128 @@
       "path": "souses",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ficon.svg?alt=media&token=7bf5782a-5bb0-46e1-83e4-13ef0a8b6d85",
       "id": 5
+    }
+  ],
+  "products": [
+    {
+      "category": {
+        "name": "роли",
+        "path": "rols",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
+        "id": 3
+      },
+      "type_product": {
+        "name": "Запечені",
+        "path": "Baked",
+        "id": 3
+      },
+      "name": "Запечений моно з лососем – 50%",
+      "path": "Baked mono with salmon",
+      "ingredients": "Рис, крем сир, салат айсберг, лосось, кунжут, моно соус, унагі соус",
+      "weight": "330 г",
+      "price": 126,
+      "price_old": 252,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fzapechenyj-mono-z-los..jpg?alt=media&token=d88f3d07-435f-4248-8e8b-e7de5e01dd02",
+      "count": null,
+      "id": 2
+    },
+    {
+      "category": {
+        "name": "роли",
+        "path": "rols",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
+        "id": 3
+      },
+      "type_product": {
+        "name": "Філадельфія",
+        "path": "Philadelphia",
+        "id": 1
+      },
+      "name": "Філадельфія з лососем",
+      "path": "Philadelphia with salmon",
+      "ingredients": "Риc, крем сир, огірок, лосось",
+      "weight": "280 г",
+      "price": 232,
+      "price_old": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ffiladelfiya-z-lososem.jpg?alt=media&token=e794938e-77fe-4b92-b740-c0d55fc8ff2b",
+      "count": 1,
+      "id": 5
+    },
+    {
+      "category": {
+        "name": "роли",
+        "path": "rols",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
+        "id": 3
+      },
+      "type_product": {
+        "name": "Філадельфія",
+        "path": "Philadelphia",
+        "id": 1
+      },
+      "name": "Філадельфія в кунжуті",
+      "path": "Philadelphia in sesame",
+      "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
+      "weight": "240 г",
+      "price": 208,
+      "price_old": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ffiladelfiya-v-kunzhuti.jpg?alt=media&token=6fe84319-65a3-4999-b967-91b3d6a0ce1f",
+      "count": null,
+      "id": 6
+    },
+    {
+      "category": {
+        "name": "роли",
+        "path": "rols",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
+        "id": 3
+      },
+      "type_product": {
+        "name": "Каліфорнія",
+        "path": "California",
+        "id": 2
+      },
+      "name": "Каліфорнія з лососем",
+      "path": "California with salmon",
+      "ingredients": "Рис, спайсі соус, авокадо, огірок, лосось, кунжут",
+      "weight": "250 г",
+      "price": 218,
+      "price_old": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fkaliforniya-z-lososem-v-kunzhuti.jpg?alt=media&token=aff6ffa1-4f67-4901-9713-9b05249dcc50",
+      "count": 1,
+      "id": 7
+    }
+  ],
+  "typesProduct": [
+    {
+      "name": "Філадельфія",
+      "path": "Philadelphia",
+      "id": 1
+    },
+    {
+      "name": "Каліфорнія",
+      "path": "California",
+      "id": 2
+    },
+    {
+      "name": "Запечені",
+      "path": "Baked",
+      "id": 3
+    },
+    {
+      "name": "Фірмові",
+      "path": "Firm",
+      "id": 4
+    },
+    {
+      "name": "Преміум",
+      "path": "Premium",
+      "id": 5
+    },
+    {
+      "name": "Макі",
+      "path": "Maki",
+      "id": 6
     }
   ]
 }
