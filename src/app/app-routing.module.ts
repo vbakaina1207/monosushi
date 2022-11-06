@@ -21,16 +21,21 @@ import { OffertaComponent } from './pages/offerta/offerta.component';
 import { DiscountInfoComponent } from './pages/discount-info/discount-info.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { ProductTypeComponent } from './pages/product-type/product-type.component';
+import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
+import { DiscountInfoResolver } from './shared/services/discount/discount-info.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'discount', component: DiscountComponent },
-  { path: 'discount/:id', component: DiscountInfoComponent },
-  { path: 'product/:category', component: ProductComponent },
-  { path: 'product/:id', component: ProductInfoComponent},
-  // { path: 'product/:category/:id', component: ProductInfoComponent, resolve: {
-  //   productInfo: ProductInfoResolver
-  // } },
+  { path: 'discount/:id', component: DiscountInfoComponent,
+  resolve: {
+    discountInfo: DiscountInfoResolver
+  } },
+  { path: 'product/:category/:type_product', component: ProductComponent },
+  { path: 'product/:category/:type_product/:id', component: ProductInfoComponent, 
+  resolve: {
+    productInfo: ProductInfoResolver
+  } },
   { path: 'delivery', component: DeliveryComponent },
   { path: 'about', component: AboutComponent },
   { path: 'offerta', component: OffertaComponent },
@@ -44,10 +49,6 @@ const routes: Routes = [
     { path: 'order', component: AdminOrdersComponent },
     { path: '', pathMatch: 'full', redirectTo: 'discount' }
   ]},
-  {path: 'product', component: ProductComponent, children:[
-    {path: 'product/:product-type', component: ProductComponent},    
-    { path: '', pathMatch: 'full', redirectTo: 'product' }
-  ]}
 ];
 
 @NgModule({

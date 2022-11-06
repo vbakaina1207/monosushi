@@ -18,6 +18,9 @@ export class TypeProductService {
     return this.http.get<ITypeProductResponse[]>(this.api.typesProduct);
   }
 
+  // getAllByTypeProduct(name: string): Observable<ITypeProductResponse[]> {
+  //   return this.http.get<ITypeProductResponse[]>(`${this.api.typesProduct}?category.path=${name}`);
+  // }
   create(typeProduct: ITypeProductRequest): Observable<ITypeProductResponse> {
     return this.http.post<ITypeProductResponse>(this.api.typesProduct, typeProduct);
   }

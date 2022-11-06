@@ -11,6 +11,7 @@ export class ProductService {
 
   private url = environment.BACKEND_URL;
   private api = { products: `${this.url}/products` };
+  private apiTypeProduct = { productsType: `${this.url}/products` };
 
   constructor(private http: HttpClient) { }
   
@@ -24,6 +25,10 @@ export class ProductService {
 
   getOne(id: number): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(`${this.api.products}/${id}`);
+  }
+
+  getAllByProductType(name: string): Observable<IProductResponse[]> {
+    return this.http.get<IProductResponse[]>(`${this.apiTypeProduct.productsType}?type_product.path=${name}`);
   }
 
   create(product: IProductRequest): Observable<IProductResponse> {

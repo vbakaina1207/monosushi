@@ -27,28 +27,28 @@
   ],
   "categories": [
     {
+      "name": "роли",
+      "path": "rols",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
+      "id": 1
+    },
+    {
       "name": "сети",
       "path": "sets",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=d0bb529d-d589-4195-a1b8-406f966c504d",
       "id": 2
     },
     {
-      "name": "роли",
-      "path": "rols",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
-      "id": 3
-    },
-    {
       "name": "напої",
       "path": "drinks",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=b22ecb8c-5ebb-4041-ab34-715c08d5f1f9",
-      "id": 4
+      "id": 3
     },
     {
-      "name": "Соуси",
+      "name": "соуси",
       "path": "souses",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ficon.svg?alt=media&token=7bf5782a-5bb0-46e1-83e4-13ef0a8b6d85",
-      "id": 5
+      "id": 4
     }
   ],
   "products": [
@@ -61,11 +61,11 @@
       },
       "type_product": {
         "name": "Запечені",
-        "path": "Baked",
+        "path": "baked",
         "id": 3
       },
       "name": "Запечений моно з лососем – 50%",
-      "path": "Baked mono with salmon",
+      "path": "baked-mono-with-salmon",
       "ingredients": "Рис, крем сир, салат айсберг, лосось, кунжут, моно соус, унагі соус",
       "weight": "330 г",
       "price": 126,
@@ -83,17 +83,17 @@
       },
       "type_product": {
         "name": "Філадельфія",
-        "path": "Philadelphia",
+        "path": "philadelphia",
         "id": 1
       },
       "name": "Філадельфія з лососем",
-      "path": "Philadelphia with salmon",
+      "path": "philadelphia-with-salmon",
       "ingredients": "Риc, крем сир, огірок, лосось",
       "weight": "280 г",
       "price": 232,
       "price_old": null,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ffiladelfiya-z-lososem.jpg?alt=media&token=e794938e-77fe-4b92-b740-c0d55fc8ff2b",
-      "count": 1,
+      "count": null,
       "id": 5
     },
     {
@@ -105,17 +105,17 @@
       },
       "type_product": {
         "name": "Філадельфія",
-        "path": "Philadelphia",
+        "path": "philadelphia",
         "id": 1
       },
       "name": "Філадельфія в кунжуті",
-      "path": "Philadelphia in sesame",
+      "path": "philadelphia-in-sesame",
       "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
       "weight": "240 г",
       "price": 208,
       "price_old": null,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ffiladelfiya-v-kunzhuti.jpg?alt=media&token=6fe84319-65a3-4999-b967-91b3d6a0ce1f",
-      "count": null,
+      "count": 1,
       "id": 6
     },
     {
@@ -127,11 +127,11 @@
       },
       "type_product": {
         "name": "Каліфорнія",
-        "path": "California",
+        "path": "california",
         "id": 2
       },
       "name": "Каліфорнія з лососем",
-      "path": "California with salmon",
+      "path": "california-with-salmon",
       "ingredients": "Рис, спайсі соус, авокадо, огірок, лосось, кунжут",
       "weight": "250 г",
       "price": 218,
@@ -139,37 +139,91 @@
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fkaliforniya-z-lososem-v-kunzhuti.jpg?alt=media&token=aff6ffa1-4f67-4901-9713-9b05249dcc50",
       "count": 1,
       "id": 7
+    },
+    {
+      "category": {
+        "name": "сети",
+        "path": "sets",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=d0bb529d-d589-4195-a1b8-406f966c504d",
+        "id": 2
+      },
+      "type_product": 1,
+      "name": "Унагі сет",
+      "path": "unagi-set",
+      "ingredients": "Філадельфія з вугрем / Каліфорнія з вугрем / Фелікс з вугрем",
+      "weight": "800 г",
+      "price": 800,
+      "price_old": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Funagi-set.jpg?alt=media&token=d63dab2b-3284-4049-aba6-9275789664a5",
+      "count": 1,
+      "id": 8
+    },
+    {
+      "category": {
+        "name": "напої",
+        "path": "drinks",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=b22ecb8c-5ebb-4041-ab34-715c08d5f1f9",
+        "id": 4
+      },
+      "type_product": 1,
+      "name": "Fanta апельсин",
+      "path": "sik-apelsyn",
+      "ingredients": "",
+      "weight": "0.33 л",
+      "price": 31,
+      "price_old": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ffanta-033.jpg?alt=media&token=f818f0e4-bb21-49e0-9ce0-4c9692598b8c",
+      "count": 1,
+      "id": 9
+    },
+    {
+      "category": {
+        "name": "соуси",
+        "path": "souses",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ficon.svg?alt=media&token=7bf5782a-5bb0-46e1-83e4-13ef0a8b6d85",
+        "id": 4
+      },
+      "type_product": 1,
+      "name": "Васабі",
+      "path": "vasabi",
+      "ingredients": "",
+      "weight": "25 г",
+      "price": 12,
+      "price_old": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fimbir.png?alt=media&token=7c0f2e9a-40ad-4f9a-a2f7-d41a8f2aac14",
+      "count": 1,
+      "id": 10
     }
   ],
   "typesProduct": [
     {
       "name": "Філадельфія",
-      "path": "Philadelphia",
+      "path": "philadelphia",
       "id": 1
     },
     {
       "name": "Каліфорнія",
-      "path": "California",
+      "path": "california",
       "id": 2
     },
     {
       "name": "Запечені",
-      "path": "Baked",
+      "path": "baked",
       "id": 3
     },
     {
       "name": "Фірмові",
-      "path": "Firm",
+      "path": "firm",
       "id": 4
     },
     {
       "name": "Преміум",
-      "path": "Premium",
+      "path": "premium",
       "id": 5
     },
     {
       "name": "Макі",
-      "path": "Maki",
+      "path": "maki",
       "id": 6
     }
   ]

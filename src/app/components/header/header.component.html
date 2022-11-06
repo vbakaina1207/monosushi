@@ -16,7 +16,7 @@
                 </li>                
                 <ul *ngFor="let category of userCategories">
                     <li class="nav-item menu-item border-menu">
-                        <a [routerLink]="[ '/product/{{category.path}}' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+                        <a [routerLink]="[ '/product/', category.path, '' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
                             <div class="link-menu">
                                 <img [src]="category.imagePath" alt="">
                                 <span>{{category.name}}</span>
@@ -67,7 +67,7 @@
         <div class="header-basket">
             <i>
                 <img src="/assets/basket.svg" alt="basket" oncontextmenu="return false">
-                <span>0</span>
+                <span>{{ total }}</span>
             </i>
             <div class="basket-price">
                 <b>0</b>

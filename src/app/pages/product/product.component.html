@@ -1,33 +1,34 @@
 <div class="main-header">
-  <hr>
-  Продукти
+  <hr *ngIf="currentCategoryName">
+  {{ !isProductType  ? currentCategoryName : currentProductTypeName  | titlecase }}
 </div>
 <div class="container-fluid">
-  <div class="categories-menu">
+  <ng-container  *ngIf="isCategoryRolls">
+  <div class="categories-menu" >
     <ul class="nav nav-tabs categories-list">
-      <li class="nav-item col">
-        <a class="nav-link active" href="">Всі</a>
+      <li class="nav-item col">        
+        <a [routerLink]="[ '/product/', 'rols', '' ]" routerLinkActive="active" class="nav-link active" aria-current="page">Всі</a>
       </li>
       <li class="nav-item col" *ngFor="let typeProduct of userTypeProducts">
-        <a [routerLink]="[ '/product/{{typeProduct.path}}' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">                      
+        <a skipLocationChange  replaceUrl [routerLink]="[ '/product/', categoryName, typeProduct.path ]" routerLinkActive="active" class="nav-link" aria-current="page">                      
               <span>{{typeProduct.name}}</span>          
       </a>
       </li>
     </ul>
   </div>
+  </ng-container>
   <div class="row product-row">    
       <ng-container *ngIf="userProducts.length > 0">
         <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of userProducts">
             <div class="card border-menu">
               <div class="card-img">
-                <a class="product_image" [routerLink]="[ '/product', product.id ]">
-                  <img [src]="product.imagePath" class="card-img-top" alt="...">
+                <a class="product_image" [routerLink]="[ '/product/'+ product.category.path , product.type_product.path ? product.type_product.path : 'other', product.id ]">
+                  <img [src]="product.imagePath" class="card-img-top" alt="product.name">
                 </a>                  
-              </div>
-                
+              </div> 
                 <div class="card-body text-center">
                   <div class="card-title h5 mt-2 mb-2">
-                    <a  [routerLink]="[ '/product', product.id ]">{{ product.name }}</a>
+                    <a  [routerLink]="[ '/product/'+ product.category.path,  product.type_product.path ? product.type_product.path : 'other', product.id ]">{{ product.name }}</a>
                   </div>
                   <div class="product_desc d-flex justify-content-between card-text">
                     <p>{{ product.ingredients }}</p>
@@ -43,7 +44,7 @@
                         <div class="product_price-old" *ngIf="product.price_old"><b class="price-old">{{ product.price_old }}</b> грн</div>
                     </div>
                     <input type="hidden" value="1" readonly="" class="product-qty" tabindex="-1">                    
-                      <button class="btn btn-small btn-order" data-id="43707">Замовити</button>                    
+                      <button class="btn btn-small btn-order">Замовити</button>                    
                   </div>                  
                 
             </div>        

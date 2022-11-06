@@ -1,0 +1,148 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.card{
+    border: none
+}
+
+.card-title {
+    @include text-bold($text-color);
+    margin-bottom: 15px;
+}
+.card-text{
+    @include body($main-color);
+    font-size: 18px;
+    margin-bottom: 5px;
+
+    & b{
+        color: $primary-color;
+    }
+}
+
+.btn-group{
+    margin-top: 30px;
+}
+
+
+.product_detail-controls {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.product_price-wrap {
+    position: relative;
+    max-width: 100%;
+    color: $text-color;
+}
+
+.product_price-old {
+    position: relative;
+    bottom: 0;
+    vertical-align: middle;
+
+    text-align: center;
+    text-decoration: line-through;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 1.1em;
+    @include body($main-color);
+}
+
+
+.product_price {
+    @include body($text-color);
+    font-size: 20px;
+    width: 84px;
+}
+
+.thumb-input-number {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    @include body($main-color);
+    font-size: 16px;
+    line-height: 16px;
+    margin-right: auto;
+    margin-left: auto;
+
+    & button:first-child {
+        font-size: 30px;
+    }
+
+    & button {
+        width: 32px;
+        height: 36px;
+        cursor: pointer;
+        background: none;
+        transition: 0.35s;
+        font-size: 24px;
+        line-height: 24px;
+        color: $main-color;
+        background-color: #fff;
+        border-radius: 10px;
+        padding-bottom: 2px;
+        margin: 4px;
+        border: none;
+    }
+
+    &  input {
+        width: 30px;
+        height: 44px;
+        font-weight: 600;
+        text-align: center;
+    }
+}
+
+.img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    padding: 5px;
+}
+
+.btn-order{
+    @include btn-order;
+}    
+.spacer-md {
+    height: 60px;
+}
+
+.breadcrumbs {
+    @include breadcrumbs;
+}
+
+@media (max-width: 1400px){
+    .spacer-md {
+        height: 40px;
+    }
+}
+
+@media (max-width: 1199px){
+    .breadcrumbs {
+        margin-left: 0%;
+    }
+}
+
+
+@media (max-width: 991px){
+    .breadcrumbs {
+        display: none;
+    }
+}
+
+@media (max-width: 767px){
+    .thumb-input-number {
+        font-size: 12px;
+    }
+
+    .spacer-md {
+        height: 30px;
+    }
+}

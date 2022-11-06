@@ -6,16 +6,17 @@
                 <button [disabled]="categoryForm.invalid"  type="submit" class="btn-add">
                     {{ editStatus ? 'Змінити категорію' : 'Додати категорію' }}
                 </button>
-                <div class=" d-flex flex-row justify-content-between">
-                    <div class="col-6 mb-3">
+                <div class=" row">
+                    <div class="col mb-3">
                         <label for="name" class="form-label">*Назва</label>
                         <input formControlName="name" name="name" type="text" class="form-control" id="name">
                     </div>
-                    <div class="col-5 mb-3">
+                    <div class="col mb-3">
                         <label for="path" class="form-label">*Шлях</label>
                         <input formControlName="path" name="path" type="text" class="form-control" id="path">
                         <div class="invalid-feedback">Path is required</div>
                     </div>
+                    
                 </div>  
                 <ng-container *ngIf="!isUploaded">
                     <div class="mb-3">

@@ -51,7 +51,7 @@ export class AdminProductComponent implements OnInit {
       type_product: [null],
       name: [null, Validators.required], 
       path: [null, Validators.required],    
-      ingredients: [null, Validators.required],
+      ingredients: [null],
       weight: [null, Validators.required],
       price: [null, Validators.required], 
       price_old: [null],     

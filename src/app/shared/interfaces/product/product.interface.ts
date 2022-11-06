@@ -11,6 +11,7 @@ export interface IProductRequest {
     price: number;
     price_old:number;
     imagePath: string;
+    count: number
 }
 
 export interface IProductResponse extends IProductRequest {

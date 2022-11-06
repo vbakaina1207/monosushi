@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IDiscountResponse } from 'src/app/shared/interfaces/discount/discount.interface';
 import { DiscountService } from 'src/app/shared/services/discount/discount.service';
+
 
 @Component({
   selector: 'app-discount-info',
@@ -19,7 +20,11 @@ export class DiscountInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getOneDiscount();
+    this.activatedRoute.data.subscribe(response => {
+      this.discount = response['discountInfo'];
+      this.description = this.getDescription(this.discount.description);
+      this.description = this.description.splice(0, this.description.length-1);
+    })
   }
 
   getOneDiscount(): void {
@@ -32,7 +37,6 @@ export class DiscountInfoComponent implements OnInit {
   }
 
 getDescription(str:string):Array<string> {
-  console.log(str.split('.'));
   return  str.split('.');
 }  
 

@@ -1,9 +1,33 @@
 <div class="container">
+    <ul class="breadcrumbs">
+        <li>
+            <a  [routerLink]="[ '/' ]">
+                <span>
+                    Головна
+                </span>
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="[ '/discount/' ]">
+                <span>Акції</span>
+            </a>
+        </li>
+        <!-- <li  *ngIf="currentProduct.type_product.name">
+            <a [routerLink]="[  '/product/', currentProduct.category.path, currentProduct.type_product.path ]">
+                <span itemprop="name">{{ currentProduct.type_product.name | titlecase }}</span>
+            </a>
+        </li> -->
+        <li class="active">
+            <span itemprop="name">{{discount.name | titlecase }}</span>
+        </li>
+    </ul>
+    <div class="spacer-md"></div>
+
 <div class="row d-flex justify-content-center mt-5">
     <div class="col-xl-7 col-lg-10 col-12">
             <div class="card-banner">
                 <div class="center-info">
-                    <h2 class="title">{{discount?.title}}</h2>
+                    <h2 class="title">{{discount.title}}</h2>
                 </div>
             </div>
             <ul class="description" >
@@ -11,4 +35,5 @@
             </ul>
     </div>
 </div>
+<div class="spacer-md"></div>
 </div>
