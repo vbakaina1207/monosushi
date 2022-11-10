@@ -60,42 +60,43 @@
 }
 
 .thumb-input-number {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid #dcdcdc;
-    border-radius: 10px;
-    @include body($main-color);
-    font-size: 16px;
-    line-height: 16px;
-    margin-right: auto;
-    margin-left: auto;
+    @include thumb-input-number;
+    // display: inline-flex;
+    // align-items: center;
+    // border: 1px solid #dcdcdc;
+    // border-radius: 10px;
+    // @include body($main-color);
+    // font-size: 16px;
+    // line-height: 16px;
+    // margin-right: auto;
+    // margin-left: auto;
 
-    & button:first-child {
-        font-size: 30px;
-    }
+    // & button:first-child {
+    //     font-size: 30px;
+    // }
 
-    & button {
-        width: 32px;
-        height: 36px;
-        cursor: pointer;
-        background: none;
-        transition: 0.35s;
-        font-size: 24px;
-        line-height: 24px;
-        color: $main-color;
-        background-color: #fff;
-        border-radius: 10px;
-        padding-bottom: 2px;
-        margin: 4px;
-        border: none;
-    }
+    // & button {
+    //     width: 32px;
+    //     height: 36px;
+    //     cursor: pointer;
+    //     background: none;
+    //     transition: 0.35s;
+    //     font-size: 24px;
+    //     line-height: 24px;
+    //     color: $main-color;
+    //     background-color: #fff;
+    //     border-radius: 10px;
+    //     padding-bottom: 2px;
+    //     margin: 4px;
+    //     border: none;
+    // }
 
-    &  input {
-        width: 30px;
-        height: 44px;
-        font-weight: 600;
-        text-align: center;
-    }
+    // &  input {
+    //     width: 30px;
+    //     height: 44px;
+    //     font-weight: 600;
+    //     text-align: center;
+    // }
 }
 
 .img {

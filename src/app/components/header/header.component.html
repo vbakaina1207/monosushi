@@ -59,21 +59,40 @@
                     Працюємо з <b>11:00</b> до <b>21:30</b>
             </div>                    
         </div>
-        <div class="nav-item menu-admin border-menu">
-            <a [routerLink]="[ '/admin' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
-            <img src="/assets/user.svg" alt="">
+        
+        <div class="nav-item menu-admin border-menu" *ngIf="!isAuthorization && !isLogin">            
+                <a (click)="openModal()">
+                <img src="/assets/user.svg" alt="">
+                <span>{{ loginPage }} </span>
             </a>
-        </div>        
-        <div class="header-basket">
+        </div>  
+        <div class="nav-item menu-admin border-menu" *ngIf="isLogin && isAuthorization">
+            <a [routerLink]="[ '/' +loginUrl]" routerLinkActive="route-active" class="nav-link" aria-current="page">                            
+                <img src="/assets/user.svg" alt="">
+                <span>{{ loginPage }} </span>
+            </a>
+        </div>  
+        <div class="nav-item menu-admin border-menu"  *ngIf="!isLogin && isAuthorization" >            
+            <a [routerLink]="[ '/auth' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+                <img src="/assets/user.svg" alt="">                
+            </a>            
+        </div>      
+        <div class="header-basket" (click)="openBacket()" [class.checkout_bg]="isCheckout" >
             <i>
-                <img src="/assets/basket.svg" alt="basket" oncontextmenu="return false">
-                <span>{{ total }}</span>
+                <a [routerLink]="[ '/checkout' ]" routerLinkActive="route-active" class="nav-link basket" aria-current="page" >
+                    <img src="/assets/basket.svg" alt="basket" oncontextmenu="return false">
+                    <span [class.checkout_bg_color]="isCheckout">{{ count }}</span>
+                </a>                    
             </i>
             <div class="basket-price">
-                <b>0</b>
+                <b>{{ total }}</b>
                 <span>грн</span>
             </div>
-        </div>        
+        </div>    
     </div>
 </header>
 <div class="margin-header"></div>
+
+<ng-container *ngIf="isAuthorization && !isLogin">
+    <app-authorization></app-authorization>
+</ng-container>

@@ -175,6 +175,13 @@ b{
     height: 45px;
     width: 45px;
     line-height: 24px;
+    @include text-bold($text-color);
+    font-size: 12px;
+    text-align: center;
+
+    & a span{
+        margin-left: -6px;
+    }
 }
 
 
@@ -429,6 +436,13 @@ b{
 
 }
 
+.checkout_bg{
+    background-color: white;
+}
+
+.header-basket i span.checkout_bg_color{
+    background-color: #b5d8f7;
+}
 
 
 @media screen and (max-width: 1699px) {

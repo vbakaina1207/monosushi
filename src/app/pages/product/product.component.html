@@ -7,7 +7,7 @@
   <div class="categories-menu" >
     <ul class="nav nav-tabs categories-list">
       <li class="nav-item col">        
-        <a [routerLink]="[ '/product/', 'rols', '' ]" routerLinkActive="active" class="nav-link active" aria-current="page">Всі</a>
+        <a [routerLink]="[ '/product/', 'rols', '' ]" routerLinkActive="active" class="nav-link" aria-current="page">Всі</a>
       </li>
       <li class="nav-item col" *ngFor="let typeProduct of userTypeProducts">
         <a skipLocationChange  replaceUrl [routerLink]="[ '/product/', categoryName, typeProduct.path ]" routerLinkActive="active" class="nav-link" aria-current="page">                      
@@ -43,8 +43,13 @@
                           <b class="price">{{ product.price }}</b> грн</div>
                         <div class="product_price-old" *ngIf="product.price_old"><b class="price-old">{{ product.price_old }}</b> грн</div>
                     </div>
-                    <input type="hidden" value="1" readonly="" class="product-qty" tabindex="-1">                    
-                      <button class="btn btn-small btn-order">Замовити</button>                    
+                    <input type="hidden" value="1" readonly="" class="product-qty" tabindex="-1">  
+                    <div class="thumb-input-number">
+                      <button type="button" class="decrement in-cart" (click)="productCount(product, false)" >-</button>
+                      <input class="product-qty" value="{{ product.count }}" readonly="" tabindex="-1" max="999" data-id="600">
+                      <button type="button" class="increment in-cart" (click)="productCount(product, true)">+</button>
+                    </div>                  
+                      <button class="btn btn-small btn-order" (click)="addToBasket(product)">Замовити</button>                    
                   </div>                  
                 
             </div>        

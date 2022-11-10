@@ -71,7 +71,7 @@
       "price": 126,
       "price_old": 252,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fzapechenyj-mono-z-los..jpg?alt=media&token=d88f3d07-435f-4248-8e8b-e7de5e01dd02",
-      "count": null,
+      "count": 1,
       "id": 2
     },
     {
@@ -93,7 +93,7 @@
       "price": 232,
       "price_old": null,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ffiladelfiya-z-lososem.jpg?alt=media&token=e794938e-77fe-4b92-b740-c0d55fc8ff2b",
-      "count": null,
+      "count": 1,
       "id": 5
     },
     {
@@ -225,6 +225,22 @@
       "name": "Макі",
       "path": "maki",
       "id": 6
+    }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "qwerty123",
+      "fullName": "Petro Petriv",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "qwerty123",
+      "fullName": "Pavlo Pavliv",
+      "role": "USER"
     }
   ]
 }

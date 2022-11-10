@@ -1,0 +1,35 @@
+<!-- <div class="row">
+  <div class="col-4 m-auto">
+      <form [formGroup]="authForm" (ngSubmit)="login()">
+          <div class="mb-3">
+              <label for="name" class="form-label">Email</label>
+              <input formControlName="email" name="email" type="text" class="form-control" id="email">
+            </div>
+          <div class="mb-3">
+              <label for="path" class="form-label">Password</label>
+              <input formControlName="password" name="password" type="password" class="form-control" id="password">
+            </div>
+          <button [disabled]="authForm.invalid" type="submit" class="btn btn-success w-100">Login</button>
+      </form>
+  </div>
+</div> -->
+
+
+  <div class="modal-wrapper" [hidden]="isClose" [class.hide]="">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h4>Вхід в кабінет</h4>          
+        </div>                    
+          <form class="form" [formGroup]="authForm" (ngSubmit)="login()">            
+            <input formControlName="email" name="email" type="text"  id="email" placeholder="*Ваш email">            
+            <input formControlName="password" name="password" type="password" id="password" placeholder="*Пароль">            
+            <button [disabled]="authForm.invalid" type="submit" class="btn btn-login w-100">Увійти в кабінет</button>
+            <div class="error-message" [class.active]="isError">Помилка входу. Невідомий користувач.</div>
+        </form>
+        <button class="btn-close-modal close-popup close"  data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span></span>
+        </button>
+      </div>      
+  </div>
+
+

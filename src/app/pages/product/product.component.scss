@@ -77,6 +77,9 @@ hr{
     display: block;
     height: 100%;
 }
+.product_image:hover .card-img-top {
+    top: 52%;
+}
 
 .card-img-top{
     position: absolute;
@@ -146,6 +149,10 @@ hr{
     @include btn-order;
 }
 
+
+.thumb-input-number {
+    @include thumb-input-number;
+}
 
 @media screen and (max-width: 1400px) {
     

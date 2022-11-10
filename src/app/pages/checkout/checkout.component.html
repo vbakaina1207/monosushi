@@ -1,3 +1,59 @@
-<p>
-  checkout works!
-</p>
+
+<div class="cart active">
+  <div id="cart-popup-out" class="cart-popup-out">
+     <ng-container *ngIf="basket.length>0">
+      <div class="cart_items" style="" *ngFor="let product of basket">
+        <div class="prod_horiz cart-product js-product  " data-price="product.price">
+          <a class="prod_horiz-img" href="product.imagePath">
+            <img class="img" [src]="product.imagePath">
+          </a>
+          <div class="prod_horiz-desc">
+            <a class="title" [routerLink]="[ '/product/'+ product.category.path , product.type_product.path ? product.type_product.path : 'other', product.id ]">
+              {{ product.name }}
+            </a>              
+            <div class="prod_horiz-controls">
+              <div class="thumb-input-number">
+                <button type="button" class="decrement in-cart" (click)="productCount(product, false)" >-</button>
+                <input class="product-qty" value="{{ product.count }}" readonly="" tabindex="-1" max="999" data-id="600">
+                <button type="button" class="increment in-cart" (click)="productCount(product, true)" >+</button>
+              </div>
+              <div class="price_default">
+                <b class="price">{{ product.price*product.count }}</b>
+                  грн            
+              </div>
+              <button type="button" class="btn-close remove-product">
+                <div class="trash" (click)="removeFromBasket(product)"></div>
+              </button>          
+            </div>      
+          </div>
+        </div>
+      </div> 
+    </ng-container>
+
+    <ng-container *ngIf="basket.length === 0">
+      <div class="cart_items">
+        <div class="cart-empty-message">
+        <div class="cart-empty-img">
+          <img src="assets/basket/cart-empty-img.svg" alt="">
+        </div>
+        <div class="title h5">Кошик порожній</div>
+          <a  [routerLink]="[ '/' ]"class="btn btn-order-empty">Перейти до каталогу</a>
+        </div>
+      </div>
+    </ng-container>
+    <div class="cart_bottom bg-mono">
+      <div class="cart_price-wrap">
+          Сума: <b id="card-total-price" class="card-total-price">{{ total }}</b> грн    
+      </div>
+      <a [routerLink]="[ '/checkout']" class="btn btn-order"  [class.disabled]="!total">
+        ОФОРМИТИ ЗАМОВЛЕННЯ
+      </a>
+    </div>
+  </div>
+  <button class="btn-close cart-close">
+    <span></span>
+  </button>
+  <div class="ajax-loader"></div>
+</div>
+
+<div class="cart_bg-layer"></div>

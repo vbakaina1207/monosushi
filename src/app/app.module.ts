@@ -29,6 +29,8 @@ import { OffertaComponent } from './pages/offerta/offerta.component';
 import { DiscountInfoComponent } from './pages/discount-info/discount-info.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { ProductTypeComponent } from './pages/product-type/product-type.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component'; 
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -60,6 +62,8 @@ import { ToastrModule } from 'ngx-toastr';
       ProductInfoComponent,
       ProductTypeComponent,
       AdminProductTypeComponent,
+      AuthorizationComponent,
+      CabinetComponent,
   ],
   imports: [
     BrowserModule,
