@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h4>Нова адреса</h4>          
+</div> 
+<form [formGroup]="authForm" class="form"(ngSubmit)="addAddress()">  
+  <input matInput formControlName="typeAddress" name="typeAddress" type="text"  id="typeAddress" placeholder="*Вкажіть тип адреси (наприклад, дім, робота)">                    
+        <input matInput formControlName="street" name="street" type="text" id="street" placeholder="*Введіть вулицю достаки">            
+  <div class="flex">
+    <input matInput formControlName="house" name="house" type="text"  id="house" placeholder="*Номер будинку">                    
+    <input matInput formControlName="flat" name="flat" type="number" id="flat" placeholder="*Номер квартири">            
+  </div>          
+  <button [disabled]="authForm.invalid" mat-raised-button color="primary"  type="submit" class="btn btn-login w-100"    mat-dialog-close>Зберегти</button>
+  <!-- <div class="error-message" [class.active]="isError">Помилка входу. Невідомий користувач.</div> -->
+</form>  
+
+
+<button class="btn-close-modal close-popup close" mat-dialog-close data-dismiss="modal" aria-label="Close">
+<span></span>
+</button>

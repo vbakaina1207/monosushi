@@ -21,10 +21,9 @@ header{
     left: 0;
     width: 100%;
     height: 110px;
-    z-index: 100;
+    z-index: 1000;
     background-color: #fff;
-    transition: .35s;
-    
+    transition: .35s;    
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 5%)
 }
 
@@ -191,7 +190,7 @@ b{
     align-items: center;
     justify-content: center;
     max-width: 154px;
-    background: $primary-color;
+    // background: $primary-color;
     width: 100%;
     height: 100%;
     cursor: pointer;
@@ -438,10 +437,17 @@ b{
 
 .checkout_bg{
     background-color: white;
+    transition-duration: 1.5s;
+    border-bottom: 4px solid $primary-color;
+    background-position: 100% 0;
 }
 
-.header-basket i span.checkout_bg_color{
+.header-basket {   
+    transition: all 0.5s linear;
+
+    & i span.checkout_bg_color{
     background-color: #b5d8f7;
+    }
 }
 
 

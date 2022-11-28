@@ -1,8 +1,18 @@
 
 
-<div class="container-fluid">
-  <div class="d-flex justify-content-center  mb-5 mt-5">
-      <h2>Кабінет</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-xl-2 offset-xl-2">
+      <div class=" menu-block">
+        <div class="category-title" (click)="openMenu()" >{{title}}</div>
+        <div class="nav flex-column list-group list-group-flush me-3 category-block" [class.active-block]="isOpen" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <input class="list-group-item" (click)="closeMenu($event)" [class.active-block]="isOpen" [routerLink]="[ 'personal' ]" routerLinkActive="active-route" type="button" value="Особисті дані">   
+            <input class="list-group-item" (click)="closeMenu($event)" [class.active-block]="isOpen" [routerLink]="[ 'history' ]" routerLinkActive="active-route" type="button" value="Історія замовлень">            
+            <button class="btn-exit" type="button" (click)="logout()">ВИХІД</button>
+        </div>       
+    </div>    
   </div>
-  <button class="btn-exit ms-5" type="button" (click)="logout()">ВИХІД</button>
-</div>      
+  <div class="col-lg-9 col-xl-5">
+    <router-outlet></router-outlet>
+  </div>
+</div>

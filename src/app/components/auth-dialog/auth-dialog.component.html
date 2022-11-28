@@ -1,0 +1,47 @@
+<ng-container *ngIf="!isRegister">
+  <div class="modal-header">
+    <h4>Вхід в кабінет</h4>          
+  </div>    
+    <form [formGroup]="authForm" class="form"(ngSubmit)="loginUser()">  
+      <input matInput formControlName="email" name="email" type="text"  id="email" placeholder="*Ваш email">                    
+      <input matInput formControlName="password" name="password" type="password" id="password" placeholder="*Пароль">            
+      <button mat-raised-button color="primary"  type="submit" [disabled]="authForm.invalid" class="btn btn-login w-100"   (click)="loginUser()" mat-dialog-close>Увійти в кабінет</button>      
+  </form>
+  <div class="d-flex justify-content-center">     
+    <a class="open-popup btn" (click)="openRegisterDialog()">Зареєструватись</a>
+  </div>  
+</ng-container>
+
+<ng-container *ngIf="isRegister">
+
+  <div class="modal-header">
+    <h4>Вхід в кабінет</h4>          
+  </div>    
+    <form [formGroup]="authForm" class="form"(ngSubmit)="loginUser()">  
+      <div class="flex">
+        <input matInput formControlName="firstName" name="firstName" type="text"  id="firstName" placeholder="*Ваше ім'я">                    
+        <input matInput formControlName="lastName" name="lastName" type="text" id="lastName" placeholder="*Ваше прізвище">            
+      </div>
+      <input matInput formControlName="phoneNumber" name="phoneNumber" type="text"  id="phoneNumber" placeholder="*Ваш телефон">                    
+      <input matInput formControlName="email" name="email" type="email"  id="email" placeholder="*Ваш email">                    
+      <div class="flex">
+        <input matInput formControlName="password" name="password" type="password" id="password" placeholder="*Пароль">                  
+        <input matInput formControlName="password" name="password" type="password" id="password" placeholder="*Повторіть пароль"> 
+      </div>      
+      <button mat-raised-button color="primary"  type="submit" [disabled]="authForm.invalid"  class="btn btn-login w-100"   (click)="registerUser()" mat-dialog-close>Зареєструватись</button>
+      <!-- <div class="error-message" [class.active]="isError">Помилка входу. Невідомий користувач.</div> -->
+  </form>  
+
+  <div class="d-flex justify-content-center">   
+    <span class="text-bottom">Вже зареєстровані?</span>  
+    <a class="open-popup btn" (click)="openLoginDialog()">      
+      Увійти
+    </a>
+  </div>  
+</ng-container>
+<button class="btn-close-modal close-popup close" mat-dialog-close data-dismiss="modal" aria-label="Close">
+  <span></span>
+</button>
+
+
+    

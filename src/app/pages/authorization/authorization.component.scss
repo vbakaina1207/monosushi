@@ -1,0 +1,7 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins'; 
+
+.btn{
+    @include btn-save;
+}

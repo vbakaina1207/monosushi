@@ -1,11 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { ROLE } from 'src/app/shared/conatants/role.constant';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ROLE } from 'src/app/shared/constants/role.constant';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import { CheckoutComponent } from 'src/app/pages/checkout/checkout.component';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +19,6 @@ export class HeaderComponent implements OnInit {
 
   public userCategories: Array<ICategoryResponse> = [];
   public isLogin:boolean = false;
-  public isAuthorization:boolean = false;
   public isCheckout:boolean = false;
   public loginUrl:string = '';
   public loginPage:string = '';
@@ -28,7 +30,8 @@ export class HeaderComponent implements OnInit {
     private categoryService: CategoryService,
     private orderService: OrderService,
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -74,17 +77,14 @@ export class HeaderComponent implements OnInit {
         this.isLogin = true;
         this.loginUrl = 'admin';
         this.loginPage = 'Admin';
-        this.isAuthorization = true;
       } else if(currentUser && currentUser.role === ROLE.USER) {
         this.isLogin = true;
         this.loginUrl = 'cabinet';
-        this.loginPage = 'Cabinet';
-        this.isAuthorization = true;
+        this.loginPage = 'Cabinet';        
       } else {
         this.isLogin = false;
         this.loginUrl = '';
-        this.loginPage = '';
-        this.isAuthorization = false;
+        this.loginPage = '';        
       }     
     }
   
@@ -93,16 +93,40 @@ export class HeaderComponent implements OnInit {
         this.checkUserLogin();
       })
     }
+
+    openLoginDialog(): void {
+      this.dialog.open(AuthDialogComponent, {
+        backdropClass: 'dialog-back',
+        panelClass: 'auth-dialog',
+        autoFocus: false
+      }).afterClosed().subscribe(result => {
+        console.log(result);
+      })
+    }
+
+      openBasketDialog(): void {
+        let top_basket = '95px';        
+        const innerWidth = window.innerWidth;
+        if (innerWidth < 1199) {
+          top_basket = '60px'
+        } else top_basket = '95px';        
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.position = {
+          top:  '' + top_basket,
+          right: '0px'
+        };
+        this.dialog.open(CheckoutComponent, {
+          backdropClass: 'dialog-back',
+          panelClass: 'auth-dialog-basket',
+          autoFocus: false,
+          position: dialogConfig.position
+        }).afterClosed().subscribe(result => {
+          console.log(result);
+          this.isCheckout = false;
+        })
+        this.isCheckout = true;        
+    }
   
-    openModal():void{
-      this.isAuthorization = true;
-    }
-
-    openBacket():void {
-      this.isCheckout = !this.isCheckout;
-    }
-
     
-  
 
 }

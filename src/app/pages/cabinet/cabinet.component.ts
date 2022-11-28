@@ -9,6 +9,9 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 })
 export class CabinetComponent implements OnInit {
 
+    public isOpen: boolean = false;
+    public title: string = 'Особисті дані';
+
   constructor(
     private router: Router,
     private accountService: AccountService
@@ -22,6 +25,15 @@ export class CabinetComponent implements OnInit {
     this.router.navigate(['/']);
     localStorage.removeItem('currentUser');
     this.accountService.isUserLogin$.next(true);
+  }
+
+  openMenu():void {
+    this.isOpen = !this.isOpen;
+  }
+
+  closeMenu(event:any):void {
+    this.isOpen = false;
+    this.title = event.target.value;
   }
 
 }

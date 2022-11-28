@@ -16,6 +16,10 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductTypeComponent } from './admin/admin-product-type/admin-product-type.component';
 
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { PersonalComponent } from './pages/cabinet/personal/personal.component';
+import { HistoryComponent } from './pages/cabinet/history/history.component';
+
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -29,12 +33,16 @@ import { OffertaComponent } from './pages/offerta/offerta.component';
 import { DiscountInfoComponent } from './pages/discount-info/discount-info.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { ProductTypeComponent } from './pages/product-type/product-type.component';
-import { AuthorizationComponent } from './pages/authorization/authorization.component'; 
-import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { SharedModule } from './shared/sahared.module';
+import { AuthAddressComponent } from 'src/app/components/auth-address/auth-address.component';
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -64,6 +72,12 @@ import { ToastrModule } from 'ngx-toastr';
       AdminProductTypeComponent,
       AuthorizationComponent,
       CabinetComponent,
+      PersonalComponent,
+      HistoryComponent,
+      AuthDialogComponent,
+      AuthAddressComponent
+      
+      
   ],
   imports: [
     BrowserModule,
@@ -74,7 +88,10 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
-    ToastrModule.forRoot()
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    ToastrModule.forRoot(),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

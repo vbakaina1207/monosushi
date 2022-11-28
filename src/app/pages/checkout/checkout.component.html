@@ -1,8 +1,7 @@
 
-<div class="cart active">
-  <div id="cart-popup-out" class="cart-popup-out">
      <ng-container *ngIf="basket.length>0">
-      <div class="cart_items" style="" *ngFor="let product of basket">
+      <mat-dialog-content>
+      <div mat-dialog-content class="cart_items" style="" *ngFor="let product of basket">
         <div class="prod_horiz cart-product js-product  " data-price="product.price">
           <a class="prod_horiz-img" href="product.imagePath">
             <img class="img" [src]="product.imagePath">
@@ -14,7 +13,7 @@
             <div class="prod_horiz-controls">
               <div class="thumb-input-number">
                 <button type="button" class="decrement in-cart" (click)="productCount(product, false)" >-</button>
-                <input class="product-qty" value="{{ product.count }}" readonly="" tabindex="-1" max="999" data-id="600">
+                <input matInput class="product-qty" value="{{ product.count }}" readonly="" tabindex="-1" max="999" data-id="600">
                 <button type="button" class="increment in-cart" (click)="productCount(product, true)" >+</button>
               </div>
               <div class="price_default">
@@ -28,7 +27,9 @@
           </div>
         </div>
       </div> 
+    </mat-dialog-content>
     </ng-container>
+
 
     <ng-container *ngIf="basket.length === 0">
       <div class="cart_items">
@@ -37,7 +38,7 @@
           <img src="assets/basket/cart-empty-img.svg" alt="">
         </div>
         <div class="title h5">Кошик порожній</div>
-          <a  [routerLink]="[ '/' ]"class="btn btn-order-empty">Перейти до каталогу</a>
+          <a  [routerLink]="[ '/' ]"class="btn btn-order-empty" mat-dialog-close>Перейти до каталогу</a>
         </div>
       </div>
     </ng-container>
@@ -45,15 +46,8 @@
       <div class="cart_price-wrap">
           Сума: <b id="card-total-price" class="card-total-price">{{ total }}</b> грн    
       </div>
-      <a [routerLink]="[ '/checkout']" class="btn btn-order"  [class.disabled]="!total">
+      <a [routerLink]="[ '/checkout']" class="btn btn-order"  [class.disabled]="!total" mat-dialog-close>
         ОФОРМИТИ ЗАМОВЛЕННЯ
       </a>
     </div>
-  </div>
-  <button class="btn-close cart-close">
-    <span></span>
-  </button>
-  <div class="ajax-loader"></div>
-</div>
 
-<div class="cart_bg-layer"></div>

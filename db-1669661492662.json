@@ -54,10 +54,10 @@
   "products": [
     {
       "category": {
-        "name": "роли",
-        "path": "rols",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=01094b1d-147e-4a54-b125-516616b6a614",
-        "id": 1
+        "name": "сети",
+        "path": "sets",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=3084a4eb-c4bb-4dcc-a07b-2717fca670aa",
+        "id": 2
       },
       "type_product": {
         "name": "Запечені",
@@ -71,7 +71,7 @@
       "price": 126,
       "price_old": 252,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fzapechenyj-mono-z-los..jpg?alt=media&token=c7100403-8903-43d6-be2a-82312101e0f2",
-      "count": 1,
+      "count": null,
       "id": 2
     },
     {
@@ -92,16 +92,38 @@
       "weight": "280 г",
       "price": 232,
       "price_old": null,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Ffiladelfiya-z-lososem.jpg?alt=media&token=6ae6ea0b-4313-48e7-ad43-09d3fc779c4c",
-      "count": 1,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ffiladelfiya-z-lososem.jpg?alt=media&token=e794938e-77fe-4b92-b740-c0d55fc8ff2b",
+      "count": null,
       "id": 5
     },
     {
       "category": {
         "name": "роли",
         "path": "rols",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=01094b1d-147e-4a54-b125-516616b6a614",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
+        "id": 3
+      },
+      "type_product": {
+        "name": "Філадельфія",
+        "path": "philadelphia",
         "id": 1
+      },
+      "name": "Філадельфія в кунжуті",
+      "path": "philadelphia-in-sesame",
+      "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
+      "weight": "240 г",
+      "price": 208,
+      "price_old": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Ffiladelfiya-v-kunzhuti.jpg?alt=media&token=6fe84319-65a3-4999-b967-91b3d6a0ce1f",
+      "count": 1,
+      "id": 6
+    },
+    {
+      "category": {
+        "name": "роли",
+        "path": "rols",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1a693140-ba85-4763-b980-c4ada45210ab",
+        "id": 3
       },
       "type_product": {
         "name": "Каліфорнія",
@@ -115,14 +137,14 @@
       "price": 218,
       "price_old": null,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fkaliforniya-z-lososem-v-kunzhuti.jpg?alt=media&token=8394d78e-893c-44fa-9623-004fd1e8b8bf",
-      "count": 1,
+      "count": null,
       "id": 7
     },
     {
       "category": {
         "name": "сети",
         "path": "sets",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=3084a4eb-c4bb-4dcc-a07b-2717fca670aa",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-b7c96.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=d0bb529d-d589-4195-a1b8-406f966c504d",
         "id": 2
       },
       "type_product": 1,
@@ -133,7 +155,7 @@
       "price": 800,
       "price_old": null,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Funagi-set.jpg?alt=media&token=31005c33-7f0f-4302-896d-f0a157325526",
-      "count": 1,
+      "count": null,
       "id": 8
     },
     {
@@ -151,7 +173,7 @@
       "price": 31,
       "price_old": null,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Ffanta-033.jpg?alt=media&token=58ebc4cb-6eba-42e3-aff9-0e77225e7d39",
-      "count": 1,
+      "count": null,
       "id": 9
     },
     {
@@ -169,30 +191,8 @@
       "price": 12,
       "price_old": null,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fimbir.png?alt=media&token=49041e2f-bf8e-4522-acb0-3a1d5f31bec9",
-      "count": 1,
+      "count": null,
       "id": 10
-    },
-    {
-      "category": {
-        "name": "роли",
-        "path": "rols",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=01094b1d-147e-4a54-b125-516616b6a614",
-        "id": 1
-      },
-      "type_product": {
-        "name": "Філадельфія",
-        "path": "philadelphia",
-        "id": 1
-      },
-      "name": "Філадельфія в кунжуті",
-      "path": "philadelphia-in-sesame",
-      "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
-      "weight": "240 г",
-      "price": 208,
-      "price_old": null,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Ffiladelfiya-v-kunzhuti.jpg?alt=media&token=6b30569d-8b3e-4671-afae-3691a46dc6d9",
-      "count": 1,
-      "id": 11
     }
   ],
   "typesProduct": [

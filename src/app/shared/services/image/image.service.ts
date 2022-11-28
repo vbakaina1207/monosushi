@@ -7,6 +7,7 @@ import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResu
 export class ImageService {
 
   public uploadPercent = 0;
+ 
 
 constructor(private storage: Storage) { }
 

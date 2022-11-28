@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AccountService } from 'src/app/shared/services/account/account.service';
+
 
 
 @Component({
@@ -12,16 +17,25 @@ export class CheckoutComponent implements OnInit {
 
   public total = 0;
   public basket: Array<IProductResponse> = [];
-  
+  // private positionRelativeToElement: ElementRef;
 
   constructor(
-    private orderService: OrderService
-  ) { }
+    private orderService: OrderService){
+      
+    // public dialogRef: MatDialogRef<CheckoutComponent>,
+    // @Inject(MAT_DIALOG_DATA) public options: { positionRelativeToElement: ElementRef }) {
+
+    //   this.positionRelativeToElement = options.positionRelativeToElement
+  }
 
   ngOnInit() {
     this.loadBasket();
     this.updateBasket();
-    console.log(this.basket);
+    // const matDialogConfig = new MatDialogConfig()
+    // const rect: DOMRect = this.positionRelativeToElement.nativeElement.getBoundingClientRect()
+
+    // matDialogConfig.position = { right: `0`, top: `${rect.bottom + 80}px` }
+    // this.dialogRef.updatePosition(matDialogConfig.position)
   }
 
   loadBasket(): void {

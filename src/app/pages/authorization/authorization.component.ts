@@ -1,7 +1,11 @@
 import { Component, OnInit, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { doc, docData, Firestore, setDoc, addDoc, collection, getDoc, getFirestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ROLE } from 'src/app/shared/conatants/role.constant';
+import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
+import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 
 @Component({
@@ -12,15 +16,16 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 export class AuthorizationComponent implements OnInit {
 
   public authForm!: FormGroup;
-  public isError:boolean = false;
-  public isClose:boolean = false;
-  @Output() onChanged = new EventEmitter<boolean>();
+  public loginSubscription!: Subscription;
+  
   
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
     private router: Router,
-    private el: ElementRef
+    private afs: Firestore,
+    private auth: Auth,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -35,37 +40,30 @@ export class AuthorizationComponent implements OnInit {
   }
 
   login(): void {
-    this.accountService.login(this.authForm.value).subscribe(data => {
-      if(data && data.length > 0) {
-        const user = data[0];
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        console.log(localStorage.setItem('currentUser', JSON.stringify(user)));
-        this.accountService.isUserLogin$.next(true);
-        if(user && user.role === ROLE.USER) {
-          this.router.navigate(['/cabinet']);
-          
-        } else if(user && user.role === ROLE.ADMIN){
-          this.router.navigate(['/admin']);
-        }
-      }  else this.isError = true;
-    }, (e) => {
-      console.log(e);
+    const {email, password} = this.authForm.value;
+    this.loginUser(email, password).then(() => {
+      this.toastr.success('User successfully login');
+    }).catch(e=>{
+      this.toastr.error(e.message);
     })
   }
 
-  closeModal(){
-    // this.isClose = true;
-    this.onChanged.emit(true);
-    console.log(this.isClose, 'close');
-  }
+async loginUser(email: string, password:string):Promise<any> {
+  const credential = await signInWithEmailAndPassword(this.auth, email, password);
+  console.log(getDoc(doc(this.afs, "users", credential.user.uid)));
+  this.loginSubscription = docData(doc(this.afs, "users", credential.user.uid)).subscribe(user => {
+    const currentUser = { ...user, uid: credential.user.uid };
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      if(user && user['role'] === ROLE.USER) {
+        this.router.navigate(['/cabinet']);
+      } else if(user && user['role'] === ROLE.ADMIN){
+        this.router.navigate(['/admin']);
+      }
+      this.accountService.isUserLogin$.next(true);
+  }, (e)=>{
+    console.log('error', e);
+  });
+}
 
-//   @HostListener('document:click', ['$event'])
-// 	onClick(event: Event) {
-// 		if (!this.el.nativeElement.contains(event.target)) {
-// 			this.isClose = false;
-// 		} 
-//     else this.isClose = false ;
-//     // if(event.target == 'div.modal-wrapper') {}
-//     console.log('close2', this.isClose , this.el.nativeElement.contains(event.target), event);
-// 	}
+
 }
