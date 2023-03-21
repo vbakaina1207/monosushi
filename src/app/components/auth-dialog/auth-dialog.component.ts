@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { Router } from '@angular/router';
@@ -18,8 +18,10 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 export class AuthDialogComponent implements OnInit {
 
   public authForm!: FormGroup;
+  public regForm!: FormGroup;
   public isLogin = false;
   public isRegister = false;
+  public checkPassword = false;
   public credential!: any;
 
   constructor(
@@ -34,22 +36,28 @@ export class AuthDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.initAuthForm();
+    this.initRegForm();
   }
 
   initAuthForm(): void {
     this.authForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]]
+    })
+  }
+
+  initRegForm(): void {
+    this.regForm = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      firstName:[null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      phoneNumber: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      firstName:[null],
-      lastName: [null],
-      phoneNumber: [null]
+      confirmPassword: [null, [Validators.required]]
     })
   }
 
   loginUser(): void {
-    // this.dialogRef.close({
-    //   formData: this.authForm.value
-    // })
     const { email, password } = this.authForm.value;
     this.login(email, password).then(() => {
       this.toastr.success('User successfully login');
@@ -74,22 +82,19 @@ export class AuthDialogComponent implements OnInit {
     })
  }
 
-  registerUser(): void { 
-    const { email, password, firstName, lastName, phoneNumber } = this.authForm.value;    
+  registerUser(): void {
+    const { email, password, firstName, lastName, phoneNumber } = this.regForm.value;
     this.emailSignUp(email, password).then(() => {
       this.toastr.success('User successfully created');
-      this.login(email, password).then(() => {
-        this.toastr.success('User successfully login');
-      });
       this.isLogin = !this.isLogin;
-      this.authForm.reset();      
+      this.regForm.reset();
     }).catch(e => {
       this.toastr.error(e.message);
     });
   }
 
   async emailSignUp(email: string, password: string): Promise<any> {
-    const { firstName, lastName, phoneNumber } = this.authForm.value;  
+    const { firstName, lastName, phoneNumber } = this.regForm.value;
     this.credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = {
       email: this.credential.user.email,
@@ -115,12 +120,26 @@ export class AuthDialogComponent implements OnInit {
     this.isRegister = false;
   }
 
-  // async getUser(): Promise<any> {
-  //   // const credential = await createUserWithEmailAndPassword(this.auth, email, password);
-  //   const ref = doc(this.afs, "users", this.credential.user.uid);
-  //   const userDoc = await getDoc(ref);
-  //   console.log(userDoc.data());
-  //   return userDoc.data();
-  // }
-  
+  checkConfirmPassword(): void {
+    this.checkPassword = this.password.value === this.confirmed.value;
+    if(this.password.value !== this.confirmed.value) {
+      this.regForm.controls['confirmPassword'].setErrors({
+        matchError: 'Password confirmation doesnt match'
+      })
+    }
+  }
+
+  get password(): AbstractControl {
+    return this.regForm.controls['password'];
+  }
+
+  get confirmed(): AbstractControl {
+    return this.regForm.controls['confirmPassword'];
+  }
+
+  checkVisibilityError(control: string, name: string): boolean | null {
+    return this.regForm.controls[control].errors?.[name]
+  }
+
+
 }

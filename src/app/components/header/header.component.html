@@ -4,16 +4,16 @@
             <img src="./../../../assets/logo.svg" alt="">
             <img src="assets/logo-mobile.svg" alt="">
         </a>
-        <nav class="header-navbar">    
+        <nav class="header-navbar">
             <ul class="main-nav">
                 <li class="menu-item nav-item border-menu">
                     <a [routerLink]="[ '/discount' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
                         <div class="link-menu">
                             <img src="assets/nav-img-gift.svg" alt="">
                             <span>Акції</span>
-                        </div>                                            
+                        </div>
                     </a>
-                </li>                
+                </li>
                 <ul *ngFor="let category of userCategories">
                     <li class="nav-item menu-item border-menu">
                         <a [routerLink]="[ '/product/', category.path, '' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
@@ -22,11 +22,11 @@
                                 <span>{{category.name}}</span>
                             </div>
                         </a>
-                    </li>                    
+                    </li>
                 </ul>
-            </ul>   
-        </nav>     
-        <div class="burger-menu border-menu">                    
+            </ul>
+        </nav>
+        <div class="burger-menu border-menu">
             <input id="menu__toggle" type="checkbox" />
             <label class="menu__btn" for="menu__toggle">
                 <span></span>
@@ -34,7 +34,7 @@
             <ul class="menu__box">
                 <li class="border-box">
                     <a [routerLink]="[ '/delivery' ]" routerLinkActive="route-active" class="dropdown-menu-item">Доставка та оплата</a>
-                </li>                    
+                </li>
                 <li class="border-box">
                     <a [routerLink]="[ '/about' ]" routerLinkActive="route-active" class="dropdown-menu-item">Про нас</a>
                 </li>
@@ -43,46 +43,50 @@
                 </li>
                 <li>
             </ul>
-        </div>        
+        </div>
         <div class="header-call-back">
             <button class="btn">
                 <img src="assets/phone.svg" alt="">
-                <span class="btn-text">МИ ЗАТЕЛЕФОНУЄМО</span>
+              <a (click)="openConnectionDialog()" class="btn-text" aria-current="page" >
+<!--                <span class="btn-text">МИ ЗАТЕЛЕФОНУЄМО</span>-->
+                МИ ЗАТЕЛЕФОНУЄМО
+              </a>
+
             </button>
             <a class="btn" href="tel:(097) 878 08 37">
                 <img src="assets/phone.svg" alt="" oncontextmenu="return false">
             </a>
-        </div>    
+        </div>
         <div class="header-info">
-            <a class="header-phone" href="tel:0978780837">(097) 878 08 37</a> 
+            <a class="header-phone" href="tel:0978780837">(097) 878 08 37</a>
             <div class="header-work-time">
                     Працюємо з <b>11:00</b> до <b>21:30</b>
-            </div>                    
+            </div>
         </div>
-        
-        <!-- <div class="nav-item menu-admin border-menu" *ngIf="!isAuthorization && !isLogin">            
+
+        <!-- <div class="nav-item menu-admin border-menu" *ngIf="!isAuthorization && !isLogin">
                 <a (click)="openModal()">
                 <img src="/assets/user.svg" alt="">
                 <span>{{ loginPage }} </span>
             </a>
         </div>   -->
         <div class="nav-item menu-admin border-menu" *ngIf="isLogin">
-            <a [routerLink]="[ '/' +loginUrl]" routerLinkActive="route-active" class="nav-link" aria-current="page">                            
+            <a [routerLink]="[ '/' +loginUrl]" routerLinkActive="route-active" class="nav-link" aria-current="page">
                 <img src="/assets/user.svg" alt="">
                 <span>{{ loginPage }} </span>
             </a>
-        </div>  
-        <!-- <div class="nav-item menu-admin border-menu"  *ngIf="!isLogin && isAuthorization" >            
-            <a [routerLink]="[ '/auth' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
-                <img src="/assets/user.svg" alt="">                
-            </a>            
-        </div>       -->
-        <div class="nav-item menu-admin border-menu"  *ngIf="!isLogin" >            
-            <a (click)="openLoginDialog()" class="nav-link" aria-current="page">
-                <img src="/assets/user.svg" alt="">                
-            </a>            
         </div>
-        
+        <!-- <div class="nav-item menu-admin border-menu"  *ngIf="!isLogin && isAuthorization" >
+            <a [routerLink]="[ '/auth' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+                <img src="/assets/user.svg" alt="">
+            </a>
+        </div>       -->
+        <div class="nav-item menu-admin border-menu"  *ngIf="!isLogin" >
+            <a (click)="openLoginDialog()" class="nav-link" aria-current="page">
+                <img src="/assets/user.svg" alt="">
+            </a>
+        </div>
+
         <div class="header-basket" [class.checkout_bg]="isCheckout" >
             <i>
                 <!-- <a [routerLink]="[ '/checkout' ]" routerLinkActive="route-active" class="nav-link basket" aria-current="page" >
@@ -92,13 +96,13 @@
                 <a (click)="openBasketDialog()" class="nav-link basket" aria-current="page" >
                     <img src="/assets/basket.svg" alt="basket" oncontextmenu="return false">
                     <span [class.checkout_bg_color]="isCheckout">{{ count }}</span>
-                </a>   
+                </a>
             </i>
             <div class="basket-price">
                 <b>{{ total }}</b>
                 <span>грн</span>
             </div>
-        </div>    
+        </div>
     </div>
 </header>
 <div class="margin-header"></div>

@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/shared/services/category/category.servi
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { CheckoutComponent } from 'src/app/pages/checkout/checkout.component';
+import {ConnectionComponent} from "../../pages/connection/connection.component";
 
 @Component({
   selector: 'app-header',
@@ -39,7 +40,7 @@ export class HeaderComponent implements OnInit {
     this.loadBasket();
     this.updateBasket();
     this.checkUserLogin();
-    this.checkUpdatesUserLogin();  
+    this.checkUpdatesUserLogin();
   }
 
 
@@ -63,7 +64,7 @@ export class HeaderComponent implements OnInit {
       .reduce((totalCount: number, prod: IProductResponse) => totalCount + prod.count, 0);
   }
 
-  
+
 
   updateBasket(): void {
     this.orderService.changeBasket.subscribe(() => {
@@ -80,14 +81,14 @@ export class HeaderComponent implements OnInit {
       } else if(currentUser && currentUser.role === ROLE.USER) {
         this.isLogin = true;
         this.loginUrl = 'cabinet';
-        this.loginPage = 'Cabinet';        
+        this.loginPage = 'Cabinet';
       } else {
         this.isLogin = false;
         this.loginUrl = '';
-        this.loginPage = '';        
-      }     
+        this.loginPage = '';
+      }
     }
-  
+
     checkUpdatesUserLogin(): void {
       this.accountService.isUserLogin$.subscribe(() => {
         this.checkUserLogin();
@@ -105,11 +106,11 @@ export class HeaderComponent implements OnInit {
     }
 
       openBasketDialog(): void {
-        let top_basket = '95px';        
+        let top_basket = '95px';
         const innerWidth = window.innerWidth;
         if (innerWidth < 1199) {
           top_basket = '60px'
-        } else top_basket = '95px';        
+        } else top_basket = '95px';
         const dialogConfig = new MatDialogConfig();
         dialogConfig.position = {
           top:  '' + top_basket,
@@ -124,9 +125,17 @@ export class HeaderComponent implements OnInit {
           console.log(result);
           this.isCheckout = false;
         })
-        this.isCheckout = true;        
+        this.isCheckout = true;
     }
-  
-    
+
+  openConnectionDialog(): void {
+    this.dialog.open(ConnectionComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    }).afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
 
 }

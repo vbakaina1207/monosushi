@@ -1,12 +1,6 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
-import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { AccountService } from 'src/app/shared/services/account/account.service';
-
-
 
 @Component({
   selector: 'app-checkout',
@@ -17,11 +11,10 @@ export class CheckoutComponent implements OnInit {
 
   public total = 0;
   public basket: Array<IProductResponse> = [];
-  // private positionRelativeToElement: ElementRef;
 
   constructor(
     private orderService: OrderService){
-      
+
     // public dialogRef: MatDialogRef<CheckoutComponent>,
     // @Inject(MAT_DIALOG_DATA) public options: { positionRelativeToElement: ElementRef }) {
 
@@ -68,7 +61,7 @@ export class CheckoutComponent implements OnInit {
   addToBasket(product: IProductResponse, value: boolean): void {
     let basket: Array<IProductResponse> = [];
     if(localStorage.length > 0 && localStorage.getItem('basket')){
-      basket = JSON.parse(localStorage.getItem('basket') as string);      
+      basket = JSON.parse(localStorage.getItem('basket') as string);
       if(basket.some(prod => prod.id === product.id)){
         const index = basket.findIndex(prod => prod.id === product.id);
         if (value) basket[index].count += 1;
@@ -81,7 +74,7 @@ export class CheckoutComponent implements OnInit {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
-    this.orderService.changeBasket.next(true);   
+    this.orderService.changeBasket.next(true);
   }
 
   removeFromBasket(product: IProductResponse): void{
@@ -92,8 +85,8 @@ export class CheckoutComponent implements OnInit {
         const index = basket.findIndex(prod => prod.id === product.id);
         basket.splice(index,1);
       }
-      localStorage.setItem('basket', JSON.stringify(basket));    
-      this.orderService.changeBasket.next(true);         
+      localStorage.setItem('basket', JSON.stringify(basket));
+      this.orderService.changeBasket.next(true);
     }
   }
 }

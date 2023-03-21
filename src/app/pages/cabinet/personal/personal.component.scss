@@ -32,30 +32,20 @@
         color:$text-color;
         position: absolute;
         top: 50%;
-        left: 50%;       
+        left: 50%;
         transform: translate(-50%,-50%);
         display: block;
     }
 }
 
 .cabinet_address-buttons {
-    display: flex;
-    justify-content: space-between;
+  @include cabinet-buttons;
 }
 
 .btn{
-    @include btn-order;
-    max-width: 257px;
-    width: 100%;
-    font-size: 16px;
-    line-height: 20px;
-    height: 56px;
+  @include btn-cabinet;
 }
 
-.btn-adress{
-    background-color: white;
-    border: 2px solid $primary-color;
-    &:hover{
-        background-color: $primary-color;
-    }
+.btn-address{
+  @include btn-cabinet-left;
 }

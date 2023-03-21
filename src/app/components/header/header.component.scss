@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 
-body{    
+body{
     font-size: 18px;
     line-height: 1.5em;
     @include body($text-color);
@@ -23,7 +23,7 @@ header{
     height: 110px;
     z-index: 1000;
     background-color: #fff;
-    transition: .35s;    
+    transition: .35s;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 5%)
 }
 
@@ -51,7 +51,7 @@ ul {
     transition: color 0.35s;
     text-transform: capitalize;
     position: relative;
-    
+
 
 }
 
@@ -75,7 +75,7 @@ ul {
     align-items: center;
     background: $primary-color;
     height: 100%;
-    
+
     & img {
         max-width: 176px;
         display: block;
@@ -105,7 +105,7 @@ ul {
             background: #fff;
             border: 2px solid $primary-color;
         }
-    }  
+    }
 
     & .btn:last-child {
         display: none;
@@ -116,7 +116,7 @@ ul {
         vertical-align: middle;
         margin-right: 10px;
     }
-    
+
 }
 
 .btn{
@@ -134,10 +134,13 @@ ul {
     line-height: 20px;
     border-radius: 10px;
     @include text-bold($text-color);
-} 
+}
 
 .btn-text{
     padding-left: 5px;
+    font-size: 14px;
+    text-align: center;
+    @include text-bold($text-color);
 }
 
 .header-info {
@@ -194,7 +197,7 @@ b{
     width: 100%;
     height: 100%;
     cursor: pointer;
-    
+
     &::before {
         content: '';
         background: $primary-color;
@@ -213,7 +216,7 @@ b{
         vertical-align: middle;
         margin-right: 10px;
 
-        span {            
+        span {
             position: absolute;
             top: 0;
             right: -7px;
@@ -231,7 +234,7 @@ b{
 .basket-price {
     font-size: 16px;
     display: block;
-    
+
     b{
         padding-right: 5px;
     }
@@ -351,7 +354,7 @@ b{
 
 .menu__item {
     transition-duration: .25s;
-}   
+}
 
 .main-nav{
     & a span {
@@ -378,10 +381,10 @@ b{
 .border-menu {
     position: relative;
     cursor: pointer;
-    border-radius: 10px;    
-    
+    border-radius: 10px;
+
     &::before,
-    &::after {        
+    &::after {
         content: '';
         position: absolute;
         border: 2px solid transparent;
@@ -407,7 +410,7 @@ b{
         border-bottom-color: transparent;
         border-left-color: transparent;
     }
-    
+
 
   // Hover styles
     &:hover::before,
@@ -442,7 +445,7 @@ b{
     background-position: 100% 0;
 }
 
-.header-basket {   
+.header-basket {
     transition: all 0.5s linear;
 
     & i span.checkout_bg_color{
@@ -474,7 +477,7 @@ b{
     .menu-item{
         width: 75px;
         height: 70px;
-    }    
+    }
 
     .main-nav{
         & a span {
@@ -488,7 +491,7 @@ b{
                 height: 30px;
             }
     }
-    
+
 
     .header-basket {
         max-width: 134px;
@@ -510,18 +513,18 @@ b{
         & img {
         margin-right: 5px;
         }
-    
+
         & .btn {
-            padding: 5px 10px 6px;    
-        }   
+            padding: 6px 10px 6px;
+        }
 
         & span {
             font-size: 12px;
         }
-        
-    }   
 
-    
+    }
+
+
 }
 
 @media screen and (max-width: 1340px) {
@@ -536,18 +539,18 @@ b{
     .header-call-back span {
         display: none;
     }
-}    
+}
 
 @media screen and (max-width: 1199px) {
     header{
         height: 60px;
     }
 
-    
+
     .menu-item{
         width: 75px;
         height: 70px;
-    }    
+    }
 
     .main-nav{
         & a span {
@@ -583,8 +586,8 @@ b{
         height: calc(100% - 60px);
         overflow-x: hidden;
         overflow-y: scroll;
-        background: #fff;    
-        transform: translateX(100%);    
+        background: #fff;
+        transform: translateX(100%);
         transition: .35s;
     }
 
@@ -606,7 +609,7 @@ b{
         }
 
         & .btn:last-child {
-            display: block; 
+            display: block;
         }
 
     }
@@ -617,13 +620,13 @@ b{
 
     .burger-menu {
         order: 1;
-        margin-left: 0;        
+        margin-left: 0;
     }
 
     .border-menu,
     .border-menu::after,
     .border-menu::before {
-        border: none;       
+        border: none;
     }
 
     .menu-admin {
@@ -688,5 +691,5 @@ b{
         }
     }
 
-    
-}    
+
+}

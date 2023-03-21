@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
-import { doc, Firestore, getDoc } from '@angular/fire/firestore';
+import {Auth, createUserWithEmailAndPassword, updateCurrentUser} from '@angular/fire/auth';
+import {doc, Firestore, getDoc, setDoc} from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class PersonalComponent implements OnInit {
 
   public authForm!: FormGroup;
   public currentUser: any;
-  
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -72,5 +72,27 @@ export class PersonalComponent implements OnInit {
       });
   })
 }
+
+  updateUser():void{
+    this.updateDoc().then(() => {
+      this.toastr.success('User successfully changed');
+    }).catch(e => {
+      this.toastr.error(e.message);
+    });
+  }
+
+  async updateDoc(): Promise<any> {
+    const { email, firstName, lastName, phoneNumber } = this.authForm.value;
+    const user = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      // orders: [],
+      role: 'USER'
+    };
+    setDoc(doc(this.afs, 'users', this.currentUser.uid), user,  { merge:true });
+    // console.log(doc(this.afs, 'users', this.currentUser.uid), user);
+  }
 
 }

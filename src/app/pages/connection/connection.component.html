@@ -1,3 +1,31 @@
-<p>
-  connection works!
-</p>
+
+<div class="limiter">
+  <div class="modal-wrapper">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h1>МИ ЗАТЕЛЕФОНУЄМО</h1>
+      </div>
+      <div class="subheader">
+        <span class="text-title">Залиште номер телефону і наші менеджери зв’яжуться з вами</span>
+      </div>
+
+
+      <form class="form" [formGroup]="authForm" (ngSubmit)="sendPhone()">
+        <input formControlName="name" name="name" type="text"  id="name" placeholder="*Ваше ім'я">
+        <input formControlName="phone" name="phone" type="text" id="phone" placeholder="*Ваш номер телефону">
+        <button [disabled]="authForm.invalid" type="submit" class="btn w-100">Надіслати</button>
+      </form>
+      <a [routerLink]="[ '' ]" routerLinkActive="route-active">
+        <button class="btn-close-modal close-popup close" mat-dialog-close data-dismiss="modal" aria-label="Close">
+          <span>
+          </span>
+        </button>
+      </a>
+      <div class="d-flex justify-content-center">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

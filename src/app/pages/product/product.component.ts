@@ -23,7 +23,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   public isCategoryRolls: boolean = false;
   public isProductType: boolean = false;
   public categoryName!: string;
-  public currentCategoryName!:string ; 
+  public currentCategoryName!:string ;
   public currentProductTypeName!: string;
 
   constructor(
@@ -33,25 +33,25 @@ export class ProductComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private orderService: OrderService
-  ) { 
+  ) {
     this.eventSubscription = this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd ) {
         this.loadProducts();
-        this.getTypeProducts();        
+        this.getTypeProducts();
       }
     })
   }
 
   ngOnInit(): void {}
 
-  
+
   getTypeProducts(): void {
     this.productTypeService.getAll().subscribe(data => {
       this.userTypeProducts = data;
     })
   }
 
-  
+
   loadProducts(): void {
     this.categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     const productTypeName = this.activatedRoute.snapshot.paramMap.get('type_product') as string;
@@ -63,12 +63,12 @@ export class ProductComponent implements OnInit, OnDestroy {
     if (productTypeName){
       this.productService.getAllByProductType(productTypeName).subscribe(data => {
             this.userProducts = data;
-            this.currentProductTypeName = this.userProducts[0]?.type_product.name;            
+            this.currentProductTypeName = this.userProducts[0]?.type_product.name;
           });
     }
     if (this.categoryName === 'rols'  || this.router.url == '/' ) {
-      this.isCategoryRolls = true; 
-      if(this.router.url == '/') { 
+      this.isCategoryRolls = true;
+      if(this.router.url == '/') {
         this.categoryName = 'rols';
         this.currentCategoryName = '';
       }
@@ -76,17 +76,17 @@ export class ProductComponent implements OnInit, OnDestroy {
     if (this.router.url !== '/product/rols/' && this.categoryName === 'rols') {
       if(currentExtras )
       {
-        this.isCategoryRolls = true;  
-        this.isProductType = false;   
+        this.isCategoryRolls = true;
+        this.isProductType = false;
       } else {
-        this.isCategoryRolls = false;  
-        this.isProductType = true;   
+        this.isCategoryRolls = false;
+        this.isProductType = true;
       }
-    } 
-    if( this.router.url == '/') this.isCategoryRolls = true;  
+    }
+    if( this.router.url == '/') this.isCategoryRolls = true;
   }
 
-  
+
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
   }
@@ -114,7 +114,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
-    this.orderService.changeBasket.next(true);   
+    this.orderService.changeBasket.next(true);
   }
 
 }

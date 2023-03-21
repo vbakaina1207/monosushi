@@ -1,6 +1,6 @@
 
 <div class="row ms-3">
-  <ng-container *ngIf="isAdd">    
+  <ng-container *ngIf="isAdd">
         <div class="col-10">
             <form [formGroup]="discountForm" (ngSubmit)="addDiscount()">
                 <button [disabled]="discountForm.invalid"  type="submit" class="btn-add">
@@ -13,8 +13,8 @@
                     <div class="col-6 mb-3">
                         <input formControlName="title" name="title" type="text" class="form-control" id="path" placeholder="*Заголовок">
                         <div class="invalid-feedback">Path is required</div>
-                    </div>                  
-                </div>  
+                    </div>
+                </div>
                 <div class="mb-3">
                     <textarea formControlName="description" name="description" type="text" class="form-control" placeholder="*Опис"></textarea>
                 </div>
@@ -24,19 +24,19 @@
                         <input class="form-control" type="file" id="formFile" (change)="upload($event)">
                     </div>
                     <div class="progress mb-3">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" 
+                        <div class="progress-bar progress-bar-striped" role="progressbar"
                             [style.width.%]="uploadPercent" aria-valuemin="0" aria-valuemax="100">
                         </div>
                         </div>
                 </ng-container>
                 <ng-container *ngIf="isUploaded">
                     <div>
-                        <img [src]="valueByControl('imagePath')" alt="">
+                        <img [src]="valueByControl('imagePath')" width="100px" alt="">
                     </div>
                     <div>
-                        <button type="button" class="btn btn-exit mt-3" (click)="deleteImage()">delete</button>
+                        <button type="button" class="btn-exit mt-3" (click)="deleteImage()">delete</button>
                     </div>
-                </ng-container>          
+                </ng-container>
             </form>
         </div>
     </ng-container>
@@ -55,7 +55,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let discount of adminDiscounts; let id=index">            
+                <tr *ngFor="let discount of adminDiscounts; let id=index">
                     <td>{{ discount.date | date:'MM.YYYY' }}</td>
                     <td>{{ discount.name }}</td>
                     <td>{{ discount.title }}</td>
@@ -67,7 +67,7 @@
                         <button (click)="editDiscount(discount)" type="button" class="btn">Редагувати</button>
                         <p>
                             <button [disabled]="editStatus" (click)="deleteDiscount(discount)" type="button" class="btn">Видалити</button>
-                        </p>                      
+                        </p>
                     </td>
                 </tr>
             </tbody>

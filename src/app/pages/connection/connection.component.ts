@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-connection',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./connection.component.scss']
 })
 export class ConnectionComponent implements OnInit {
+  public authForm!: FormGroup;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder,
+  ) {
 
-  ngOnInit() {
+
   }
 
+  ngOnInit() {
+    this.initAuthForm();
+  }
+
+  initAuthForm(): void {
+    this.authForm = this.fb.group({
+      name: [null, [Validators.required, Validators.email]],
+      phone: [null, [Validators.required]]
+    })
+  }
+  sendPhone(): void {
+
+  }
 }

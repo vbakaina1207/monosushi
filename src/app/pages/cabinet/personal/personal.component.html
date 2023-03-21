@@ -1,11 +1,10 @@
 <form class="form" id="user-edit-form">
-
+  <form [formGroup]="authForm" (ngSubmit)="updateUser()">
   <div class="form-group">
       <div class="form-title title">
-          <i class="number-title"><b>1</b></i> 
+          <i class="number-title"><b>1</b></i>
           <h5>Особисті дані</h5>
       </div>
-      <form [formGroup]="authForm">
       <div class="row">
           <div class="col-md-6">
               <input formControlName="firstName" type="text" class="input" name="firstName" id="firstName" placeholder="*Ваше ім'я" value="" required="">
@@ -17,12 +16,11 @@
 
       <input formControlName="phoneNumber" class="input inputmask" name="phoneNumber" id="phoneNumber" type="text" inputmode="numeric" placeholder="*Ваш номер телефону" value="" required="">
       <input formControlName="email" type="email" name="email" id="email" class="input" placeholder="*Ваш емейл" value="" required="">
-      </form>
   </div>
 
   <div class="form-group">
       <div class="form-title title">
-          <i class="number-title"><b>2</b></i> 
+          <i class="number-title"><b>2</b></i>
           <h5>Адреси</h5>
       </div>
 
@@ -35,7 +33,8 @@
   </div>
 
   <div class="cabinet_address-buttons">
-      <button class="btn btn-adress" type="button" (click)="openAddressDialog()" >Додати адресу</button>
-      <button class="btn btn-save" type="submit">Зберегти зміни</button>
+      <button class="btn btn-address" type="button" (click)="openAddressDialog()" >Додати адресу</button>
+      <button class="btn btn-save" type="submit">Зберегти зміни </button>
   </div>
+    </form>
 </form>

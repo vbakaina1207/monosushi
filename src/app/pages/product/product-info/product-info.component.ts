@@ -14,25 +14,25 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 export class ProductInfoComponent implements OnInit {
 
   public currentProduct!: IProductResponse;
-  
+
 
   constructor(
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute,   
+    private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
     private router: Router
-    
+
   ) { }
 
-  ngOnInit(): void {    
-    // this.loadProduct();       
+  ngOnInit(): void {
+    this.loadProduct();
     this.activatedRoute.data.subscribe(response => {
       this.currentProduct = response['productInfo'];
     })
   }
 
   loadProduct(): void {
-    const PRODUCT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));   
+    const PRODUCT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.productService.getOne(PRODUCT_ID).subscribe(data => {
       this.currentProduct = data;
     })
@@ -61,7 +61,7 @@ export class ProductInfoComponent implements OnInit {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
-    this.orderService.changeBasket.next(true);   
+    this.orderService.changeBasket.next(true);
   }
 
 }

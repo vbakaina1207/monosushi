@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { doc, Firestore, getDoc } from '@angular/fire/firestore';
+import { Auth } from '@angular/fire/auth';
+import {doc, Firestore, getDoc, setDoc} from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -18,13 +18,16 @@ export class AuthAddressComponent implements OnInit {
   public authForm!: FormGroup;
   public currentUser: any;
 
-  constructor(
+
+constructor(
     private auth: Auth,
     private afs: Firestore,
     private router: Router,
     private accountService: AccountService,
     private toastr: ToastrService,
     private fb: FormBuilder
+
+
   ) { }
 
   ngOnInit() {
@@ -35,15 +38,15 @@ export class AuthAddressComponent implements OnInit {
 
   initAuthForm(): void {
     this.authForm = this.fb.group({
-      typeAddress: [null, [Validators.required, Validators.required]],
-      street: [this.currentUser['address'], [Validators.required]],
-      house:[null, [Validators.required]],
-      flat: [null]      
+      typeAddress: [this.currentUser['address[0]'], [Validators.required, Validators.required]],
+      street: [this.currentUser.address[1], [Validators.required]],
+      house:[this.currentUser['address[2]'], [Validators.required]],
+      flat: [this.currentUser['address[3]']]
     })
+
   }
 
-  addAddress():void{
-  }
+
 
   loadUser(): void {
     if(localStorage.length > 0 && localStorage.getItem('currentUser')){
@@ -52,11 +55,36 @@ export class AuthAddressComponent implements OnInit {
   }
 
   getAddress():void{
-    getDoc(doc(this.afs, "users", this.currentUser.uid)).then(() => {
-      this.authForm = this.fb.group({
-        street: [this.currentUser['address'], [Validators.required]],        
+      getDoc(doc(this.afs, "users", this.currentUser.uid)).then((user_doc) => {
+        let dataUser = user_doc.get('address');
+        this.authForm = this.fb.group({
+                typeAddress: [dataUser[0], [Validators.required]],
+                street: [dataUser[1], [Validators.required]],
+                house: [dataUser[2], [Validators.required]],
+                flat: [dataUser[3], [Validators.required]]
+              });
       });
-  })
-}
-  
+  }
+
+
+
+  addAddress():void{
+    // const { email, password, firstName, lastName, phoneNumber } = this.authForm.value;
+    this.updateAddress().then(() => {
+      this.toastr.success('Address successfully changed');
+    }).catch(e => {
+      this.toastr.error(e.message);
+    });
+  }
+
+  async updateAddress(): Promise<any> {
+    const { typeAddress, street, house, flat } = this.authForm.value;
+    const user = {
+      address: [typeAddress, street, house, flat],
+      role: 'USER'
+    };
+    setDoc(doc(this.afs, 'users', this.currentUser.uid), user,  { merge:true });
+    console.log(doc(this.afs, 'users', this.currentUser.uid), user);
+  }
+
 }

@@ -1,6 +1,6 @@
-@import '../../shared/styles/fonts';
-@import '../../shared/styles/variables';
-@import '../../shared/styles/mixins';
+@import '../../../shared/styles/fonts';
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
 
 
 body {
@@ -23,8 +23,8 @@ body {
         z-index: 2;
         text-align: center;
         border-radius: 10px;
-        background-color: $primary-color;        
-        
+        background-color: $primary-color;
+
     }
 
 
@@ -34,7 +34,7 @@ body {
         text-align: center;
 
         & .title{
-            @include text-bold($text-color);                 
+            @include text-bold($text-color);
             position: relative;
             display: inline-block;
             padding-top: 10px;
@@ -63,14 +63,14 @@ body {
         box-sizing: border-box;
         @include body($main-color);
 
-        & li {           
+        & li {
             padding-left: 19px;
-            
+
         }
 
         & li+li {
             margin-top: 8px;
-        }    
+        }
     }
 
     .spacer-md {
@@ -87,8 +87,8 @@ body {
                 font-size: 34px;
             }
 
-        ul {                
-                margin-top: 30px;                
+        ul {
+                margin-top: 30px;
         }
 
         .description li {
@@ -99,8 +99,8 @@ body {
     }
 
     @media (max-width: 1400px){
-    
-    ul {                
+
+    ul {
             margin-top: 40px;
         }
         .spacer-md {

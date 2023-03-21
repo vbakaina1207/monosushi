@@ -93,7 +93,7 @@
         line-height: 1.47em;
         font-size: 18px;
     }
-    
+
     & li::before {
         width: 11px;
         height: 11px;
@@ -122,10 +122,10 @@
 @mixin border-menu {
     position: relative;
     cursor: pointer;
-    border-radius: 10px;    
-    
+    border-radius: 10px;
+
     &::before,
-    &::after {        
+    &::after {
         content: '';
         position: absolute;
         border: 2px solid transparent;
@@ -151,7 +151,7 @@
         border-bottom-color: transparent;
         border-left-color: transparent;
     }
-    
+
 
   // Hover styles
     &:hover::before,
@@ -216,16 +216,16 @@
             border-color: $main-color;
         }
 
-        &  a{        
+        &  a{
             @include body($main-color);
             text-decoration: none;
-    
+
             &:hover {
                 color: $text-color;
             }
         }
     }
-    
+
 }
 
 
@@ -279,3 +279,25 @@
     }
 }
 
+@mixin cabinet-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin btn-cabinet{
+    @include btn-order;
+    max-width: 257px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    height: 56px;
+}
+
+@mixin btn-cabinet-left{
+  background-color: white;
+  border: 2px solid $primary-color;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}

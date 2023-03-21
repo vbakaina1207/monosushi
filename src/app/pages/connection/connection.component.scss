@@ -1,0 +1,23 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.btn{
+  @include btn-cabinet;
+  max-width: 100%;
+  font-size: 18px;
+}
+
+.text-title{
+  color:$main-color;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4em;
+
+}
+
+.subheader{
+  text-align: center;
+  overflow: hidden;
+  padding: 10px 40px 0;
+}

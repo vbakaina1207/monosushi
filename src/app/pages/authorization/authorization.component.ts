@@ -1,6 +1,6 @@
-import { Component, OnInit, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { doc, docData, Firestore, setDoc, addDoc, collection, getDoc, getFirestore } from '@angular/fire/firestore';
+import { doc, docData, Firestore, getDoc } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -17,8 +17,8 @@ export class AuthorizationComponent implements OnInit {
 
   public authForm!: FormGroup;
   public loginSubscription!: Subscription;
-  
-  
+
+
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,

@@ -1,6 +1,6 @@
-@import '../../shared/styles/fonts';
-@import '../../shared/styles/variables';
-@import '../../shared/styles/mixins';
+@import '../../../shared/styles/fonts';
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
 
 .card{
     border: none
@@ -110,7 +110,7 @@
 
 .btn-order{
     @include btn-order;
-}    
+}
 .spacer-md {
     height: 60px;
 }

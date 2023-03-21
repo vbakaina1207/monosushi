@@ -31,11 +31,11 @@ body{
     border-top: 4px solid $primary-color;
     border-bottom: 1px solid  rgba(0, 0, 0, 0.125);
     font-size: 18px;
-    margin-top: 0;  
-    border-right: none; 
+    margin-top: 0;
+    border-right: none;
 }
 
-.btn-exit{   
+.btn-exit{
     @include btn-exit;
 }
 .btn-exit:hover{
@@ -58,8 +58,14 @@ body{
 }
 
 
+.spacer-sm {
+  height: 40px;
+}
+
+
+
 @media (max-width:1198px){
-    
+
     .category-block{
         display: none;
     }
@@ -76,6 +82,4 @@ body{
     .category-title {
         display: none;
     }
-
-    
 }
