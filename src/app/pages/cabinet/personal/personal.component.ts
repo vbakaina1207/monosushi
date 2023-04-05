@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Auth, createUserWithEmailAndPassword, updateCurrentUser} from '@angular/fire/auth';
-import {doc, Firestore, getDoc, setDoc} from '@angular/fire/firestore';
+import { Auth } from '@angular/fire/auth';
+import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -62,15 +62,15 @@ export class PersonalComponent implements OnInit {
   }
 
   getUser():void{
-    getDoc(doc(this.afs, "users", this.currentUser.uid)).then(() => {
-      this.authForm = this.fb.group({
-        email: [this.currentUser['email'], [Validators.required, Validators.email]],
-        password: [null, [Validators.required]],
-        firstName: [this.currentUser['firstName'], [Validators.required]],
-        lastName:[this.currentUser['lastName'], [Validators.required]],
-        phoneNumber:[this.currentUser['phoneNumber'], [Validators.required]]
-      });
-  })
+      getDoc(doc(this.afs, "users", this.currentUser.uid)).then(() => {
+        this.authForm = this.fb.group({
+          email: [this.currentUser['email'], [Validators.required, Validators.email]],
+          password: [null, [Validators.required]],
+          firstName: [this.currentUser['firstName'], [Validators.required]],
+          lastName: [this.currentUser['lastName'], [Validators.required]],
+          phoneNumber: [this.currentUser['phoneNumber'], [Validators.required]]
+        });
+      })
 }
 
   updateUser():void{

@@ -1,9 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { CabinetComponent } from './cabinet.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CabinetComponent', () => {
   let component: CabinetComponent;
@@ -11,7 +12,11 @@ describe('CabinetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CabinetComponent ]
+      declarations: [ CabinetComponent ],
+      imports:[ HttpClientTestingModule],
+      schemas: [
+        NO_ERRORS_SCHEMA
+        ]
     })
     .compileComponents();
   }));

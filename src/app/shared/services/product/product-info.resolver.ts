@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
-  Router, Resolve,
+  Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
@@ -19,5 +18,5 @@ export class ProductInfoResolver implements Resolve<IProductResponse> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProductResponse> {
     return this.productService.getOne(Number(route.paramMap.get('id')));
   }
-  
+
 }

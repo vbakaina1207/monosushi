@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
@@ -9,7 +8,7 @@ import { CategoryService } from 'src/app/shared/services/category/category.servi
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { CheckoutComponent } from 'src/app/pages/checkout/checkout.component';
-import {ConnectionComponent} from "../../pages/connection/connection.component";
+import { ConnectionComponent } from '../../pages/connection/connection.component';
 
 @Component({
   selector: 'app-header',
@@ -25,13 +24,14 @@ export class HeaderComponent implements OnInit {
   public loginPage:string = '';
   public total = 0;
   public count = 0;
-  private basket: Array<IProductResponse> = [];
+  public basket: Array<IProductResponse> = [];
+
+  public currentUser!: any;
 
   constructor(
     private categoryService: CategoryService,
     private orderService: OrderService,
     private accountService: AccountService,
-    private router: Router,
     public dialog: MatDialog
   ) { }
 
@@ -59,9 +59,9 @@ export class HeaderComponent implements OnInit {
 
   getTotalPrice(): void {
     this.total = this.basket
-      .reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0);
+      ?.reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0);
       this.count = this.basket
-      .reduce((totalCount: number, prod: IProductResponse) => totalCount + prod.count, 0);
+      ?.reduce((totalCount: number, prod: IProductResponse) => totalCount + prod.count, 0);
   }
 
 
@@ -73,15 +73,16 @@ export class HeaderComponent implements OnInit {
   }
 
     checkUserLogin(): void {
-      const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
-      if(currentUser && currentUser.role === ROLE.ADMIN){
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+      if(this.currentUser && this.currentUser.role === ROLE.ADMIN){
         this.isLogin = true;
         this.loginUrl = 'admin';
         this.loginPage = 'Admin';
-      } else if(currentUser && currentUser.role === ROLE.USER) {
+      } else if(this.currentUser && this.currentUser.role === ROLE.USER) {
         this.isLogin = true;
         this.loginUrl = 'cabinet';
         this.loginPage = 'Cabinet';
+
       } else {
         this.isLogin = false;
         this.loginUrl = '';

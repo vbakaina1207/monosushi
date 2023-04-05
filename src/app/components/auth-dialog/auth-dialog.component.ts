@@ -2,13 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MatFormField } from '@angular/material/form-field';
 import { Router } from '@angular/router';
-import { getDoc } from '@firebase/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-auth-dialog',
@@ -23,6 +21,8 @@ export class AuthDialogComponent implements OnInit {
   public isRegister = false;
   public checkPassword = false;
   public credential!: any;
+  public currentUser!: any;
+  public loginSubscription!: Subscription;
 
   constructor(
     private auth: Auth,
@@ -30,8 +30,7 @@ export class AuthDialogComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
     private toastr: ToastrService,
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<AuthDialogComponent>
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -66,11 +65,11 @@ export class AuthDialogComponent implements OnInit {
     })
   }
 
- async login(email: string, password: string): Promise<void> {
+ async login(email: string, password: string): Promise<any> {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
-    docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
-      const currentUser = { ...user, uid: credential.user.uid };
-      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+   this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
+      this.currentUser = { ...user, uid: credential.user.uid };
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
       if(user && user['role'] === ROLE.USER) {
         this.router.navigate(['/cabinet']);
       } else if(user && user['role'] === ROLE.ADMIN){
@@ -83,7 +82,7 @@ export class AuthDialogComponent implements OnInit {
  }
 
   registerUser(): void {
-    const { email, password, firstName, lastName, phoneNumber } = this.regForm.value;
+    const { email, password } = this.regForm.value;
     this.emailSignUp(email, password).then(() => {
       this.toastr.success('User successfully created');
       this.isLogin = !this.isLogin;
@@ -138,7 +137,7 @@ export class AuthDialogComponent implements OnInit {
   }
 
   checkVisibilityError(control: string, name: string): boolean | null {
-    return this.regForm.controls[control].errors?.[name]
+    return this.regForm.controls[control]?.errors?.[name]
   }
 
 

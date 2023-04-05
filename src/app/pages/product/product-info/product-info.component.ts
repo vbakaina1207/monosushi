@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import {Subscription} from 'rxjs';
+import {ICategoryResponse} from "../../../shared/interfaces/category/category.interface";
 
 
 
@@ -15,12 +17,10 @@ export class ProductInfoComponent implements OnInit {
 
   public currentProduct!: IProductResponse;
 
-
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private orderService: OrderService,
-    private router: Router
+    private orderService: OrderService
 
   ) { }
 
@@ -63,5 +63,7 @@ export class ProductInfoComponent implements OnInit {
     product.count = 1;
     this.orderService.changeBasket.next(true);
   }
+
+
 
 }

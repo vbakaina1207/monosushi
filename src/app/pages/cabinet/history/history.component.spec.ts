@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { HistoryComponent } from './history.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('HistoryComponent', () => {
   let component: HistoryComponent;
@@ -11,7 +12,8 @@ describe('HistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HistoryComponent ]
+      declarations: [ HistoryComponent ],
+      imports: [ ReactiveFormsModule ]
     })
     .compileComponents();
   }));

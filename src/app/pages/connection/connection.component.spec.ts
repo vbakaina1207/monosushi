@@ -1,9 +1,11 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import { ConnectionComponent } from './connection.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {RouterLink} from "@angular/router";
 
 describe('ConnectionComponent', () => {
   let component: ConnectionComponent;
@@ -11,7 +13,14 @@ describe('ConnectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConnectionComponent ]
+      declarations: [ ConnectionComponent ],
+      imports: [
+        ReactiveFormsModule,
+        RouterLink
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     })
     .compileComponents();
   }));

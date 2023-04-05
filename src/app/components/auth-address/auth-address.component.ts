@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import {doc, Firestore, getDoc, setDoc} from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/shared/services/account/account.service';
@@ -16,7 +15,7 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 export class AuthAddressComponent implements OnInit {
 
   public authForm!: FormGroup;
-  public currentUser: any;
+  public currentUser!: any;
 
 
 constructor(
@@ -36,9 +35,9 @@ constructor(
     this.initAuthForm();
   }
 
-  initAuthForm(): void {
+  initAuthForm(): any {
     this.authForm = this.fb.group({
-      typeAddress: [this.currentUser['address[0]'], [Validators.required, Validators.required]],
+      typeAddress: [this.currentUser['address[0]'], [Validators.required, Validators.required]] ,
       street: [this.currentUser.address[1], [Validators.required]],
       house:[this.currentUser['address[2]'], [Validators.required]],
       flat: [this.currentUser['address[3]']]
@@ -54,8 +53,16 @@ constructor(
     }
   }
 
-  getAddress():void{
-      getDoc(doc(this.afs, "users", this.currentUser.uid)).then((user_doc) => {
+  getAddress():void {
+    this.getDataUser().then(() => {
+      this.toastr.success('Data user successfully');
+    }).catch(e=>{
+      this.toastr.error(e.message);
+    })
+  }
+
+  async getDataUser(): Promise<any> {
+     getDoc(doc(this.afs, "users", this.currentUser.uid )).then((user_doc) => {
         let dataUser = user_doc.get('address');
         this.authForm = this.fb.group({
                 typeAddress: [dataUser[0], [Validators.required]],

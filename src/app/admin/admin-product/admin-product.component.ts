@@ -19,7 +19,7 @@ export class AdminProductComponent implements OnInit {
   public adminCategories: Array<ICategoryResponse> = [];
   public adminProducts: Array<IProductResponse> = [];
   public adminTypeProducts: Array<ITypeProductResponse> = [];
-  public productForm!: FormGroup; 
+  public productForm!: FormGroup;
   public editStatus = false;
   public uploadPercent = 0;
   public isUploaded = false;
@@ -49,12 +49,12 @@ export class AdminProductComponent implements OnInit {
     this.productForm = this.fb.group({
       category: [null, Validators.required],
       type_product: [null],
-      name: [null, Validators.required], 
-      path: [null, Validators.required],    
+      name: [null, Validators.required],
+      path: [null, Validators.required],
       ingredients: [null],
       weight: [null, Validators.required],
-      price: [null, Validators.required], 
-      price_old: [null],     
+      price: [null, Validators.required],
+      price_old: [null],
       imagePath: [null, Validators.required],
       count: [1]
     });
@@ -64,7 +64,7 @@ export class AdminProductComponent implements OnInit {
     this.categoryService.getAll().subscribe(data => {
       this.adminCategories = data;
       this.productForm.patchValue({
-        category: this.adminCategories[0].id
+        category: this.adminCategories[0]?.id
       })
     })
   }
@@ -79,7 +79,7 @@ export class AdminProductComponent implements OnInit {
     this.typeProductService.getAll().subscribe(data =>{
       this.adminTypeProducts = data;
       this.productForm.patchValue({
-        type_product: this.adminTypeProducts[0].id
+        type_product: this.adminTypeProducts[0]?.id
       })
     })
   }
@@ -106,12 +106,12 @@ export class AdminProductComponent implements OnInit {
     this.openForm();
     this.currentCategoryId = product.category.id;
     this.currentCategoryName = product.category.name;
-    
+
     this.productForm.patchValue({
       category:  product.category,
       type_product: product.type_product,
-      name: product.name,    
-      path: product.path,  
+      name: product.name,
+      path: product.path,
       ingredients: product.ingredients,
       weight: product.weight,
       price: product.price,
@@ -119,7 +119,7 @@ export class AdminProductComponent implements OnInit {
       imagePath: product.imagePath,
     });
     console.log(product.category);
-    
+
     // this.isOpen = true;
     this.isUploaded = true;
     this.editStatus = true;
@@ -133,11 +133,8 @@ export class AdminProductComponent implements OnInit {
     })
   }
 
-  // changeCategory(e:any) {
-  //   this.productForm.get('category')?.setValue(e.target.value, {
-  //     onlySelf:true,
-  //   });
-  // }
+
+
 
   openForm():void {
     this.isOpen = true;
@@ -173,9 +170,7 @@ export class AdminProductComponent implements OnInit {
     return this.productForm.get(control)?.value;
   }
 
-  // toggleOpenForm(): void {
-  //   this.isOpen = !this.isOpen;
-  // }
+
 
 
 }

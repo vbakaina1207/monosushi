@@ -14,25 +14,15 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private orderService: OrderService){
-
-    // public dialogRef: MatDialogRef<CheckoutComponent>,
-    // @Inject(MAT_DIALOG_DATA) public options: { positionRelativeToElement: ElementRef }) {
-
-    //   this.positionRelativeToElement = options.positionRelativeToElement
   }
 
   ngOnInit() {
     this.loadBasket();
     this.updateBasket();
-    // const matDialogConfig = new MatDialogConfig()
-    // const rect: DOMRect = this.positionRelativeToElement.nativeElement.getBoundingClientRect()
-
-    // matDialogConfig.position = { right: `0`, top: `${rect.bottom + 80}px` }
-    // this.dialogRef.updatePosition(matDialogConfig.position)
   }
 
   loadBasket(): void {
-    if(localStorage.length > 0 && localStorage.getItem('basket')){
+    if(localStorage?.length > 0 && localStorage.getItem('basket')){
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
     }
     this.getTotalPrice();
@@ -40,7 +30,7 @@ export class CheckoutComponent implements OnInit {
 
   getTotalPrice(): void {
     this.total = this.basket
-      .reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0);
+      ?.reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0);
   }
 
   updateBasket(): void {
@@ -60,7 +50,7 @@ export class CheckoutComponent implements OnInit {
 
   addToBasket(product: IProductResponse, value: boolean): void {
     let basket: Array<IProductResponse> = [];
-    if(localStorage.length > 0 && localStorage.getItem('basket')){
+    if(localStorage?.length > 0 && localStorage.getItem('basket')){
       basket = JSON.parse(localStorage.getItem('basket') as string);
       if(basket.some(prod => prod.id === product.id)){
         const index = basket.findIndex(prod => prod.id === product.id);
@@ -79,7 +69,7 @@ export class CheckoutComponent implements OnInit {
 
   removeFromBasket(product: IProductResponse): void{
     let basket: Array<IProductResponse> = [];
-    if(localStorage.length > 0 && localStorage.getItem('basket')){
+    if(localStorage?.length > 0 && localStorage.getItem('basket')){
       basket = JSON.parse(localStorage.getItem('basket') as string);
       if(basket.some(prod => prod.id === product.id)){
         const index = basket.findIndex(prod => prod.id === product.id);

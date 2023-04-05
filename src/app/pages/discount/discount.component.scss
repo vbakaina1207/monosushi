@@ -24,7 +24,7 @@ hr{
 
 .card {
     border: none;
-    
+
     & hr {
         width: 100%;
         border: 3px solid $primary-color;
@@ -49,13 +49,14 @@ hr{
 
     &:hover .title{
         color: $primary-color;
-    
+
     }
 }
 
 .btn-more{
     @include btn-detail;
     margin-bottom: 0;
+    line-height: unset;
 }
 
 .margin-header{
@@ -73,11 +74,11 @@ a{
 }
 
 @media screen and (max-width: 1400px) {
-    
+
     .main-header{
         margin: 15px 0 40px 0;
     }
-}    
+}
 
 
 
@@ -90,7 +91,7 @@ a{
         transition: 0.35s;
         margin-top: 20px
     }
-    
+
 }
 
 @media screen and (max-width: 767px) {

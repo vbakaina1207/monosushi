@@ -1,9 +1,11 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AdminComponent } from './admin.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -11,7 +13,13 @@ describe('AdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminComponent ]
+      declarations: [ AdminComponent ],
+      imports:[
+        HttpClientTestingModule,
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+        ]
     })
     .compileComponents();
   }));

@@ -1,6 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordComponent } from './password.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Firestore } from '@angular/fire/firestore';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrService } from "ngx-toastr";
+import { Auth } from "@angular/fire/auth";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 describe('PasswordComponent', () => {
   let component: PasswordComponent;
@@ -8,7 +15,19 @@ describe('PasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PasswordComponent ]
+      declarations: [ PasswordComponent ],
+      imports: [
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        MatDialogModule
+      ],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: Auth, useValue: {} },
+        { provide: Firestore, useValue: {} },
+        { provide: ToastrService, useValue: {} },
+      ]
     })
     .compileComponents();
 
@@ -17,7 +36,13 @@ describe('PasswordComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('load user', () => {
+    let user = component.currentUser;
+    localStorage.getItem('currentUser');
+    component.loadUser();
     expect(component).toBeTruthy();
   });
+
+
+
 });

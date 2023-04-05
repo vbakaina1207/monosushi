@@ -27,28 +27,28 @@
   ],
   "categories": [
     {
-      "name": "роли",
-      "path": "rols",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=01094b1d-147e-4a54-b125-516616b6a614",
-      "id": 1
-    },
-    {
-      "name": "сети",
-      "path": "sets",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=3084a4eb-c4bb-4dcc-a07b-2717fca670aa",
-      "id": 2
-    },
-    {
-      "name": "напої",
-      "path": "drinks",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=e91e1a59-67f6-4851-828a-7e08165d93be",
-      "id": 3
-    },
-    {
       "name": "соуси",
       "path": "souses",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Ficon.svg?alt=media&token=3a0de6fc-5a5f-454c-b1c1-55d4666ec082",
       "id": 4
+    },
+    {
+      "name": "роли",
+      "path": "rolls",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=159fd5c6-aed6-42c9-90f2-e84a6b4ba477",
+      "id": 5
+    },
+    {
+      "name": "Сети",
+      "path": "sets",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=42bd68d2-3555-423d-8c3f-714b6e4e51a3",
+      "id": 6
+    },
+    {
+      "name": "Напої",
+      "path": "drinks",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-ff46f.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=97b13241-d536-4616-aed3-62b477f88ccb",
+      "id": 7
     }
   ],
   "products": [

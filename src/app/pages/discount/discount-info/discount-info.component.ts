@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IDiscountResponse } from 'src/app/shared/interfaces/discount/discount.interface';
 import { DiscountService } from 'src/app/shared/services/discount/discount.service';
 
@@ -27,17 +27,9 @@ export class DiscountInfoComponent implements OnInit {
     })
   }
 
-  getOneDiscount(): void {
-    const DISCOUNT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.discountService.getOne(DISCOUNT_ID).subscribe(data => {
-      this.discount = data;
-      this.description = this.getDescription(this.discount.description);
-      this.description = this.description.splice(0, this.description.length-1);
-    })
-  }
 
 getDescription(str:string):Array<string> {
   return  str.split('.');
-}  
+}
 
 }

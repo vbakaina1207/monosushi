@@ -6,7 +6,6 @@ import { ITypeProductResponse } from 'src/app/shared/interfaces/type-product/typ
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { TypeProductService } from 'src/app/shared/services/type-product/type-product.service';
-import { environment } from 'src/environments/environment';
 import { ProductService } from './../../shared/services/product/product.service'
 
 
@@ -25,6 +24,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   public categoryName!: string;
   public currentCategoryName!:string ;
   public currentProductTypeName!: string;
+  public productTypeName!: string;
+  public basket: Array<IProductResponse> = [];
 
   constructor(
     private productService: ProductService,
@@ -54,14 +55,14 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   loadProducts(): void {
     this.categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    const productTypeName = this.activatedRoute.snapshot.paramMap.get('type_product') as string;
+    this.productTypeName = this.activatedRoute.snapshot.paramMap.get('type_product') as string;
     let currentExtras = this.router.getCurrentNavigation()?.extras.skipLocationChange;
     this.productService.getAllByCategory(this.categoryName).subscribe(data => {
       this.userProducts = data;
       this.currentCategoryName = this.userProducts[0]?.category.name;
     });
-    if (productTypeName){
-      this.productService.getAllByProductType(productTypeName).subscribe(data => {
+    if (this.productTypeName){
+      this.productService.getAllByProductType(this.productTypeName).subscribe(data => {
             this.userProducts = data;
             this.currentProductTypeName = this.userProducts[0]?.type_product.name;
           });
@@ -100,19 +101,19 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   addToBasket(product: IProductResponse): void {
-    let basket: Array<IProductResponse> = [];
+    // basket: Array<IProductResponse> = [];
     if(localStorage.length > 0 && localStorage.getItem('basket')){
-      basket = JSON.parse(localStorage.getItem('basket') as string);
-      if(basket.some(prod => prod.id === product.id)){
-        const index = basket.findIndex(prod => prod.id === product.id);
-        basket[index].count += product.count;
+      this.basket = JSON.parse(localStorage.getItem('basket') as string);
+      if(this.basket?.some(prod => prod.id === product.id)){
+        const index = this.basket.findIndex(prod => prod.id === product.id);
+        this.basket[index].count += product.count;
       } else {
-        basket.push(product);
+        this.basket?.push(product);
       }
     } else {
-      basket.push(product);
+      this.basket?.push(product);
     }
-    localStorage.setItem('basket', JSON.stringify(basket));
+    localStorage.setItem('basket', JSON.stringify(this.basket));
     product.count = 1;
     this.orderService.changeBasket.next(true);
   }

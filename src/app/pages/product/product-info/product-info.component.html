@@ -10,7 +10,7 @@
     </li>
     <li >
       <a [routerLink]="[ '/product/', currentProduct?.category?.path, '' ]">
-        <span>{{ currentProduct?.category?.name  | titlecase }}</span>
+        <span>{{ currentProduct?.category?.name | titlecase }}</span>
       </a>
     </li>
     <li  *ngIf="currentProduct?.type_product?.name">
@@ -43,7 +43,7 @@
                           <p class="card-text"><b>Вага</b>: {{ currentProduct?.weight }}</p>
                           <div class="product_detail-controls">
                             <div class="product_price-wrap">
-                                <div class="product_price"><b class="price">{{ (currentProduct.price*currentProduct.count)}}</b> грн</div>
+                                <div class="product_price"><b class="price">{{ (currentProduct?.price && currentProduct?.count) ? (currentProduct.price*currentProduct.count) : 0 }}</b> грн</div>
                                 <div class="product_price-old" *ngIf="currentProduct?.price_old"><b class="price-old">{{ currentProduct?.price_old}}</b> грн</div>
                             </div>
                             <div class="thumb-input-number">

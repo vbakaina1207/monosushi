@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -12,7 +13,6 @@ import { ProductTypeComponent } from './pages/product-type/product-type.componen
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { SharedModule } from './shared/sahared.module';
 import { AuthAddressComponent } from 'src/app/components/auth-address/auth-address.component';
-// import { ProductComponent } from './pages/product/product.component';
 
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -35,7 +35,6 @@ import { ToastrModule } from 'ngx-toastr';
       ProductTypeComponent,
       AuthDialogComponent,
       AuthAddressComponent
-
   ],
   imports: [
     BrowserModule,
@@ -46,7 +45,8 @@ import { ToastrModule } from 'ngx-toastr';
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
     ToastrModule.forRoot(),
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
