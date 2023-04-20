@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { IOrderResponse } from 'src/app/shared/interfaces/order/order.interface';
+import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-admin-orders',
@@ -7,9 +12,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminOrdersComponent implements OnInit {
 
-  constructor() { }
+public userOrders: Array<IOrderResponse> = [];
+  public products: Array<IProductResponse> | any = [];
+  private eventSubscription!: Subscription;
+  constructor(
+    private orderService: OrderService,
+    private router: Router
+  ) {
+    this.eventSubscription = this.router.events.subscribe(event => {
+      if(event instanceof NavigationEnd ) {
+        this.getOrders();
+      }
+    })
+  }
 
   ngOnInit() {
+  }
+
+  getOrders(): void {
+    this.orderService.getAllFirebase().subscribe(data => {
+      this.userOrders = data as IOrderResponse[];
+    })
   }
 
 }

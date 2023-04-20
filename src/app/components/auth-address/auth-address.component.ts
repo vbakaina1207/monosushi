@@ -76,7 +76,6 @@ constructor(
 
 
   addAddress():void{
-    // const { email, password, firstName, lastName, phoneNumber } = this.authForm.value;
     this.updateAddress().then(() => {
       this.toastr.success('Address successfully changed');
     }).catch(e => {

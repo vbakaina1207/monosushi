@@ -9,46 +9,48 @@
       </a>
     </li>
     <li >
-      <a [routerLink]="[ '/product/', currentProduct?.category?.path, '' ]">
-        <span>{{ currentProduct?.category?.name | titlecase }}</span>
+      <a [routerLink]="[ '/product/', currentProduct ? ( currentProduct.category ? currentProduct.category.path : undefined) : undefined, '' ]">
+        <span>{{ (currentProduct ? (currentProduct.category ? currentProduct.category.name : undefined) : undefined) | titlecase }}</span>
       </a>
     </li>
-    <li  *ngIf="currentProduct?.type_product?.name">
-      <a [routerLink]="[  '/product/', currentProduct?.category?.path, currentProduct?.type_product?.path ]">
-        <span itemprop="name">{{ currentProduct?.type_product?.name | titlecase }}</span>
+    <li  *ngIf=" currentProduct ? ( currentProduct.type_product ? currentProduct.type_product.name : undefined) : undefined">
+      <a [routerLink]="[  '/product/', currentProduct ? ( currentProduct.category ? currentProduct.category.path : undefined) : undefined, currentProduct ? ( currentProduct.type_product ? currentProduct.type_product.path : undefined) : undefined ]">
+        <span itemprop="name">{{  currentProduct ? ( currentProduct.type_product ? currentProduct.type_product.name : undefined) : undefined | titlecase }}</span>
       </a>
     </li>
     <li class="active">
-      <span itemprop="name">{{currentProduct?.name | titlecase }}</span></li>
+      <span itemprop="name">{{ currentProduct ? currentProduct.name : undefined | titlecase }}</span>
+    </li>
+
   </ul>
   <div class="spacer-md"></div>
   <div class="row justify-content-center">
       <div class="col-12 mt-3">
           <div class="card mb-3">
               <div class="row g-0 justify-content-center">
-                  <div class="col-md-6 col-xl-4 me-5" style="width: 450px;">
+                  <div class="col-md-6 col-xl-4 me-5 card-mobile" style="width: 450px;">
                       <img
-                      [src]="currentProduct?.imagePath"
+                      [src]="currentProduct ? currentProduct.imagePath : undefined"
                       class=" img-fluid rounded-start"
-                      [alt]="currentProduct?.name">
+                      [alt]="currentProduct ? currentProduct.name : undefined">
 
                   </div>
-                  <div class="col-md-6 col-xl-4 ms-5 mb-5">
+                  <div class="col-md-6 col-xl-4 ms-5 mb-5 card-mobile">
                       <div class="card-body">
-                          <h1 class="card-title">{{ currentProduct?.name }}</h1>
+                          <h1 class="card-title">{{ currentProduct ? currentProduct.name : undefined }}</h1>
                           <p class="card-text">
                             <b>Склад: </b>
-                            {{ currentProduct?.ingredients }}
+                            {{ currentProduct ? currentProduct.ingredients : undefined }}
                           </p>
-                          <p class="card-text"><b>Вага</b>: {{ currentProduct?.weight }}</p>
+                          <p class="card-text"><b>Вага</b>: {{ currentProduct ? currentProduct.weight : undefined }}</p>
                           <div class="product_detail-controls">
                             <div class="product_price-wrap">
-                                <div class="product_price"><b class="price">{{ (currentProduct?.price && currentProduct?.count) ? (currentProduct.price*currentProduct.count) : 0 }}</b> грн</div>
-                                <div class="product_price-old" *ngIf="currentProduct?.price_old"><b class="price-old">{{ currentProduct?.price_old}}</b> грн</div>
+                                <div class="product_price"><b class="price">{{  (currentProduct) ? (currentProduct.price*currentProduct.count) :  0 }}</b> грн</div>
+                                <div class="product_price-old" *ngIf="currentProduct ? currentProduct.price_old : undefined"><b class="price-old">{{ currentProduct ? currentProduct.price_old : undefined }}</b> грн</div>
                             </div>
                             <div class="thumb-input-number">
                               <button type="button" class="decrement" (click)="productCount(currentProduct, false)" >-</button>
-                              <input class="product-qty" [value]="currentProduct?.count"  readonly="" tabindex="-1" max="999">
+                              <input class="product-qty" [value]="currentProduct ? currentProduct.count : 1"  readonly="" tabindex="-1" max="999">
                               <button type="button" class="increment" (click)="productCount(currentProduct, true)" >+</button>
                           </div>
                           <button class="btn btn-small btn-order" (click)="addToBasket(currentProduct)">ЗАМОВИТИ</button>

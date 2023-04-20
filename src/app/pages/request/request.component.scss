@@ -1,0 +1,352 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.main-header{
+  @include main-header;
+}
+
+hr{
+  @include hr;
+}
+
+.spacer-lg{
+  height: 90px;
+}
+
+.checkout-product{
+  margin: 20px 0 5px;
+}
+
+.prod_horiz {
+  padding: 9px 0 9px 20px;
+}
+.prod_horiz {
+  border-top: 1px solid $border-color;
+}
+
+.prod_horiz-desc .title {
+  position: relative;
+  display: -webkit-box;
+  overflow: hidden;
+  max-height: 4em;
+  font-size: 16px;
+  line-height: 1em;
+}
+
+.title {
+  @include text-bold($text-color);
+}
+
+.text-right {
+  text-align: right;
+  color: #787878;
+  font-size: 16px;
+}
+
+.price-wrapp {
+  padding: 9px 0 9px 20px;
+  border-top: 1px solid $border-color;
+}
+
+b{
+  font-weight: bold;
+  color:$text-color;
+}
+
+.checkbox-entry input {
+  display: none;
+}
+
+
+
+.delivery-form{
+  & .form-group {
+    margin-bottom: 50px;
+  }
+  & .checkbox-entry-wrap {
+    display: inline-block;
+    margin-right: 30px;
+    line-height: 1em;
+  }
+}
+
+.checkbox-entry {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  min-width: 30px;
+  min-height: 17px;
+  @include body($text-color);
+  font-size: 18px;
+}
+
+.delivery-form .checkbox-entry-wrap {
+  display: inline-block;
+  margin-right: 30px;
+  line-height: 1em;
+}
+
+
+.checkbox-entry {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  min-width: 30px;
+  min-height: 17px;
+}
+
+.delivery-form .checkbox-entry-wrap .checkbox-entry span {
+  @include body($text-color);
+  font-size: 18px;
+  line-height: 22px;
+  position: relative;
+  padding-left: 30px;
+  display: block;
+  transition: 0.35s;
+}
+
+.checkbox-entry input:checked+span:before {
+  border-color: $primary-color;
+}
+
+.checkbox-entry span:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  border: 1px solid $border-color;
+  transition: 0.35s;
+}
+
+.checkbox-entry span:after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background-color: $primary-color;
+  z-index: 1;
+  transform: scale(0);
+  backface-visibility: hidden;
+  transition: 0.35s;
+}
+
+.checkbox-entry input:checked+span:after{
+  transform: scale(1);
+}
+
+.form-group .form-title {
+  display: flex;
+}
+
+.form .form-title {
+  margin-bottom: 20px;
+}
+
+.form-group .number-title{
+  @include form-group-number-title;
+}
+
+.form-group .form-title h5 {
+  line-height: 28px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.delivery-form-group h5,
+.delivery-form-group .number-title b{
+  color:white;
+  background-color: $primary-color;
+}
+
+.delivery-form .form-group.delivery-form-group{
+  margin-bottom: 15px;
+}
+
+.delivery-form-group .checkbox-entry-wrap{
+  padding-bottom: 10px;
+}
+
+.delivery-form hr {
+  margin: 20px 0;
+  height: 3px;
+  background-color: $primary-color;
+  width: 100%;
+}
+
+.form-group-row {
+  margin-bottom: -20px;
+}
+
+.form-group-row>[class*=col] {
+  margin-bottom: 20px;
+}
+
+.SelectBox {
+  font-size: 14px;
+  line-height: 1;
+  color: $text-color;
+  padding: 15px 40px 15px 20px;
+}
+
+.SumoSelect {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  z-index: 3;
+  min-height: 56px;
+  position: relative;
+  outline: 0;
+}
+
+
+option:disabled {
+  color: $text-color;
+}
+
+.SumoUnder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  border: 1px solid  $border-color;
+  border-radius: 7px;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: $focus-color;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  }
+
+}
+
+.thumb-input-number {
+  @include thumb-input-number;
+}
+
+.mob-mt-30 {
+  margin-top: 30px;
+}
+
+.delivery-form .spacer-xs {
+  height: 20px;
+}
+
+.form.delivery-form {
+  & textarea.input {
+    margin-bottom: 20px;
+    height: 150px;
+    padding: 20px;
+    line-height: 1.2em;
+  }
+}
+
+  .deliveryWarning .errorMsg {
+    position: relative;
+    font-size: 14px;
+    color: rgba(212, 0, 0, 0.6);
+    border: 1px solid rgba(212, 0, 0, 0.3);
+    margin-top: 15px;
+
+    & img {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      width: 24px;
+      height: 24px;
+      display: block;
+      margin-top: -12px;
+    }
+
+    & p {
+      padding-left: 35px;
+      margin-top: inherit;
+    }
+  }
+
+  .errorMsg {
+    line-height: 1.5em;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    margin: 15px 0;
+  }
+
+  .btn-order{
+    @include btn-detail;
+    line-height: inherit;
+    font-size: 16px;
+  }
+
+  .block{
+    display: block;
+  }
+
+.product-qty {
+  height: 44px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+  @media screen and (max-width: 798px) {
+    .form.delivery-form {
+      & textarea.input {
+        margin-bottom: 15px;
+        height: 92px;
+      }
+    }
+
+  }
+
+  
+@media screen and (max-width: 414px){
+  .prod_horiz{
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+  }
+
+  .prod_horiz-desc{
+      margin-top: 10px;
+      justify-content: center;
+  }
+
+  .title{
+    margin-bottom: 10px;
+  }
+  .cart_bottom {
+      padding: 7px ;
+  }
+
+  .cart_price-wrap{
+      font-size: 12px;
+  }
+
+  .btn-order{
+      padding: 7px;
+      font-size: 12px;
+  }
+
+  .prod_horiz{
+    @include product_controls-media
+  }
+
+  .prod_horiz-desc{
+    flex-wrap: wrap;
+  }
+}
+

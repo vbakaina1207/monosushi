@@ -6,29 +6,29 @@
   <ng-container  *ngIf="isCategoryRolls">
   <div class="categories-menu" >
     <ul class="nav nav-tabs categories-list">
-      <li class="nav-item col">        
+      <li class="nav-item col">
         <a [routerLink]="[ '/product/', 'rols', '' ]" routerLinkActive="active" class="nav-link" aria-current="page">Всі</a>
       </li>
       <li class="nav-item col" *ngFor="let typeProduct of userTypeProducts">
-        <a skipLocationChange  replaceUrl [routerLink]="[ '/product/', categoryName, typeProduct.path ]" routerLinkActive="active" class="nav-link" aria-current="page">                      
-              <span>{{typeProduct.name}}</span>          
+        <a skipLocationChange  replaceUrl [routerLink]="[ '/product/', categoryName, typeProduct.path ]" routerLinkActive="active" class="nav-link" aria-current="page">
+              <span>{{typeProduct.name}}</span>
       </a>
       </li>
     </ul>
   </div>
   </ng-container>
-  <div class="row product-row">    
+  <div class="row product-row">
       <ng-container *ngIf="userProducts.length > 0">
-        <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of userProducts">
+        <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of userProducts">
             <div class="card border-menu">
               <div class="card-img">
-                <a class="product_image" [routerLink]="[ '/product/'+ product.category.path , product.type_product.path ? product.type_product.path : 'other', product.id ]">
-                  <img [src]="product.imagePath" class="card-img-top" alt="product.name">
-                </a>                  
-              </div> 
+                <a class="product_image" [routerLink]="[ '/product/', product.category.path , product?.type_product?.path ? product.type_product.path : 'other', product.id ]">
+                  <img [src]="product.imagePath" class="card-img-top" alt="">
+                </a>
+              </div>
                 <div class="card-body text-center">
                   <div class="card-title h5 mt-2 mb-2">
-                    <a  [routerLink]="[ '/product/'+ product.category.path,  product.type_product.path ? product.type_product.path : 'other', product.id ]">{{ product.name }}</a>
+                    <a  [routerLink]="[ '/product/'+ product.category.path,  product?.type_product?.path ? product.type_product.path : 'other', product.id ]">{{ product.name }}</a>
                   </div>
                   <div class="product_desc d-flex justify-content-between card-text">
                     <p>{{ product.ingredients }}</p>
@@ -36,23 +36,23 @@
                       <span class="size">{{ product.weight }}</span>
                     </div>
                   </div>
-                </div>  
+                </div>
                   <div class="product_controls d-flex justify-content-between align-items-center mt-2">
                     <div class="product_price-wrap">
                         <div class="product_price" itemprop="price">
                           <b class="price">{{ product.price }}</b> грн</div>
                         <div class="product_price-old" *ngIf="product.price_old"><b class="price-old">{{ product.price_old }}</b> грн</div>
                     </div>
-                    <input type="hidden" value="1" readonly="" class="product-qty" tabindex="-1">  
+                    <input type="hidden" value="1" readonly="" class="product-qty" tabindex="-1">
                     <div class="thumb-input-number">
                       <button type="button" class="decrement in-cart" (click)="productCount(product, false)" >-</button>
                       <input class="product-qty" value="{{ product.count }}" readonly="" tabindex="-1" max="999" data-id="600">
                       <button type="button" class="increment in-cart" (click)="productCount(product, true)">+</button>
-                    </div>                  
-                      <button class="btn btn-small btn-order" (click)="addToBasket(product)">Замовити</button>                    
-                  </div>                  
-                
-            </div>        
+                    </div>
+                      <button class="btn btn-small btn-order" (click)="addToBasket(product)">Замовити</button>
+                  </div>
+
+            </div>
         </div>
       </ng-container>
   </div>

@@ -1,4 +1,6 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthDialogComponent } from 'src/app/components/auth-dialog/auth-dialog.component';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
@@ -11,12 +13,16 @@ export class CheckoutComponent implements OnInit {
 
   public total = 0;
   public basket: Array<IProductResponse> = [];
+  public currentUser!: any;
 
   constructor(
-    private orderService: OrderService){
+    private orderService: OrderService,
+    private dialog: MatDialog
+    ){
   }
 
   ngOnInit() {
+    this.loadUser();
     this.loadBasket();
     this.updateBasket();
   }
@@ -31,6 +37,12 @@ export class CheckoutComponent implements OnInit {
   getTotalPrice(): void {
     this.total = this.basket
       ?.reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0);
+  }
+
+  loadUser(): void {
+    if(localStorage.length > 0 && localStorage.getItem('currentUser')){
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    } 
   }
 
   updateBasket(): void {
@@ -79,4 +91,15 @@ export class CheckoutComponent implements OnInit {
       this.orderService.changeBasket.next(true);
     }
   }
+
+  openLoginDialog(): void {
+    this.dialog.open(AuthDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    }).afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
+
 }

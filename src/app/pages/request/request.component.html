@@ -1,0 +1,362 @@
+
+<div class="main-header">
+  <hr>
+  Оформити замовлення
+</div>
+
+<ng-container *ngIf="basket.length>0">
+  <div class="container mt-3 mb-3 px-3">
+  <div class="row justify-content-center">
+    <div class="col-xl-6 col-lg-10 col-12">
+      <form [formGroup]="orderForm"  class="form delivery-form" (ngSubmit)="addOrder()">
+        <div class="checkout-product" style="" *ngFor="let product of basket">
+        <div class="prod_horiz cart-product js-product  " data-price="product.price">
+          <a class="prod_horiz-img" [routerLink]="[ '/product/', product ? product.category.path : undefined ,  product ? (product.type_product? product.type_product.path : 'other') : undefined, product.id ]">
+            <img class="img" [src]="product.imagePath">
+          </a>
+          <div class="prod_horiz-desc">
+            <a class="title" [routerLink]="[ '/product/', product ? product.category.path : undefined ,  product ? (product.type_product? product.type_product.path : 'other') : undefined, product.id ]">
+              {{ product.name }}
+            </a>
+            <div class="prod_horiz-controls">
+              <div class="thumb-input-number">
+                <button type="button" class="decrement in-cart" (click)="productCount(product, false)" >-</button>
+                <input class="product-qty" value="{{ product ? product.count : undefined }}" readonly="" tabindex="-1" max="999">
+                <button type="button" class="increment in-cart" (click)="productCount(product, true)" >+</button>
+              </div>
+              <div class="price_default">
+                <b class="price">{{ product.price*product.count }}</b>
+                грн
+              </div>
+              <button type="button" class="btn-close remove-product">
+                <div class="trash" (click)="removeFromBasket(product)"></div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="price-wrapp text-right">
+          До оплати:
+          <span>
+            <b class="all-product-price-el">{{total}}</b>
+            грн
+          </span>
+        </div>
+        <div class="form-group user-form">
+          <div class="form-title title">
+            <i class="number-title"><b>1</b></i>
+            <h5>Оберіть кількість приборів</h5>
+          </div>
+          <div class="row form-group-row">
+            <div class="col-sm-6">
+              <div class="SumoSelect" tabindex="0" role="button">
+                <select formControlName="count_thing" name="count_thing" class="SelectBox count_things SumoUnder" tabindex="-1" >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6 +15 грн </option>
+                  <option value="7">7 +30 грн </option>
+                  <option value="8">8 +45 грн </option>
+                  <option value="9">9 +60 грн </option>
+                  <option value="10">10 +75 грн </option>
+                  <option value="11">11 +90 грн </option>
+                  <option value="12">12 +105 грн </option>
+                  <option value="13">13 +120 грн </option>
+                  <option value="14">14 +135 грн </option>
+                  <option value="15">15 +150 грн </option>
+                  <option value="16">16 +165 грн </option>
+                  <option value="17">17 +180 грн </option>
+                  <option value="18">18 +195 грн </option>
+                  <option value="19">19 +210 грн </option>
+                  <option value="20">20 +225 грн </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6 ">
+              <div class="SumoSelect" tabindex="0" role="button" aria-expanded="true">
+                <select formControlName="count_thing_study" name="count_thing_study" class="SelectBox noobs count_things_study SumoUnder" tabindex="-1" data-things-study-count="1" data-placeholder="Навчальні тримачі">
+                <option selcted="" value="Навчальні тримачі" disabled="">Навчальні тримачі</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="h5 form-title title">
+            <i class="number-title"><b>2</b></i>
+            <h5>Спосіб оплати</h5>
+          </div>
+          <div class="checkbox-entry-wrap payment-entry-wrap">
+            <label class="checkbox-entry">
+              <input formControlName="payment_method" name="payment_method" type="radio" id="payment_method_cod" class="toggle-block-control" data-block="2" data-rel="cod"  checked="" value="cod">
+              <span>Оплата готівкою</span>
+            </label>
+          </div>
+
+          <div class="checkbox-entry-wrap payment-entry-wrap">
+            <label class="checkbox-entry">
+              <input formControlName="payment_method" name="payment_method" type="radio" id="payment_method_liqpay" class="toggle-block-control" data-block="2" data-rel="liqpay"  value="liqpay">
+              <span>Безготівкова оплата</span>
+            </label>
+          </div>
+        </div>
+
+
+          <div class="form-group delivery-form-group">
+            <div class="h5 form-title title">
+              <i class="number-title"><b>3</b></i>
+              <h5>Спосіб доставки</h5>
+            </div>
+
+
+            <div class="checkbox-entry-wrap">
+              <label class="checkbox-entry">
+                <input formControlName="delivery_method"  type="radio" name="delivery_method" id="delivery_method_courier" class="toggle-block-control"  data-block="1" data-rel="1"  data-method="courier" checked="" value="courier">
+                <span>
+                        Доставка (У зв’язку із відключенням світла, якщо ліфт не працює кур’єр піднімається тільки до п’ятого поверху. Дякуємо за розуміння)
+                </span>
+              </label>
+            </div>
+
+
+            <div class="checkbox-entry-wrap">
+              <label class="checkbox-entry">
+                <input formControlName="delivery_method"  type="radio" name="delivery_method" id="delivery_method_pickup" class="toggle-block-control"  data-block="1" data-rel="1"  data-method="local_pickup" value="local_pickup">
+                <span>
+                        Самовивіз
+                </span>
+              </label>
+            </div>
+
+
+            <div class="checkbox-entry-wrap toggle-block" data-rel="4">
+              <label class="checkbox-entry">
+                <input formControlName="at_time" type="checkbox" class="toggle-block-control" data-block="4" data-rel="1" name="at_time" >
+                <span>Заздалегідь</span>
+              </label>
+            </div>
+
+
+
+
+            <div class="toggle-blocks mob-mt-30">
+
+              <div class="toggle-block" data-rel="4" style="display: block;">
+
+                <div class="spacer-xs dn-mobile"></div>
+                <div class="row form-group-row">
+                  <div class="col-12 col-md-6">
+                    <input type="text" formControlName="name" name="name" class="input" placeholder="Вашe ім’я*" value="" required="">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <input class="input user-phone" formControlName="phone" name="phone" type="text" pattern="^(8|\+?\d{1,3})?[ -]?\(?(\d{3})\)?[ -]?(\d{3})[ -]?(\d{2})[ -]?(\d{2})$"  value="" placeholder="Телефон*" inputmode="numeric" required="">
+                  </div>
+                </div>
+                <div class="toggle-block local_visible" data-block="4" data-rel="1" style="" data-min-time="00.30.00" *ngIf="(orderForm.get('at_time')?.value)">
+                  <div class="spacer-xs"></div>
+                  <div class="row form-group-row">
+                    <div class="col-sm-6">
+                      <input type="date" class="input calendar m-0 qaz" formControlName="self_delivery_date"  name="self_delivery_date" placeholder="Дата доставки" autocomplete="off" value="">
+                    </div>
+                    <div class="col-sm-6">
+
+                      <div class="res-gps">
+                        <div class="SumoSelect sumo_self_delivery_time" tabindex="0" role="button" aria-expanded="false">
+                          <select  formControlName="self_delivery_time" name="self_delivery_time" class="SelectBox SumoUnder" tabindex="-1">
+                          <option value="" selected="" disabled="">Виберіть часовий інтервал </option>
+                          <option value="11:00 - 11:15">11:00 - 11:15</option>
+                          <option value="11:15 - 11:30">11:15 - 11:30</option>
+                          <option value="11:30 - 11:45">11:30 - 11:45</option>
+                          <option value="11:45 - 12:00">11:45 - 12:00</option>
+                          <option value="12:00 - 12:15">12:00 - 12:15</option>
+                          <option value="12:15 - 12:30">12:15 - 12:30</option>
+                          <option value="12:30 - 12:45">12:30 - 12:45</option>
+                          <option value="12:45 - 13:00">12:45 - 13:00</option>
+                          <option value="13:00 - 13:15">13:00 - 13:15</option>
+                          <option value="13:15 - 13:30">13:15 - 13:30</option>
+                          <option value="13:30 - 13:45">13:30 - 13:45</option>
+                          <option value="13:45 - 14:00">13:45 - 14:00</option>
+                          <option value="14:00 - 14:15">14:00 - 14:15</option>
+                          <option value="14:15 - 14:30">14:15 - 14:30</option>
+                          <option value="14:30 - 14:45">14:30 - 14:45</option>
+                          <option value="14:45 - 15:00">14:45 - 15:00</option>
+                          <option value="15:00 - 15:15">15:00 - 15:15</option>
+                          <option value="15:15 - 15:30">15:15 - 15:30</option>
+                          <option value="15:30 - 15:45">15:30 - 15:45</option>
+                          <option value="15:45 - 16:00">15:45 - 16:00</option>
+                          <option value="16:00 - 16:15">16:00 - 16:15</option>
+                          <option value="16:15 - 16:30">16:15 - 16:30</option>
+                          <option value="16:30 - 16:45">16:30 - 16:45</option>
+                          <option value="16:45 - 17:00">16:45 - 17:00</option>
+                          <option value="17:00 - 17:15">17:00 - 17:15</option>
+                          <option value="17:15 - 17:30">17:15 - 17:30</option>
+                          <option value="17:30 - 17:45">17:30 - 17:45</option>
+                          <option value="17:45 - 18:00">17:45 - 18:00</option>
+                          <option value="18:00 - 18:15">18:00 - 18:15</option>
+                          <option value="18:15 - 18:30">18:15 - 18:30</option>
+                          <option value="18:30 - 18:45">18:30 - 18:45</option>
+                          <option value="18:45 - 19:00">18:45 - 19:00</option>
+                          <option value="19:00 - 19:15">19:00 - 19:15</option>
+                          <option value="19:15 - 19:30">19:15 - 19:30</option>
+                          <option value="19:30 - 19:45">19:30 - 19:45</option>
+                          <option value="19:45 - 20:00">19:45 - 20:00</option>
+                          <option value="20:00 - 20:15">20:00 - 20:15</option>
+                          <option value="20:15 - 20:30">20:15 - 20:30</option>
+                          <option value="20:30 - 20:45">20:30 - 20:45</option>
+                          <option value="20:45 - 21:00">20:45 - 21:00</option>
+                          <option value="21:00 - 21:15">21:00 - 21:15</option>
+                          <option value="21:15 - 21:30">21:15 - 21:30</option>
+                          <option value="21:30 - 21:45">21:30 - 21:45</option>
+                          <option value="21:45 - 22:00">21:45 - 22:00</option>
+                          <option value="22:00 - 22:15">22:00 - 22:15</option>
+                          <option value="22:15 - 22:30">22:15 - 22:30</option>
+                          <option value="22:30 - 22:45">22:30 - 22:45</option>
+                        </select>
+
+                        </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+                <div class="spacer-xs"></div>
+                <div class="row form-group-row">
+                  <div class="col-sm-12 col-12">
+                    <div class="sumoselect-point" *ngIf="(orderForm.get('delivery_method')?.value) ==='local_pickup'">
+                      <div class="SumoSelect sumo_select_point" tabindex="0" role="button" aria-expanded="false">
+                        <select class="SelectBox SumoUnder" tabindex="-1" id="select_point" formControlName="select_point" name="select_point">
+                        <option selected="" disabled="" value="0">Оберіть адресу самовивозу</option>
+                        <option value="1">Чорновола 95</option>
+                        <option value="2">Володимира Великого 10Б</option>
+                      </select>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="spacer-xs"></div>
+                <div class="row form-group-row inputs-wrap" *ngIf="(orderForm.get('delivery_method')?.value) ==='courier'">
+                  <div class="col-12 col-sm-6">
+                    <input formControlName="street" id="street" class="input ui-autocomplete-input" type="text" placeholder="Вулиця*" name="street" value="" required="" autocomplete="off">
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <input formControlName="house" id="houseNumber" class="input" type="text" placeholder="Номер будинку*" name="house" value="" required="" maxlength="8">
+                  </div>
+
+                  <div class="col-6">
+                    <input formControlName="entrance" type="text" class="input" name="entrance" maxlength="6" placeholder="Під'їзд" value="">
+                  </div>
+                  <div class="col-6">
+                    <input formControlName="flat" type="number" class="input" name="flat" placeholder="Квартира" value="">
+                  </div>
+                </div>
+
+
+                <hr>
+                <div class="checkbox-entry-wrap">
+                  <label class="checkbox-entry">
+                    <input formControlName="no_call" type="checkbox" name="no_call">
+                    <span>Зателефонуйте мені для уточнення деталей</span>
+                  </label>
+                </div>
+                <div class="checkbox-entry-wrap d-block">
+                  <label class="checkbox-entry">
+                    <input formControlName="isComment" type="checkbox" name="isComment" class="toggle-block-control" data-block="3" data-rel="0">
+                    <span>Додати коментар</span>
+                  </label>
+                </div>
+
+
+                <div class="toggle-block" data-block="3" data-rel="0" *ngIf="(orderForm.get('isComment')?.value)">
+                  <div class="spacer-xs"></div>
+                  <textarea formControlName="comment" name="comment" class="input" placeholder="Ваш коментар" spellcheck="false"></textarea>
+                </div>
+                <!-- <div class="spacer-xs"></div> -->
+                <div class="checkbox-entry-wrap d-block">
+                  <label class="checkbox-entry">
+                    <input formControlName="isKitchen_comment" type="checkbox" name="isKitchen_comment" class="toggle-block-control" data-block="3" data-rel="1">
+                    <span>Додати коментар для кухні</span>
+                  </label>
+                </div>
+                <div class="spacer-xs"></div>
+                <div class="toggle-block" data-block="3" data-rel="1" *ngIf="(orderForm.get('isKitchen_comment')?.value)">
+                  <textarea formControlName="comment_kitchen" name="comment_kitchen" class="input" placeholder="Ваш коментар для кухні" spellcheck="false"></textarea>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+        <div class="order-wrap">
+
+          <div class="deliveryWarning">
+            <div class="errorMsg empty-name" *ngIf="!orderForm.get('name')?.value">
+              <img src="./assets/warning.svg" alt="warning" oncontextmenu="return false">
+              <p>Введіть ваше ім'я</p>
+            </div>
+            <div class="errorMsg empty-phone" *ngIf="!orderForm.get('phone')?.value">
+              <img src="./assets/warning.svg" alt="warning" oncontextmenu="return false">
+              <p>Введіть ваш номер телефону</p>
+            </div>
+            <div class="errorMsg empty-delivery-date" *ngIf="orderForm.get('at_time')?.value && (!orderForm.get('self_delivery_date')?.value || !orderForm.get('self_delivery_time')?.value)">
+              <img src="./assets/warning.svg" alt="warning" oncontextmenu="return false">
+              <p>Введіть дату та час доставки</p>
+            </div>
+            <div class="errorMsg empty-address" *ngIf="(orderForm.get('delivery_method')?.value) ==='courier' && (!orderForm.get('house')?.value || !orderForm.get('street')?.value)">
+              <img src="./assets/warning.svg" alt="warning" oncontextmenu="return false">
+              <p>Введіть вашу адресу та номер будинку</p>
+            </div>
+            <div class="errorMsg select_point" *ngIf="(orderForm.get('delivery_method')?.value) ==='local_pickup' && !orderForm.get('select_point')?.value">
+              <img src="./assets/warning.svg" alt="warning" oncontextmenu="return false">
+              <p>Оберіть адресу самовивозу</p>
+            </div>
+            <div class="errorMsg noPriceGreen" *ngIf="total<300">
+              <img src="./assets/warning.svg" alt="warning" oncontextmenu="return false">
+              <p>*Мінімальна сума замовлення становить 300 грн
+              </p>
+            </div>
+
+          </div>
+          <div class="main-order-wrapp">
+            <div class="text-center w-100">
+              <button type="submit" class="btn btn-order" [disabled]="(orderForm.invalid || total<300 ) ||   (orderForm.get('delivery_method')?.value) ==='courier' && (!orderForm.get('house')?.value || !orderForm.get('street')?.value) ||((orderForm.get('delivery_method')?.value) ==='local_pickup' && !orderForm.get('select_point')?.value) || (orderForm.get('at_time')?.value && (!orderForm.get('self_delivery_date')?.value || !orderForm.get('self_delivery_time')?.value))">
+                  ОФОРМИТИ ЗАМОВЛЕННЯ
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</ng-container>
+
+<ng-container *ngIf="basket.length === 0">
+  <div class="cart_items">
+    <div class="cart-empty-message">
+      <div class="cart-empty-img">
+        <img src="assets/basket/cart-empty-img.svg" alt="">
+      </div>
+      <div class="title h5">Кошик порожній</div>
+      <a  [routerLink]="[ '/' ]"class="btn btn-order-empty">Перейти до каталогу</a>
+    </div>
+  </div>
+</ng-container>
+
+
+

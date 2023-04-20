@@ -58,7 +58,7 @@ hr{
 }
 
 .card{
-    padding: 20px;
+    padding: 20px 5px;
     border-color:white;
     --bs-card-bg: transparent;
     --bs-card-border-width: 2px;
@@ -101,8 +101,6 @@ hr{
 
 .product_desc {
     font-size: 16px;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-height: 3.8em;
     margin-bottom: auto;
 
@@ -113,6 +111,8 @@ hr{
         text-align: left;
         line-height: 1.5em;
         @include body($main-color);
+        overflow:hidden;
+        text-overflow: ellipsis;
     }
 
     .product_size {
@@ -165,11 +165,16 @@ hr{
     }
 }    
 
-@media (min-width: 992px) and (max-width: 1600px){
+@media screen and (min-width: 992px) and (max-width: 1600px){
+
+    .product_controls .thumb-input-number button {
+        width: 28px;
+        margin: 2px;
+    }
+
     .product_controls .product_price-wrap {
         max-width: 75px;
-        margin-right: 5px;
-    
+        
 
         & .product_price {
             font-size: 18px;
@@ -221,6 +226,68 @@ hr{
         height: 30px;
     }
 
+    .product_price-wrap {
+        max-width: 75px;
+
+        & .product_price {
+            width: 76px;
+            font-size: 16px;
+            line-height: 20px;        
+        }    
+
+        & .product_price-old {
+            font-size: 12px;
+        }
+        
+    }
+    
+    .thumb-input-number{
+        @include thumb-input-number-media;
+    }
+
+    .product_controls .btn {
+        margin-left: 5px;
+        padding: 10px 10px;
+        font-size: 12px;
+        line-height: 12px;
+    }
+    
+    
 }    
+
+@media screen and (max-width: 360px) {
+    .product_controls{
+        @include product_controls-media;
+    }
+
+
+    // .product_controls{
+
+    // & .thumb-input-number{
+    
+    //     font-size: 12px;
+
+    //     & button {
+    //     width: 19px;
+    //     height: 26px;
+    //     margin: 2px;
+    //     }
+
+    //     & .product-qty  {
+    //     width: 22px;
+    //     height: 29px;
+    //     }
+    // }
+    //     & .product_price{
+    //         font-size: 14px;
+    //     }
+
+    //     & .btn-order{
+    //         padding: 9px 9px;
+    //     }
+    // }    
+    
+}
+
 
 

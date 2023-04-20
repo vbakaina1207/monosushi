@@ -66,8 +66,9 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
 }
 
 .auth-dialog {
-    width: 600px;
-    min-height: 400px;    
+    // width: 600px;
+    max-width: 100vw;
+    min-height: 400px;
     @include body($main-color);
 }
 
@@ -79,7 +80,7 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
 
 }
 
-.form input{
+.form input, .form textarea{
   width: 100%;
   margin-bottom: 15px;
   font-size: 16px;
@@ -201,7 +202,7 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
 .btn-close-modal span {
   position: absolute;
   top: 50%;
-  left: 50%;    
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
@@ -237,10 +238,12 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
 
 .auth-dialog-basket {
   right: 0;
-  top: 80px;
+  margin-top: 95px;
   width: 664px;
   border-radius: 0 0 10px 10px;
+  
 }
+
 
 .cart-popup-out {
   display: flex;
@@ -310,13 +313,13 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
       font-size: 20px;
       line-height: 1.75em;
   }
-} 
+}
 
   .bg-mono {
-      background-color: $primary-color;         
+      background-color: $primary-color;
   }
 
-  .cart_bottom { 
+  .cart_bottom {
       padding: 20px 20px 20px 20px;
       display: flex;
       justify-content: space-between;
@@ -324,9 +327,9 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
       margin-top: auto;
       width: 100%;
       border-radius: 0 0 10px 10px;
-      
 
-      & .cart_price-wrap {            
+
+      & .cart_price-wrap {
           @include body($text-color);
       }
       & .card-total-price {
@@ -341,7 +344,7 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
   }
 
   b{
-      @include text-bold($text-color);        
+      @include text-bold($text-color);
   }
 
   .btn-order {
@@ -360,7 +363,7 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
           border: 2px solid $primary-color;
       background: #fff;
       }
-  }        
+  }
 
   .btn {
       display: inline-block;
@@ -375,16 +378,16 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
       line-height: 20px;
       padding: 16px 22px;
       border-radius: 10px;
-      @include text-bold($text-color); 
-      
+      @include text-bold($text-color);
+
       &.disabled {
           pointer-events: none;
           border-color: #dcdcdc;
           background: #dcdcdc;
       }
-      
+
   }
-  
+
   .prod_horiz-controls {
       display: flex;
       align-items: center;
@@ -397,7 +400,7 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
       justify-content: space-between;
       width: 100%;
   }
-  
+
   .img{
       width: 100px;
   }
@@ -443,7 +446,7 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
       height: 16px;
       position: absolute;
       top: 50%;
-      left: 50%;        
+      left: 50%;
       transform: translate(-50%, -50%);
 
       &::before {
@@ -465,14 +468,14 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
           width: 100%;
           height: 4px;
           left: 50%;
-          top: 0;            
-          transform: translate(-50%, 0);            
+          top: 0;
+          transform: translate(-50%, 0);
           clip-path: polygon(35% 0, 65% 0, 75% 50%, 100% 50%, 100% 100%, 0 100%, 0 50%, 25% 50%);
-          background: $main-color;            
+          background: $main-color;
           transition: .35s;
       }
-      
-      
+
+
   }
 
   .trash:hover:after {
@@ -484,3 +487,42 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
       background:  $primary-color;
   }
 
+
+  @media (max-width: 1199px){
+    .auth-dialog-basket {
+        margin-top: 60px  !important;
+        max-width: 100vw  !important;
+        }
+    }
+    
+  
+    @media screen and (max-width: 360px){
+      .mobile {
+        flex-wrap: wrap;
+      }
+
+      .form input {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        height: 40px !important;
+
+      }
+
+      .btn-login{
+        height: 45px !important;
+        line-height: 45px !important;
+        padding: inherit !important;
+        font-size: 14px !important;
+        text-align: center;
+      }
+
+      .form{
+        margin-bottom: 10px !important;
+        font-size: 14px !important;
+      }
+
+      .auth-dialog .mat-dialog-container {
+        padding: 20px 20px 20px 20px !important;
+      }
+    
+    }

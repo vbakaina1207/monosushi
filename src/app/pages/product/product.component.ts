@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy, SkipSelf } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RouteReuseStrategy, RouterEvent } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
+import { IProductResponse} from 'src/app/shared/interfaces/product/product.interface';
 import { ITypeProductResponse } from 'src/app/shared/interfaces/type-product/type-product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { TypeProductService } from 'src/app/shared/services/type-product/type-product.service';
-import { ProductService } from './../../shared/services/product/product.service'
+import { ProductService } from './../../shared/services/product/product.service';
 
 
 @Component({
@@ -47,8 +47,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
 
   getTypeProducts(): void {
-    this.productTypeService.getAll().subscribe(data => {
-      this.userTypeProducts = data;
+    this.productTypeService.getAllFirebase().subscribe(data => {
+      this.userTypeProducts = data as ITypeProductResponse[];
     })
   }
 
@@ -57,13 +57,13 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     this.productTypeName = this.activatedRoute.snapshot.paramMap.get('type_product') as string;
     let currentExtras = this.router.getCurrentNavigation()?.extras.skipLocationChange;
-    this.productService.getAllByCategory(this.categoryName).subscribe(data => {
-      this.userProducts = data;
-      this.currentCategoryName = this.userProducts[0]?.category.name;
-    });
+      this.productService.getAllByCategoryFirebase(this.categoryName).subscribe((data) => {
+        this.userProducts = data as IProductResponse[];
+        this.currentCategoryName = this.userProducts[0]?.category.name;
+      });
     if (this.productTypeName){
-      this.productService.getAllByProductType(this.productTypeName).subscribe(data => {
-            this.userProducts = data;
+      this.productService.getAllByProductTypeFirebase(this.productTypeName).subscribe(data => {
+            this.userProducts = data as IProductResponse[];
             this.currentProductTypeName = this.userProducts[0]?.type_product.name;
           });
     }
@@ -72,6 +72,10 @@ export class ProductComponent implements OnInit, OnDestroy {
       if(this.router.url == '/') {
         this.categoryName = 'rols';
         this.currentCategoryName = '';
+        this.productService.getAllByCategoryFirebase(this.categoryName).subscribe((data) => {
+          this.userProducts = data as IProductResponse[];
+          this.currentCategoryName = this.userProducts[0]?.category.name;
+        });
       }
     } else this.isCategoryRolls = false;
     if (this.router.url !== '/product/rols/' && this.categoryName === 'rols') {
@@ -101,7 +105,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   addToBasket(product: IProductResponse): void {
-    // basket: Array<IProductResponse> = [];
     if(localStorage.length > 0 && localStorage.getItem('basket')){
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
       if(this.basket?.some(prod => prod.id === product.id)){

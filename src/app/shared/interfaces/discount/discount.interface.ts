@@ -1,6 +1,7 @@
+import {Timestamp} from "@angular/fire/firestore";
 
 export interface IDiscountRequest {
-    date: Date;
+    date: Timestamp;
     name: string;
     title: string;
     description: string;
@@ -8,5 +9,5 @@ export interface IDiscountRequest {
 }
 
 export interface IDiscountResponse extends IDiscountRequest {
-    id: number;
+    id:  string;
 }

@@ -691,5 +691,25 @@ b{
         }
     }
 
+    .dropdown-menu-item{
+        font-size: 14px;
+    }
+}
 
+@media screen and (max-width: 414px){
+    .dropdown-menu-item{
+        font-size: 14px;
+    }
+
+    .menu__box{
+        padding: 65px 20px 20px 0 !important;
+    }
+}
+
+
+@media screen and (max-width: 280px){
+    .dropdown-menu-item{
+        font-size: 12px;
+        padding: 0 6px;
+    }
 }

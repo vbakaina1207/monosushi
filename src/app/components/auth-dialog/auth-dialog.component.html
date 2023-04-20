@@ -19,13 +19,13 @@
     <h4>Вхід в кабінет</h4>
   </div>
     <form [formGroup]="regForm" class="form"(ngSubmit)="loginUser()">
-      <div class="flex">
+      <div class="flex mobile">
         <input matInput formControlName="firstName" name="firstName" type="text"  id="firstName" placeholder="*Ваше ім'я">
         <input matInput formControlName="lastName" name="lastName" type="text" id="lastName" placeholder="*Ваше прізвище">
       </div>
       <input matInput formControlName="phoneNumber" name="phoneNumber" type="text"  id="phoneNumber" placeholder="*Ваш телефон">
       <input matInput formControlName="email" name="email" type="email"  id="email" placeholder="*Ваш email">
-      <div class="flex">
+      <div class="flex mobile">
         <input (input)="checkConfirmPassword()" matInput formControlName="password" name="password" type="password" id="password" placeholder="*Пароль">
         <input (input)="checkConfirmPassword()" matInput formControlName="confirmPassword" name="confirmPassword" type="password" id="confirmPassword" placeholder="*Повторіть пароль">
       </div>
@@ -34,7 +34,7 @@
       <!-- <div class="error-message" [class.active]="isError">Помилка входу. Невідомий користувач.</div> -->
   </form>
 
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center mobile">
     <span class="text-bottom">Вже зареєстровані?</span>
     <a class="open-popup btn" (click)="openLoginDialog()">
       Увійти

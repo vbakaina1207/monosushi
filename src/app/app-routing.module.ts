@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 
@@ -46,7 +46,11 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-  }
+  },
+  {
+    path: 'request',
+    loadChildren: () => import('./pages/request/request.module').then(m => m.RequestModule)
+  },
 ];
 
 @NgModule({

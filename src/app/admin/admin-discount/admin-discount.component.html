@@ -43,7 +43,7 @@
 
     <button class="btn-add ms-3" (click)="openForm()" *ngIf="!isAdd">Додати акцію</button>
     <div class="col-12 d-flex justify-center" *ngIf="!isAdd">
-        <table class="table">
+        <table class="table-responsive">
             <thead class="table-category">
                 <tr>
                     <th scope="col">Дата</th>
@@ -56,7 +56,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let discount of adminDiscounts; let id=index">
-                    <td>{{ discount.date | date:'MM.YYYY' }}</td>
+                    <td>{{ discount.date | formatDates }} </td>
                     <td>{{ discount.name }}</td>
                     <td>{{ discount.title }}</td>
                     <td>{{ discount.description | slice:0:65 }} <span *ngIf="discount.description.length > 65">...</span></td>

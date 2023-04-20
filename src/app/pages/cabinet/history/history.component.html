@@ -1,29 +1,38 @@
 <div class="col-12 d-flex justify-center table-width">
-  <table class="table">
+  <table class="table table-responsive table-responsive-md table-responsive-sm table-responsive-lg table-responsive-xl">
     <thead class="table-category">
     <tr>
-      <th scope="col">№ замовлення</th>
+      <th scope="col" class="th-title">№</th>
       <th scope="col">Дата та час</th>
       <th scope="col">Адреса</th>
       <th scope="col">Сума</th>
       <th scope="col">Статус</th>
     </tr>
     </thead>
+
+
     <tbody>
-    <!--<tr *ngFor="let category of adminCategories; let id=index">
-      <td>№ {{ id+1 }}</td>
-      <td>{{ category.name }}</td>
-      <td>{{ category.path }}</td>
-      <td>
-        <img [src]="category.imagePath" alt="" height="50px">
+
+    <tr *ngFor="let order of userOrders; let i=index">
+      <td><b>№ {{ order.order_number }}</b></td>
+      <td>{{ order.date_order | formatDates: 'yyyy/MM/dd h:mm:ss a' }}
+        <tr *ngFor="let product of order ? order.product : products; let i=index">
+          <td>{{ product.name }} </td>
+        </tr>
       </td>
-      <td>
-        <button (click)="editCategory(category)" type="button" class="btn">Редагувати</button>
+
+      <td><b class="b th-title">{{order.delivery_method =='local_pickup' ? 'Самовивіз' : order.street +' ,'+ order.house  }}</b>
+        <tr *ngFor="let product of order ? order.product : products; let i=index">
+          <td> {{ product.count }}</td>
+        </tr>
+      </td>
+      <td><b>{{ order.total }}</b> грн</td>
+      <td class="td-color th-title"> {{ order.status ?  'виконано' : 'не виконано'}}
         <p>
-          <button [disabled]="editStatus" (click)="deleteCategory(category)" type="button" class="btn">Видалити</button>
         </p>
       </td>
-    </tr>-->
+    </tr>
+
     </tbody>
   </table>
 </div>

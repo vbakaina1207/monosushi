@@ -22,7 +22,7 @@ import { AccountService } from "../../../shared/services/account/account.service
 export class PasswordComponent implements OnInit {
   public authForm!: FormGroup;
   public currentUser: any;
-  public checkPassword:boolean = false;
+  public checkPassword: boolean = false;
 
   constructor(
     private fb: FormBuilder,

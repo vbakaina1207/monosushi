@@ -15,27 +15,8 @@
 }
 
 .form-group .number-title {
-    position: relative;
-    color: $text-color;
-    border-radius: 5px;
-    margin-right: 15px;
-    background-color: $primary-color;
-    vertical-align: middle;
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
+  @include  form-group-number-title;
 
-    & b {
-        font-size: 16px;
-        line-height: 16px;
-        color:$text-color;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        display: block;
-    }
 }
 
 .cabinet_address-buttons {
@@ -49,3 +30,27 @@
 .btn-address{
   @include btn-cabinet-left;
 }
+
+
+@media screen and (max-width: 360px){
+  
+  button{
+      font-size: 14px !important;
+  }
+
+  .cabinet_address-buttons{
+    margin-bottom: 20px !important;
+  }
+}
+
+@media screen and (max-width: 280px){
+  .cabinet_address-buttons{
+    display: flex !important;
+    flex-wrap: wrap !important;
+
+    & button{
+      margin-bottom: 15px !important;
+    }
+  }
+}
+

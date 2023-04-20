@@ -16,7 +16,7 @@
     margin-bottom: 50px;
     color:$text-color;
     width: 250px;
-    height: 50px;
+    // height: 50px;
     border-radius: 10px;
     background-color: $primary-color;
     font-weight: bold;
@@ -240,7 +240,7 @@
     margin-right: auto;
     margin-left: auto;
     flex-shrink: 0;
-    width: 110px;
+    
 
     & button {
         width: 32px;
@@ -279,6 +279,51 @@
     }
 }
 
+@mixin thumb-input-number-media{
+    
+    font-size: 12px;
+
+    & button {
+        width: 25px;
+        height: 30px;
+        margin: 2px;
+    }
+
+    & .product-qty  {
+        width: 30px;
+        height: 34px;
+    }
+}
+
+@mixin product_controls-media{
+
+    & .thumb-input-number{
+    
+        font-size: 12px;
+
+        & button {
+        width: 24px;
+        height: 26px;
+        margin: 2px;
+        }
+
+        & .product-qty  {
+        width: 19px;
+        height: 29px;
+        }
+    }
+        & .product_price{
+            font-size: 14px;
+            width: 56px;
+        }
+
+        & .btn-order{
+            padding: 7px 7px;
+            font-size: 12px;
+        }
+    }    
+    
+
 @mixin cabinet-buttons {
   display: flex;
   justify-content: space-between;
@@ -301,3 +346,29 @@
     background-color: $primary-color;
   }
 }
+
+@mixin form-group-number-title {
+  position: relative;
+  color: $text-color;
+  border-radius: 5px;
+  margin-right: 15px;
+  background-color: $primary-color;
+  vertical-align: middle;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+
+  & b {
+    font-size: 16px;
+    line-height: 16px;
+    color:$text-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: block;
+  }
+}
+
+

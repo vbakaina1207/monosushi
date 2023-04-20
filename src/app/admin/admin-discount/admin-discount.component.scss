@@ -58,3 +58,19 @@ td button {
 textarea{
     height: 150px;
 }
+
+@media screen and (max-width: 798px) {
+    td button{
+        font-size: 12px;
+    }
+    tbody{
+        font-size: 12px;
+    }
+    .table-category {
+        font-size: 12px;
+    }
+    td img{
+        height: 15px;
+    }
+    
+}

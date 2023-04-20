@@ -50,7 +50,6 @@ export class AuthorizationComponent implements OnInit {
 
 async loginUser(email: string, password:string):Promise<any> {
   const credential = await signInWithEmailAndPassword(this.auth, email, password);
-  console.log(getDoc(doc(this.afs, "users", credential.user.uid)));
   this.loginSubscription = docData(doc(this.afs, "users", credential.user.uid)).subscribe(user => {
     const currentUser = { ...user, uid: credential.user.uid };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));

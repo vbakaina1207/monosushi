@@ -1,11 +1,10 @@
 import { Component, OnInit,  OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 import {ICategoryResponse} from "../../../shared/interfaces/category/category.interface";
-
 
 
 @Component({
@@ -15,26 +14,37 @@ import {ICategoryResponse} from "../../../shared/interfaces/category/category.in
 })
 export class ProductInfoComponent implements OnInit {
 
-  public currentProduct!: IProductResponse;
+  public currentProduct = <IProductResponse>{} ||
+    null || undefined;
+  public currentCategoryName!: string;
+  public currentProductCategory = <ICategoryResponse>{} || null || undefined;
+  private eventSubscription!: Subscription;
 
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router,
 
-  ) { }
+  ) {
+    this.eventSubscription = this.router.events.subscribe(event => {
+    if(event instanceof NavigationEnd ) {
+      this.loadProduct();
+      this.activatedRoute.data.subscribe(response => {
+        this.currentProduct = response['productInfo'];
+        this.currentProductCategory  = this. currentProduct?.category;
+      })
+    }
+  })
+  }
 
   ngOnInit(): void {
-    this.loadProduct();
-    this.activatedRoute.data.subscribe(response => {
-      this.currentProduct = response['productInfo'];
-    })
   }
 
   loadProduct(): void {
-    const PRODUCT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.productService.getOne(PRODUCT_ID).subscribe(data => {
-      this.currentProduct = data;
+    const PRODUCT_ID = (this.activatedRoute.snapshot.paramMap.get('id') as string);
+    this.productService.getOneFirebase(PRODUCT_ID).subscribe(data => {
+      this.currentProduct = data as IProductResponse;
     })
   }
 

@@ -8,6 +8,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormatDatePipe } from './pipes/format-date.pipe';
+
+
 
 
 const MATERIAL = [
@@ -21,19 +24,22 @@ const MATERIAL = [
 ]
 
 @NgModule({
-    declarations: [],
+    declarations: [
+    FormatDatePipe
+    ],
     imports: [
         ...MATERIAL,
       FormsModule,
       ReactiveFormsModule,
       HttpClientModule
     ],
-    exports: [
-        ...MATERIAL,
-      FormsModule,
-      ReactiveFormsModule,
-      HttpClientModule
-    ]
+  exports: [
+    ...MATERIAL,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormatDatePipe
+  ]
 })
 export class SharedModule { }
 

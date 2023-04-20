@@ -88,7 +88,6 @@ export class PersonalComponent implements OnInit {
       firstName: firstName,
       lastName: lastName,
       phoneNumber: phoneNumber,
-      // orders: [],
       role: 'USER'
     };
     setDoc(doc(this.afs, 'users', this.currentUser.uid), user,  { merge:true });

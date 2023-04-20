@@ -22,7 +22,7 @@ export class ConnectionComponent implements OnInit {
 
   initAuthForm(): void {
     this.authForm = this.fb.group({
-      name: [null, [Validators.required, Validators.email]],
+      name: [null, [Validators.required]],
       phone: [null, [Validators.required]]
     })
   }

@@ -109,9 +109,8 @@
             </a>
         </li>
 
-        <!-- <ul > -->
             <li class="nav-item menu-item border-menu" *ngFor="let category of userCategories">
-                <a [routerLink]="[ '/product/{{category.path}}' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+              <a [routerLink]="[ '/product/', category.path, '' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
                     <div class="link-menu">
                         <img [src]="category.imagePath" alt="">
                         <span>{{category.name}}</span>

@@ -507,6 +507,15 @@ a.footer-dev-logo:before {
             vertical-align: middle;
         }
     }
+
+    .bottom-menu {
+        display: block;
+        // position: sticky;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        z-index: 100;
+    }
 }
 
 
@@ -536,14 +545,7 @@ a.footer-dev-logo:before {
         height: 35px;
     }
 
-    .bottom-menu {
-        display: block;
-        // position: sticky;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        z-index: 100;
-    }
+   
 }
 
 @media (max-width:767px){

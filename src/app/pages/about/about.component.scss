@@ -113,8 +113,9 @@ strong {
 .accordion-button {
     @include text-bold($main-color);
     font-size: 20px;
-    height: 93px;
+    height: 95px;
     margin: 0 auto;
+    
 
     &:not(.collapsed) {
         @include text-bold($text-color);
@@ -183,6 +184,8 @@ strong {
 }
 
 
+
+
 @media screen and (max-width: 767px) {
     
     .main-header{
@@ -211,4 +214,11 @@ strong {
     }
 }    
 
-
+@media (max-width: 360px){
+    .accordion-button {
+        font-size: 16px;
+    }
+    .accordion-body{
+        font-size: 16px;
+    }
+}

@@ -15,7 +15,7 @@ export class AdminProductTypeComponent implements OnInit {
   public typeProductForm!: FormGroup;
   public isAdd = false;
   public editStatus = false;
-  private currentTypeProductId = 0;
+  private currentTypeProductId!: string;
 
 
   constructor(
@@ -23,7 +23,7 @@ export class AdminProductTypeComponent implements OnInit {
     private typeProductService: TypeProductService,
     private toastr: ToastrService
   ) { }
-  
+
   ngOnInit(): void {
     this.initTypeProductForm();
     this.loadTypeProducts();
@@ -35,10 +35,10 @@ export class AdminProductTypeComponent implements OnInit {
       path: [null, Validators.required]
     });
   }
-  
+
   loadTypeProducts(): void {
-    this.typeProductService.getAll().subscribe(data => {
-      this.adminTypeProducts = data;
+    this.typeProductService.getAllFirebase().subscribe(data => {
+      this.adminTypeProducts = data as ITypeProductResponse[];
     })
   }
 
@@ -48,13 +48,12 @@ export class AdminProductTypeComponent implements OnInit {
 
   addTypeProduct(): void {
     if(this.editStatus){
-      this.typeProductService.update(this.typeProductForm.value, this.currentTypeProductId).subscribe(() => {
+      this.typeProductService.updateFirebase(this.typeProductForm.value, this.currentTypeProductId).then(() => {
         this.loadTypeProducts();
         this.toastr.success('Type of product successfully updated');
       })
     } else {
-      this.typeProductService.create(this.typeProductForm.value).subscribe(() => {
-        this.loadTypeProducts();
+      this.typeProductService.createFirebase(this.typeProductForm.value).then(() => {
         this.toastr.success('Type of product  successfully created');
       })
     }
@@ -74,7 +73,7 @@ export class AdminProductTypeComponent implements OnInit {
   }
 
   deleteTypeProduct(typeProduct: ITypeProductResponse): void {
-    this.typeProductService.delete(typeProduct.id).subscribe(() => {
+    this.typeProductService.deleteFirebase(typeProduct.id).then(() => {
       this.loadTypeProducts();
       this.toastr.success('Type of product  successfully deleted');
     })

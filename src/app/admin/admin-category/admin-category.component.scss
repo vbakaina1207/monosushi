@@ -42,3 +42,19 @@ td button {
 .btn-exit{   
     @include btn-exit;
 }
+
+@media screen and (max-width: 598px) {
+    td button{
+        font-size: 12px;
+    }
+    tbody{
+        font-size: 14px;
+    }
+    .table-category {
+        font-size: 14px;
+    }
+    td img{
+        height: 25px;
+    }
+    
+}

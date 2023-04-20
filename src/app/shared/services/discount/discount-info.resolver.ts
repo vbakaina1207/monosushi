@@ -16,6 +16,6 @@ export class DiscountInfoResolver implements Resolve<IDiscountResponse> {
   constructor(private discountService: DiscountService){}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IDiscountResponse> {
-    return this.discountService.getOne(Number(route.paramMap.get('id')));
+    return this.discountService.getOneFirebase((route.paramMap.get('id') as string)) as Observable<IDiscountResponse>;
   }
 }

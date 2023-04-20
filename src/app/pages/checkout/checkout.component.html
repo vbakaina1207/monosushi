@@ -1,32 +1,34 @@
 
      <ng-container *ngIf="basket.length>0">
       <mat-dialog-content>
-      <div mat-dialog-content class="cart_items" style="" *ngFor="let product of basket">
+      <div mat-dialog-content class="cart_items active" style="" *ngFor="let product of basket">
         <div class="prod_horiz cart-product js-product  " data-price="product.price">
-          <a class="prod_horiz-img" href="product.imagePath">
-            <img class="img" [src]="product.imagePath">
+          
+          <a class="prod_horiz-img" [routerLink]="[ '/product/', product ? product.category.path : undefined ,  product ? (product.type_product? product.type_product.path : 'other') : undefined, product.id ]">
+            <img class="img" [src]="product ? product.imagePath : undefined">
           </a>
+          
           <div class="prod_horiz-desc">
-            <a class="title" [routerLink]="[ '/product/'+ product.category.path , product.type_product.path ? product.type_product.path : 'other', product.id ]">
-              {{ product.name }}
-            </a>              
+            <a class="title" [routerLink]="[ '/product/', product ? product.category.path : undefined ,  product ? (product.type_product? product.type_product.path : 'other') : undefined, product.id ]">
+              {{ product ? product.name : undefined }}
+            </a>
             <div class="prod_horiz-controls">
               <div class="thumb-input-number">
                 <button type="button" class="decrement in-cart" (click)="productCount(product, false)" >-</button>
-                <input matInput class="product-qty" value="{{ product.count }}" readonly="" tabindex="-1" max="999" data-id="600">
+                <input matInput class="product-qty" value="{{ product ? product.count : undefined }}" readonly="" tabindex="-1" max="999" data-id="600">
                 <button type="button" class="increment in-cart" (click)="productCount(product, true)" >+</button>
               </div>
               <div class="price_default">
                 <b class="price">{{ product.price*product.count }}</b>
-                  грн            
+                  грн
               </div>
               <button type="button" class="btn-close remove-product">
                 <div class="trash" (click)="removeFromBasket(product)"></div>
-              </button>          
-            </div>      
+              </button>
+            </div>
           </div>
         </div>
-      </div> 
+      </div>
     </mat-dialog-content>
     </ng-container>
 
@@ -44,10 +46,13 @@
     </ng-container>
     <div class="cart_bottom bg-mono">
       <div class="cart_price-wrap">
-          Сума: <b id="card-total-price" class="card-total-price">{{ total }}</b> грн    
+          Сума: <b id="card-total-price" class="card-total-price">{{ total }}</b> грн
       </div>
-      <a [routerLink]="[ '/checkout']" class="btn btn-order"  [class.disabled]="!total" mat-dialog-close>
-        ОФОРМИТИ ЗАМОВЛЕННЯ
+      <a [routerLink]="[ '/request']" class="btn btn-order" *ngIf="currentUser" [class.disabled]="!total" mat-dialog-close>
+        {{ currentUser ? 'ОФОРМИТИ ЗАМОВЛЕННЯ': 'АВТОРИЗУВАТИСЯ' }}
+      </a>
+      <a (click)="openLoginDialog()" class="btn btn-order" *ngIf="!currentUser" aria-current="page" mat-dialog-close>
+        {{ currentUser ? 'ОФОРМИТИ ЗАМОВЛЕННЯ' : 'АВТОРИЗУВАТИСЯ' }}
       </a>
     </div>
 

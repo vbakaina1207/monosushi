@@ -13,10 +13,10 @@
       <form class="form" [formGroup]="authForm" (ngSubmit)="sendPhone()">
         <input formControlName="name" name="name" type="text"  id="name" placeholder="*Ваше ім'я">
         <input formControlName="phone" name="phone" type="text" id="phone" placeholder="*Ваш номер телефону">
-        <button [disabled]="authForm.invalid" type="submit" class="btn w-100">Надіслати</button>
+        <button [disabled]="authForm.invalid" type="submit"  mat-dialog-close class="btn w-100">Надіслати</button>
       </form>
       <a [routerLink]="[ '' ]" routerLinkActive="route-active">
-        <button class="btn-close-modal close-popup close" mat-dialog-close data-dismiss="modal" aria-label="Close">
+        <button class="btn-close-modal close-popup close"   mat-dialog-close data-dismiss="modal" aria-label="Close">
           <span>
           </span>
         </button>

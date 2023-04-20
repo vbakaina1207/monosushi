@@ -43,7 +43,6 @@
     position: relative;
     bottom: 0;
     vertical-align: middle;
-
     text-align: center;
     text-decoration: line-through;
     white-space: nowrap;
@@ -61,49 +60,12 @@
 
 .thumb-input-number {
     @include thumb-input-number;
-    // display: inline-flex;
-    // align-items: center;
-    // border: 1px solid #dcdcdc;
-    // border-radius: 10px;
-    // @include body($main-color);
-    // font-size: 16px;
-    // line-height: 16px;
-    // margin-right: auto;
-    // margin-left: auto;
-
-    // & button:first-child {
-    //     font-size: 30px;
-    // }
-
-    // & button {
-    //     width: 32px;
-    //     height: 36px;
-    //     cursor: pointer;
-    //     background: none;
-    //     transition: 0.35s;
-    //     font-size: 24px;
-    //     line-height: 24px;
-    //     color: $main-color;
-    //     background-color: #fff;
-    //     border-radius: 10px;
-    //     padding-bottom: 2px;
-    //     margin: 4px;
-    //     border: none;
-    // }
-
-    // &  input {
-    //     width: 30px;
-    //     height: 44px;
-    //     font-weight: 600;
-    //     text-align: center;
-    // }
 }
 
 .img {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
     padding: 5px;
 }
@@ -145,5 +107,25 @@
 
     .spacer-md {
         height: 30px;
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    .card-body{
+        @include product_controls-media;
+    }
+
+    .card-mobile{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .product_price{
+        width: 56px;
+    }
+
+    .btn-order{
+        margin-left: 5px;
     }
 }

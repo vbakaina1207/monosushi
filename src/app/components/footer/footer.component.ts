@@ -20,8 +20,8 @@ export class FooterComponent implements OnInit {
   }
 
   getCategories(): void {
-    this.categoryService.getAll().subscribe(data => {
-      this.userCategories = data;
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.userCategories = data as ICategoryResponse[];
     })
   }
 

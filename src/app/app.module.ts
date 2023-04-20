@@ -26,6 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,8 @@ import { ToastrModule } from 'ngx-toastr';
       CheckoutComponent ,
       ProductTypeComponent,
       AuthDialogComponent,
-      AuthAddressComponent
+      AuthAddressComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { ToastrModule } from 'ngx-toastr';
     provideAuth(() => getAuth()),
     ToastrModule.forRoot(),
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

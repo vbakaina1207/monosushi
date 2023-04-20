@@ -4,7 +4,7 @@
 <form [formGroup]="authForm" class="form"(ngSubmit)="addAddress()">  
   <input matInput formControlName="typeAddress" name="typeAddress" type="text"  id="typeAddress" placeholder="*Вкажіть тип адреси (наприклад, дім, робота)">                    
         <input matInput formControlName="street" name="street" type="text" id="street" placeholder="*Введіть вулицю достаки">            
-  <div class="flex">
+  <div class="flex mobile">
     <input matInput formControlName="house" name="house" type="text"  id="house" placeholder="*Номер будинку">                    
     <input matInput formControlName="flat" name="flat" type="number" id="flat" placeholder="*Номер квартири">            
   </div>          

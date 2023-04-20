@@ -1,0 +1,65 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+
+
+body{
+    @include body($main-color);
+    font-size: 16px;
+  }
+  
+  .table-category {
+    border-bottom: 2px solid $primary-color;
+    font-size: 16px;
+    @include text-bold($main-color);
+    padding: 0;
+  }
+  
+  
+  tbody{
+    @include body($main-color);
+    font-size: 16px;
+  }
+  
+  tr{
+    vertical-align: middle;
+  }
+  
+  td button {
+    @include btn-save;
+  }
+  
+  td {
+    vertical-align: top;
+    min-height: 30px;
+  }
+  
+  
+  .table-width{
+    width: 100%;
+  }
+  
+  .b, b{
+    @include text-bold($main-color);
+  }
+  
+.td-color{
+    @include body($primary-color);
+  }
+  
+  @media screen and (max-width: 1199px) {
+    td button{
+        font-size: 12px;
+    }
+    tbody{
+        font-size: 12px;
+    }
+    .table-category {
+        font-size: 12px;
+    }
+    td img{
+        height: 15px;
+    }
+    
+}

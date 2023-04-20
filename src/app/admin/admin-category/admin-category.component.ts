@@ -18,7 +18,7 @@ export class AdminCategoryComponent implements OnInit {
   public editStatus = false;
   public uploadPercent!: number;
   public isUploaded = false;
-  private currentCategoryId = 0;
+  private currentCategoryId!: number | string;
 
 
   constructor(
@@ -27,7 +27,7 @@ export class AdminCategoryComponent implements OnInit {
     private imageService: ImageService,
     private toastr: ToastrService
   ) { }
-  
+
   ngOnInit(): void {
     this.initCategoryForm();
     this.loadCategories();
@@ -40,10 +40,10 @@ export class AdminCategoryComponent implements OnInit {
       imagePath: [null, Validators.required]
     });
   }
-  
+
   loadCategories(): void {
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
     })
   }
 
@@ -53,13 +53,12 @@ export class AdminCategoryComponent implements OnInit {
 
   addCategory(): void {
     if(this.editStatus){
-      this.categoryService.update(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
+      this.categoryService.updateFirebase(this.categoryForm.value, this.currentCategoryId as string).then(() => {
         this.loadCategories();
         this.toastr.success('Category successfully updated');
       })
     } else {
-      this.categoryService.create(this.categoryForm.value).subscribe(() => {
-        this.loadCategories();
+      this.categoryService.createFirebase(this.categoryForm.value).then(() => {
         this.toastr.success('Category successfully created');
       })
     }
@@ -83,7 +82,7 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   deleteCategory(category: ICategoryResponse): void {
-    this.categoryService.delete(category.id).subscribe(() => {
+    this.categoryService.deleteFirebase(category.id as string).then(() => {
       this.loadCategories();
       this.toastr.success('Category successfully deleted');
     })

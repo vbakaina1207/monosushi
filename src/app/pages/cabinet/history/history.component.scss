@@ -29,7 +29,39 @@ td button {
   @include btn-save;
 }
 
+td {
+  vertical-align: top;
+  min-height: 30px;
+}
+
 
 .table-width{
-  width: 150%;
+  // width: 150%;
+}
+
+b{
+  @include text-bold($main-color);
+}
+
+.td-color{
+  @include body($primary-color);
+}
+
+@media screen and (max-width: 575px){
+
+  .table-category{
+    font-size: 12px !important;
+    // white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .th-title{
+    word-break: break-all;
+  }
+  td {
+    font-size: 12px;
+    // word-break: break-all;
+    // white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
 }

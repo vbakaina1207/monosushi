@@ -18,21 +18,21 @@ export class DiscountComponent implements OnInit {
     private discountService: DiscountService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
     this.eventSubscription = this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd ) {
-        this.getDiscounts();        
+        this.getDiscounts();
       }
     })
   }
 
   ngOnInit(): void {
-    
+
   }
 
   getDiscounts(): void {
-    this.discountService.getAll().subscribe(data => {
-      this.userDiscounts = data;
+    this.discountService.getAllFirebase().subscribe(data => {
+      this.userDiscounts = data as IDiscountResponse[];
     })
   }
 
